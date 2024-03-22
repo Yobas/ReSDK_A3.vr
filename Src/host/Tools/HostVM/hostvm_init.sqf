@@ -22,3 +22,8 @@ server_password = hostVM_password;
 call compile preprocessFileLineNumbers "src\host\Tools\HostVM\cba_hostvm_preinit.sqf";
 call compile preprocessFileLineNumbers "src\host\Tools\HostVM\cba_hostvm_init.sqf";
 
+
+//called after logger functions loaded
+hostVM_postInit = {
+
+};

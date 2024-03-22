@@ -34,6 +34,10 @@ if (!isMultiplayer) then {
 //pre init logger
 call compile __pragma_preprocess ("src\host\Logger\Logger_init.sqf");
 
+if (isHostVM) then {
+	call hostVM_postInit;
+};
+
 if (isMultiplayer) then {
 	static_assert_str(SERVER_PASSWORD,"Server password must be defined");
 
