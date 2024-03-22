@@ -34,7 +34,7 @@ hostVM_postInit = {
     #define __strval__(v__) 'v__'
     #define definePrinter(__name) \
     __name = { \
-        [_ftData, __strval__(__name) ] call hvmPrint;
+        [_ftData, __strval__(__name) ] call hvmPrint; \
     };
 
     definePrinter(cprint)
