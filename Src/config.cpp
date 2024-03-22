@@ -22,10 +22,23 @@ class CfgFunctions
 		class Bootstrap 
 			{
 				file = "\src";
-				/* file = "\rel\bootstrap";
-				class preInitClient {postInit  = 1;}; // postInit  preInit */
-				//class preInitServer {preInit  = 1;}; //выполнение перед инициализацией объектов на миссии
-				class init {postInit  = 1;}; // при запуске миссии после инициализации объектов
+				class init {postInit  = 1;};
 			};
 		};
+};
+
+//own location for hostvm works
+class CfgLocationTypes
+{
+	class CBA_NamespaceDummy
+	{
+		name="";
+		drawStyle="area";
+		texture="";
+		color[]={0,0,0,0};
+		size=0;
+		textSize=0;
+		shadow=0;
+		font="PuristaMedium";
+	};
 };
