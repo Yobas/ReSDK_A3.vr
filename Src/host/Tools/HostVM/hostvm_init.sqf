@@ -34,6 +34,12 @@ hostVM_postInit = {
     #define __strval__(v__) 'v__'
     #define definePrinter(__name) \
     __name = { \
+        private _ftData = _this; \
+        if equalTypes(_ftData,[]) then { \
+            if (count _ftData > 0 && {equalTypes(_ftData select 0,"")}) then { \
+                _ftData = format _ftData; \
+            }; \
+        }; \
         [_ftData, __strval__(__name) ] call hvmPrint; \
     };
 
