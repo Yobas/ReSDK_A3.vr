@@ -164,6 +164,10 @@ discUserLog = {
 	[_message] call disc_logger_provider;
 };
 
+if (isHostVM) then {
+	DiscordEmbedBuilder_fnc_buildSqf = {}; //reset function
+};
+
 _cliErr = {
 	params ["_fmtMessage","_cli"];
 

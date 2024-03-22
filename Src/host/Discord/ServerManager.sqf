@@ -57,6 +57,8 @@ dsm_onOnlineUpdate = {
 };
 
 dsm_initialize = {
+	if (isHostVM) exitWith {}; //running in hostvm mode
+
 	#ifdef DSM_DISABLE
 	if (true) exitwith {
 		log("dsm::initialize() - Flag DSM_DISABLE active. Skip initialization");
