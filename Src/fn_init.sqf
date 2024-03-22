@@ -9,6 +9,8 @@
 
 #include <host\precompiled.sqf>
 
+if !isNull(hostVM_requireLoad) then {call compile preprocessFileLineNumbers "host\Tools\HostVM\hostvm_init.sqf"};
+
 //server password and crypt key if exists
 if (fileExists("src\private.h")) then {
 	private _CRYPT_COMPILE_SERVER_ = true;

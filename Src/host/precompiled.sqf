@@ -11,6 +11,8 @@
 */
 #include <engine.hpp>
 
+isHostVM = false; // серверный режим виртуальной машины
+
 pc_oop_flag_reloadModule = false;
 pc_oop_intList_loadObjectPool = [];
 
