@@ -7,6 +7,13 @@
 
 //insert here cba preinit code
 
+//events
+CBA_clientID = -1;
+cba_events_eventNamespace = call cba_fnc_createNamespace;
+cba_events_eventHashes = call cba_fnc_createNamespace;
+
+//pfh
+cba_common_PFHhandles = [];
 cba_common_perFrameHandlerArray = [];
 cba_common_perFrameHandlersToRemove = [];
 cba_common_lastTickTime = diag_tickTime;
