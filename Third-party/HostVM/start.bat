@@ -1,1 +1,1 @@
-.\cmp.exe -config=init.cfg -serverMod="@allsrc" -port=5678 -filePatching -autoInit -limitFPS=150 -noSplash
+.\cmp.exe -config=init.cfg -serverMod="@server" -port=5678 -filePatching -autoInit -limitFPS=150 -noSplash
