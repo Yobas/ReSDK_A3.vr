@@ -27,9 +27,9 @@ Src/host/ReNode/compiled/script_list.hpp
 Src/host/ReNode/compiled/*.sqf
 ReNode/noapp.log
 ReMaker/buildevent.log
-Third-party/HostVM/mpmissions/relicta.vr.pbo
-Third-party/HostVM/@allsrc/Addons/src.pbo
 
-Third-party/HostVM/@allsrc/*
-!Third-party/HostVM/@allsrc/debug_console_x64.dll
-!Third-party/HostVM/@allsrc/README.md
+Third-party/HostVM/mpmissions/relicta.vr.pbo
+Third-party/HostVM/@server/Addons/src.pbo
+Third-party/HostVM/@server/*
+!Third-party/HostVM/@server/debug_console_x64.dll
+!Third-party/HostVM/@server/_README.md
