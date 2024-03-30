@@ -18,7 +18,8 @@ db_canUseQueryLogToStdout = false;
 //Основная функция инициализации базы данных
 db_init = {
 	["Start initialize database"] call logInfo;
-
+	["Database path: %1",DB_PATH] call logInfo;
+	
 	#ifdef RELEASE
 	db_canUseQueryLogToStdout = false;
 	#endif
