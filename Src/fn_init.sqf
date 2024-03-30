@@ -8,7 +8,12 @@
 #include <host\Networking\Network.hpp>
 
 #include <host\precompiled.sqf>
-
+#ifdef DEBUG
+_servermode = "debug";
+#endif
+#ifdef RELEASE
+_servermode = "release";
+#endif
 #ifdef HOSTVM
 if canSuspend exitWith {
 	diag_log "Hostvm cannot run in sheduler";
@@ -16,6 +21,10 @@ if canSuspend exitWith {
 };
 if isNull(hostVM_requireLoad) exitWith {
 	diag_log ("Hostvm loader not initialized");
+	call hostVM_fatalShutdownServer;
+};
+if isNullVar(_servermode) exitWith {
+	diag_log "Hostvm launch mode not defined. Use DEBUG or RELEASE for start";
 	call hostVM_fatalShutdownServer;
 };
 #endif

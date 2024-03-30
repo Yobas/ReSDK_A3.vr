@@ -82,10 +82,14 @@ call hostVM_postInit; //preinit logfile
 [] call ReBridge_start;
 // Загрузим проект со скриптами (Путь должен быть полным)
 
-private _scriptPath = ((call ReBridge_getWorkspace) + ("\Scripts\EditorScriptsProject.reproj"));
+private _scriptPath = ((call ReBridge_getWorkspace) + ("\Scripts\HostVM.reproj"));
 ["Script ReBridge path: %1",_scriptPath] call cprint;
 
-[_scriptPath] call rescript_build;
+private _buildResult =[_scriptPath] call rescript_build;
+if (_buildResult != "ok") exitWith {
+    ["ReBridge initialization error; Result: %1",_buildResult] call cprintErr;
+    call hostVM_fatalShutdownServer;
+};
 
 ["Initialize scripts..."] call cprint;
 
@@ -93,3 +97,7 @@ private _scriptPath = ((call ReBridge_getWorkspace) + ("\Scripts\EditorScriptsPr
 ["ScriptContext"] call rescript_initScript;
 ["WorkspaceHelper"] call rescript_initScript;
 ["FileManager"] call rescript_initScript;
+["HostVM"] call rescript_initScript;
+
+//todo remove this test critical exit
+["HostVM","exit",[-100500]] call rescript_callCommandVoid;
