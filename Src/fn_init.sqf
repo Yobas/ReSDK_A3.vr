@@ -9,7 +9,17 @@
 
 #include <host\precompiled.sqf>
 
-if !isNull(hostVM_requireLoad) then {call compile preprocessFileLineNumbers "host\Tools\HostVM\hostvm_init.sqf"};
+#ifdef HOSTVM
+if canSuspend exitWith {
+	diag_log "Hostvm cannot run in sheduler";
+	call hostVM_fatalShutdownServer;
+};
+if isNull(hostVM_requireLoad) exitWith {
+	diag_log ("Hostvm loader not initialized");
+	call hostVM_fatalShutdownServer;
+};
+#endif
+if !isNull(hostVM_requireLoad) then {call compile preprocessFileLineNumbers "src\host\Tools\HostVM\hostvm_init.sqf"};
 
 //server password and crypt key if exists
 if (fileExists("src\private.h")) then {
@@ -25,6 +35,11 @@ if (!isMultiplayer) then {
 #else
 	//assert preinit
 	call compile __pragma_preprocess ("src\host\CommonComponents\Assert.sqf");
+#endif
+
+#ifdef HOSTVM
+	//load debugger for hostvm
+	call compile __pragma_preprocess ("src\host\Tools\EditorWorkspaceDebug\InternalImpl.sqf");
 #endif
 
 #ifdef EDITOR

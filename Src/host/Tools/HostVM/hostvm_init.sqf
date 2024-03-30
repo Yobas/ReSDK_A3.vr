@@ -19,9 +19,11 @@ isHostVM = true;
 //hostVM_password - use as serverpassword
 server_password = hostVM_password;
 
-call compile preprocessFileLineNumbers "src\host\Tools\HostVM\cba_hostvm_preinit.sqf";
-call compile preprocessFileLineNumbers "src\host\Tools\HostVM\cba_hostvm_init.sqf";
+diag_log ("Initialize cba module");
+call compile preprocessFileLineNumbers "src\host\Tools\HostVM\cba_hostvm_functions.sqf";
 
+diag_log ("Loading cba initializer");
+call compile preprocessFileLineNumbers "src\host\Tools\HostVM\cba_hostvm_init.sqf";
 
 //called after logger functions loaded
 hostVM_postInit = {
@@ -67,3 +69,27 @@ hostVM_postInit = {
 
 
 };
+call hostVM_postInit; //preinit logfile
+
+
+
+//initialize rebgidge
+["STAGE INITIALIZE REBRIDGE"] call cprint;
+
+#include "..\..\..\ReBridge\ReBridge_init.sqf"
+
+// активируем компонет
+[] call ReBridge_start;
+// Загрузим проект со скриптами (Путь должен быть полным)
+
+private _scriptPath = ((call ReBridge_getWorkspace) + ("\Scripts\EditorScriptsProject.reproj"));
+["Script ReBridge path: %1",_scriptPath] call cprint;
+
+[_scriptPath] call rescript_build;
+
+["Initialize scripts..."] call cprint;
+
+["Breakpoint"] call rescript_initScript;
+["ScriptContext"] call rescript_initScript;
+["WorkspaceHelper"] call rescript_initScript;
+["FileManager"] call rescript_initScript;

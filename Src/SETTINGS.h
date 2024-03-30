@@ -8,6 +8,10 @@
 #if __has_include("client\client_debug.h")
 	#include <client\client_debug.h>
 #endif
+#if __has_include("host\HostVM_Settings.h")
+	#include <host\HostVM_Settings.h>
+#endif
+//HostVM_Settings -> HOSTVM macro predefined
 
 //============================================================================
 //			REGION: COMMON SETTINGS
