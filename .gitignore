@@ -28,6 +28,7 @@ Src/host/ReNode/compiled/*.sqf
 ReNode/noapp.log
 ReMaker/buildevent.log
 
+Third-party/HostVM/cmp.exe
 Third-party/HostVM/Scripts/**
 Third-party/HostVM/mpmissions/relicta.vr.pbo
 Third-party/HostVM/@server/Addons/src.pbo
