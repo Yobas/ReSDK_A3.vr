@@ -32,6 +32,10 @@ ReBridge_stop = {
 	engineCall(stop);
 };
 
+ReBridge_getWorkspace = {
+	call compile (engineCall(getworkspace) select 0)
+};
+
 // Вызов системной команды, определённой в bridge
 ReBridge_callCommand = {
 	params ["_func",["_args",[]],["_outstr",false]];
