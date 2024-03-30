@@ -13,7 +13,7 @@ private _fp = "src\fn_init.sqf";
 private _ex = fileExists _fp;
 diag_log (format["loader found - %1",_ex]);
 if (_ex) then {
-	call compile preprocessFileLineNumbers _fp;
+	ISNIL{call compile preprocessFileLineNumbers _fp};
 } else {
 	diag_log "Loader not found. Fatal exit";
 	call hostVM_fatalShutdownServer;
