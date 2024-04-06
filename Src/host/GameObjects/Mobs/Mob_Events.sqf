@@ -97,6 +97,11 @@ _iact = {
 
 	};
 	if (_type == INTERACT_RPC_EXTRA) exitWith {
+		//скриптовая проверка с защитой переполнения стека
+		if (callFunc(_target,isScriptedObject) && {isNullVar(__SCRIPT_EXACT_ACTION__)}) exitWith {
+			private __SCRIPT_EXACT_ACTION__ = true;
+			callFuncParams(getVar(_target,__script),onExtraAction,this);
+		};
 		callSelfParams(extraAction,_target);
 	};
 
@@ -322,6 +327,8 @@ _onMainAction = {
 	};
 	if callSelf(isHandcuffed) exitwith {};
 	if (isTypeOf(_item,StolenItem)) exitWith {callFuncParams(_item,onStolen,this);};
+
+	if callFunc(_item,isScriptedObject) exitWith {callFuncParams(getVar(_item,__script),onMainAction,this)};
 
 	callFuncParams(_item,onMainAction,this);
 }; rpcAdd("onMainAction",_onMainAction);

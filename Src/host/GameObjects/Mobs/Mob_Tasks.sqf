@@ -46,6 +46,20 @@ region(Memories)
 			modvar(_txt) +"</t>";
 		};
 
+		private _mobDesc = callSelf(getDesc);
+		if (!isNullVar(_mobDesc) && {_mobDesc!=""}) then {
+			modvar(_txt) + sbr + _mobDesc;
+		};
+
+		private _mpool = [];
+		{
+			_mpool pushBack _x;
+		} foreach getVar(_mem,messages);
+
+		if (count _mpool > 0) then {
+			modvar(_txt) + sbr + "<t color='#5A71A3'>" + (_mpool joinString sbr) + "</t>";
+		};
+
 		{
 			modvar(_txt) + sbr + _x;
 		} foreach getSelf(__firstLoginMesPool);
@@ -113,7 +127,7 @@ region(Memories)
 		desc:Удаляет воспоминание моба. Если у персонажа нет головы или мозга - воспоминание не будет удалено.
 		type:method
 		lockoverride:1
-		in:int:Индекс воспоминания для удаления
+		in:int:Индекс:Индекс воспоминания для удаления
 		return:bool:Удалено ли воспоминание. Если у персонажа нет мозга или индекс принимает недопустимое значение - возвращает @[bool ЛОЖЬ]
 	" node_met
 	func(removeMemory)
