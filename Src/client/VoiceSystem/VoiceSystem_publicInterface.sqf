@@ -671,7 +671,13 @@ vs_preparePositionCoordinates = {
 
 	_can_speak = true; //хардкод. при выключенном режиме будет применён фильтр нижних частот
 
-	_newVoiceVolume = [_unit,_unit getVariable ["tf_voiceVolume", 1.0]] call vs_calcVoiceIntersection;
+	_newVoiceVolume = [_unit,_unit getVariable ["tf_voiceVolume", 1.0]] call 
+		#ifdef VOICE_USE_LATEST_INTERSECTION_ALG
+			vs_calcVoiceIntersectionV2
+		#else
+			vs_calcVoiceIntersection
+		#endif
+		;
 	
 	_newVoiceVolume = [_unit,_newVoiceVolume] call vs_processSpeakingLangs;
 	
@@ -709,6 +715,130 @@ vs_processSpeakingLangs = {
 		_curVol = 0;
 	};
 	
+	_curVol
+};
+
+/*
+	Новый алгоритм просчета.
+	
+	учитывается - расстояние от предущией точки пересечения с текущей.
+	чем они ближе друг к другу тем сильнее будет гашение звука
+
+*/
+vs_calcVoiceIntersectionV2 = {
+	params ["_unit","_curVol"
+	#ifdef VOICE_DEBUG_LATEST_INTERSECTION_ALG
+	,"_endPos","_refOut"
+	#endif
+	];
+	if equals(_unit,player) exitWith {_curVol};
+
+	_startPos = eyepos player;
+	__vs_cvi_ = lineIntersectsSurfaces[
+		_startPos,
+	
+	#ifdef VOICE_DEBUG_LATEST_INTERSECTION_ALG
+		_endPos,
+	#else
+		eyepos _unit,
+	#endif
+
+		player,
+		_unit,
+		true,
+		VS_MAXIMUM_VOLUME_DISTANCE,
+		"VIEW",
+		"NONE"
+	];
+	__iobj = null;
+	__ipos = null;
+#ifdef VOICE_DEBUG_LATEST_INTERSECTION_ALG
+	
+	//obj pool debugger
+	if isNull(vs_debug_listobjs) then {
+		vs_debug_listobjs = [];
+	};
+	if (count vs_debug_listobjs > 0) then {
+		{deleteVehicle _x} foreach vs_debug_listobjs;
+		vs_debug_listobjs = [];
+	};
+
+	__refdata = [];
+#endif
+	__ppos = _startPos;
+	{
+		//_x params ASLPos, normalVec, itscObj, parObj, selections, bisurf
+		__iobj = _x select 2;
+		__ipos = _x select 0;
+		(0 boundingBoxReal __iobj) params ["_min","_max","_bsize"];
+		
+		__szs = ((_min vectorMultiply -1) vectorAdd _max);
+		__mszs = selectMax __szs;
+		__dpos = __ppos distance __ipos;
+		__ppos = __ipos;
+
+        // Вычисляем объем объекта
+        __volume = (__szs select 0) * (__szs select 1) * (__szs select 2);
+        
+        //__dpos = __ppos distance __ipos;
+        //__ppos = __ipos;
+        
+        // Коэффициент затухания на основе расстояния и размера объекта
+        __distanceFactor = 1 - (__dpos / VS_MAXIMUM_VOLUME_DISTANCE);  // Линейное затухание на основе расстояния
+        
+        // Плавное влияние размера объекта на затухание (чем больше объект, тем больше затухание)
+        __sizeFactor = 1 - (min(__volume / 1000, 1));  // Нормализуем объем и ограничиваем его до 1
+        
+        // Общий коэффициент затухания
+        __attenuationFactor = __distanceFactor * __sizeFactor;
+
+        // Применяем затухание к текущей громкости звука
+        _curVol = _curVol * __attenuationFactor;
+
+
+#ifdef VOICE_DEBUG_LATEST_INTERSECTION_ALG
+			_odata = [__iobj,"name",""] call oop_getdata;
+			_ocls = "no_class";
+			if (count _odata > 1) then {_ocls = _odata select 1};
+			__refdata pushBack format["%1. %2 (rd:%3);D:%6m |vol.%7| [%4 %5]",_foreachIndex + 1,__szs,_bsize,_odata select 0,_ocls,__dpos,_curVol toFixed 3];
+
+			__tobj = "Sign_Sphere10cm_F" createVehicleLocal [0,0,0];
+			__tobj setObjectTexture [0,"#(rgb,8,8,3)color(0,1,0,1)"];
+			__tobj setPosASL (__ipos);
+			__tobj setobjectscale 0.8;
+
+			vs_debug_listobjs pushBack __tobj;
+		
+
+	} foreach __vs_cvi_;
+#else
+	true;
+	} count __vs_cvi_;
+#endif
+
+#ifdef VOICE_DEBUG_LATEST_INTERSECTION_ALG
+		refset(_refOut,__refdata joinString endl);
+
+		__tobj = "Sign_Sphere10cm_F" createVehicleLocal [0,0,0];
+		__tobj setObjectTexture [0,"#(rgb,8,8,3)color(1,0,0,1)"];
+		__tobj setPosASL (_endPos);
+		__tobj setobjectscale 0.8;
+		vs_debug_listobjs pushBack __tobj;
+		
+		drawLaser [
+			_startPos vectorAdd[0,0,0.1],
+			vectorNormalized (_endPos vectorDiff _startPos),
+			//eyeDirection player,
+			[0, 1000, 0], // Bright red
+			[],
+			0.5,
+			2.5,
+			60,
+			false
+		];
+
+#endif
+
 	_curVol
 };
 

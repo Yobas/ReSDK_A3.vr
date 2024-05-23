@@ -13,6 +13,14 @@
 //Новый алгоритм затухания звука
 #define VOICE_USE_NEW_ALGORITM_VOICE_INTERSECTION
 
+#define VS_MAXIMUM_VOLUME_DISTANCE 60
+
+#define VOICE_USE_LATEST_INTERSECTION_ALG
+
+#ifdef EDITOR
+	#define VOICE_DEBUG_LATEST_INTERSECTION_ALG
+#endif
+
 #include "VoiceSystem_keysConstant.sqf"
 #include "VoiceSystem_uncategorized.sqf"
 //Всё что не влезло в первый файл по препроцессору влезет во вторую часть

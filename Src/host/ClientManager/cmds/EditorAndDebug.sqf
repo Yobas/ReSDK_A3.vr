@@ -3,7 +3,6 @@
 // sdk.relicta.ru
 // ======================================================
 
-
 #ifdef DEBUG
 	
 	addCommand("showthreads",PUBLIC_COMMAND)
@@ -268,4 +267,67 @@ addCommandWithDescription("rcsphere",PUBLIC_COMMAND,"Скрыть или пок�
 		["Курсор включен","system"] call chatPrint;
 	};
 };
+
+#include "..\..\..\client\WidgetSystem\widgets.hpp"
+
+cmd_debug_voice_tester_handle = -1;
+cmd_debug_voice_tester_pos = 0;
+cmd_debug_voice_tester_widgets = [widgetNull];
+addCommandWithDescription("debug_voice_tester",PUBLIC_COMMAND,"Тестирование гашения голоса")
+{
+	checkIfMobExists();
+	_mode = parseNumber args;
+	_updatePos = {
+		cmd_debug_voice_tester_pos = eyePos player;
+	};
+
+	if (_mode == 0) exitWith {
+		if (cmd_debug_voice_tester_handle==-1) then {
+			if equals(cmd_debug_voice_tester_pos,0) then {
+				{
+					if isImplementFunc(_x,setDoorLock) then {
+						callFuncParams(_x,setDoorLock,false arg false);
+					};
+				} foreach (["GameObject",true] call getAllObjectsInWorldTypeOf);
+				//setDoorLock
+			};
+			
+			call _updatePos;
+			
+			private _d = getGUI;
+			_sx = 30;
+			_sy = 30;
+			private _ctg = [_d,WIDGETGROUP,[50-_sx/2,20,_sx,_sy]] call createWidget;
+			([_d,BACKGROUND,WIDGET_FULLSIZE,_ctg] call createWidget) setBackgroundColor [0.3,0.3,0.3,0.5];
+			cmd_debug_voice_tester_widgets = [_ctg];
+			_txt = [_d,TEXT,WIDGET_FULLSIZE,_ctg] call createWidget;
+			cmd_debug_voice_tester_widgets pushBack _txt;
+
+			_method = {
+				_txt = cmd_debug_voice_tester_widgets select 1;
+				_src = cmd_debug_voice_tester_pos;
+				_targ = eyePos player;
+				_rdata = refcreate(0);
+				_lvl = [objnull,1,_src,_rdata] call vs_calcVoiceIntersectionV2;
+				[_txt,format["Debug voice: %1Frame: %2%1Distance: %3%1Voice: %4%1Debug info: %5"
+					,sbr
+					,diag_frameno
+					,_src distance _targ
+					,_lvl
+					,refget(_rdata) splitString endl joinString sbr
+				]] call widgetSetText;
+			};
+			cmd_debug_voice_tester_handle = startUpdate(_method,0);
+		} else {
+			[cmd_debug_voice_tester_widgets select 0] call deleteWidget;
+			stopUpdate(cmd_debug_voice_tester_handle);
+			cmd_debug_voice_tester_handle = -1;
+		};
+	};
+	if (_mode == 1) exitWith {
+		call _updatePos;
+	};
+
+};
+
 #endif
