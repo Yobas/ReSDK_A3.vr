@@ -84,7 +84,7 @@ MyModule/
 
 // Инициализация модуля
 myModule_initialize = {
-    logformat("MyModule", "Initializing...");
+    log("MyModule: Initializing...");
     // код инициализации
 };
 
@@ -120,7 +120,7 @@ importClient("src\client\MyModule\MyModule_init.sqf"); cmplog("MyModule")
 
 **Важно:** Порядок важен из-за зависимостей. Смотрите комментарии в `loader.hpp`.
 
-### Регистрация редакторского модуля
+### Регистрация редакторного модуля
 
 Добавьте загрузку модуля в `Src/Editor/Editor_init.sqf`:
 
@@ -174,7 +174,7 @@ functionName = { // нет префикса
 1. Создайте директорию в соответствующей папке:
    - `Src/host/MyModule/` - для серверного модуля
    - `Src/client/MyModule/` - для клиентского модуля
-   - `Src/Editor/MyComponent/` - для редакторского модуля
+   - `Src/Editor/MyComponent/` - для редакторного модуля
 
 2. Создайте файл `MyModule_init.sqf`:
 
@@ -188,7 +188,7 @@ functionName = { // нет префикса
 
 // Ваш код модуля
 myModule_init = {
-    logformat("MyModule", "Module initialized");
+    log("MyModule: Module initialized");
 };
 
 call myModule_init;
@@ -270,7 +270,7 @@ simpleModule_value = 0;
 
 simpleModule_increment = {
     simpleModule_value = simpleModule_value + 1;
-    logformat("SimpleModule", "Value: %1", simpleModule_value);
+    logformat("SimpleModule: Value: %1", simpleModule_value);
 };
 
 simpleModule_getValue = {
@@ -295,7 +295,7 @@ class(MyItem) extends(Item)
     func(useItem)
     {
         objParams();
-        setSelf(durability, getSelf(durability) - 1);
+        setSelf(durability,getSelf(durability) - 1);
         if (getSelf(durability) <= 0) then {
             callSelf(breakItem);
         };
@@ -304,7 +304,7 @@ class(MyItem) extends(Item)
     func(breakItem)
     {
         objParams();
-        logformat("MyItem", "Item broken");
+        log("MyItem: Item broken");
         // логика поломки
     };
 endclass
@@ -321,7 +321,7 @@ log("ItemModule loaded");
 
 uiControl_showDialog = {
     params ["_title", "_content"];
-    logformat("UIControl", "Showing dialog: %1", _title);
+    logformat("UIControl: Showing dialog: %1", _title);
     // логика отображения диалога
 };
 
@@ -360,7 +360,7 @@ log("UIControl loaded");
 ```sqf
 myModule_init = {
     if (isNullVar(someDependency)) then {
-        errorformat("MyModule", "Dependency not loaded");
+        error("MyModule: Dependency not loaded");
         appExit(APPEXIT_REASON_UNDEFINEDMODULE);
     };
     // инициализация

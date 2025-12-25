@@ -10,6 +10,19 @@
 - Комментарии
 - Объявления переменных и функций
 
+### Использование макросов для сравнений
+
+В проекте используются макросы вместо встроенных операторов Платформы для сравнений:
+- Используйте `equals(a, b)` вместо `a isEqualTo b`
+- Используйте `not_equals(a, b)` вместо `!a isEqualTo b`
+- Используйте `equalTypes(a, b)` вместо `a isEqualType b`
+- Используйте `not_equalTypes(a, b)` вместо `!a isEqualType b`
+
+**Причины:**
+- Макросы обеспечивают единообразие кода
+- Макросы могут иметь дополнительные проверки и оптимизации
+- Встроенные операторы Платформы (`isEqualTo`, `isEqualType`) не используются в продакшене
+
 ## Паттерны проектирования
 
 ### Модульная архитектура
@@ -68,7 +81,7 @@ class(MyClass) extends(BaseClass)
         objParams_1(_value);
         // Валидация
         if (_value >= 0) then {
-            setSelf(privateData, _value);
+            setSelf(privateData,_value);
         };
     };
 endclass
@@ -90,11 +103,44 @@ myModule_counter = 0;
 
 ```sqf
 // Плохо - прямой доступ к полю
-private _value = getVar(_obj, privateField);
+private _value = getVar(_obj,privateField);
 
 // Хорошо - через публичный метод
-private _value = callFunc(_obj, getPrivateField);
+private _value = callFunc(_obj,getPrivateField);
 ```
+
+### Динамическое создание полей в конструкторе
+
+```sqf
+// Плохо - поле создается "на лету" в конструкторе
+class(MyClass) extends(BaseClass)
+    func(constructor)
+    {
+        objParams();
+        setSelf(dynamicField, 123);  // Плохо: поле не объявлено явно
+    };
+endclass
+
+// Хорошо - все поля объявлены явно в теле класса
+class(MyClass) extends(BaseClass)
+    var(dynamicField, 0);  // Хорошо: поле объявлено явно
+    
+    func(constructor)
+    {
+        objParams();
+        setSelf(dynamicField, 123);  // Хорошо: устанавливаем значение уже объявленного поля
+    };
+endclass
+```
+
+**Почему это важно:**
+- Структура класса должна быть видна сразу при чтении кода - все поля объявлены в одном месте
+- Наследники класса могут полагаться на наличие определенных полей, которые должны быть явно объявлены
+- Статический анализ и понимание кода становится невозможным, если поля определяются динамически
+- Легко допустить ошибку, пытаясь использовать поле, которое еще не было инициализировано
+- Усложняется отладка и поддержка кода - сложно понять, какие поля должны существовать у объекта
+
+**Правило:** Все поля класса должны быть объявлены через `var()` в теле класса (между `class()` и `endclass`). `var()` и `func()` могут использоваться **только в теле класса**, но **не внутри методов**.
 
 ### Игнорирование objParams()
 
@@ -137,23 +183,34 @@ moduleB_process = common_process;
 ### Игнорирование ошибок
 
 ```sqf
-// Плохо - игнорирование ошибок
+// Плохо - слепое добавление проверок везде без понимания контекста
 myFunction = {
     params ["_obj"];
-    // нет проверки на null
-    callFunc(_obj, doSomething);
+    // Неоправданная проверка - если _obj всегда валиден в этом контексте
+    if (!valid(_obj)) then {
+        error("MyModule: Invalid object");
+    };
+    callFunc(_obj,doSomething);
 };
 
-// Хорошо - проверка ошибок
+// Хорошо - проверка только там, где это действительно необходимо
 myFunction = {
     params ["_obj"];
-    if (!valid(_obj)) then {
-        errorformat("MyModule", "Invalid object");
-        return;
+    // Проверка оправдана, если _obj может быть null (например, из внешнего источника)
+    if (!valid(_obj)) exitWith {
+        error("MyModule: Invalid object");
     };
-    callFunc(_obj, doSomething);
+    callFunc(_obj,doSomething);
+};
+
+// Также хорошо - если разработчик понимает, что _obj гарантированно валиден
+myFunction = {
+    params ["_obj"];  // _obj создан выше в коде и гарантированно валиден
+    callFunc(_obj,doSomething);  // Проверка не нужна
 };
 ```
+
+**Важно:** Разработчик должен понимать контекст и добавлять проверки на null только там, где это действительно необходимо. Слепое добавление проверок везде - это признак непонимания кода и приводит к раздуванию кодовой базы без реальной пользы. Проверяйте объекты только в точках входа (публичные методы, обработчики событий, RPC), где данные могут прийти извне, а не в каждом внутреннем вызове.
 
 ## Особенности работы с OOP системой
 
@@ -165,7 +222,7 @@ class(BaseItem) extends(Item)
     func(use)
     {
         objParams();
-        logformat("BaseItem", "Used");
+        log("BaseItem: Used");
     };
 endclass
 
@@ -175,9 +232,9 @@ class(SpecificItem) extends(BaseItem)
     {
         objParams();
         // Вызов базового метода
-        callSuper(BaseItem, use);
+        callSuper(BaseItem,use);
         // Дополнительная логика
-        logformat("SpecificItem", "Special action");
+        log("SpecificItem: Special action");
     };
 endclass
 ```
@@ -194,7 +251,7 @@ if (!valid(_obj)) then {
 };
 
 // Использование объекта
-callFunc(_obj, doSomething);
+callFunc(_obj,doSomething);
 
 // Удаление объекта
 delete(_obj);
@@ -202,14 +259,62 @@ delete(_obj);
 
 ### Автоматическая очистка ресурсов
 
-Используйте `autoref` для автоматической очистки:
+Используйте `autoref` для автоматической очистки ссылок на объекты при удалении объекта.
 
+**Важное ограничение:** `autoref` работает **только для классов, унаследованных от `ManagedObject`**. В проекте все игровые объекты (`GameObject`, `Item`, `IStruct`, `Decor`, `BasicMob`, `Mob` и т.д.) наследуются от `ManagedObject`, поэтому для них `autoref` доступен.
+
+**Принцип работы:**
+1. `autoref` - это модификатор, который помечает поле как автоматически очищаемое
+2. При регистрации класса система собирает список всех полей с модификатором `autoref` в `__autoref_list`
+3. При удалении объекта (вызов `delete()`) деструктор `ManagedObject` проверяет метод `enableAutoRefGC()` (возвращает `true` по умолчанию)
+4. Если `enableAutoRefGC` включен, система проходит по всем полям из `__autoref_list` и очищает их в зависимости от типа:
+   - **Массив объектов (`ARRAY`)**: Удаляет все объекты из массива через `delete()`, затем устанавливает массив в `["<AUTOREF_NAN>"]`
+   - **Одиночный объект (`nullPtr` / `Location`)**: Удаляет объект через `delete()`
+   - **Handle обновления (`SCALAR` > -1)**: Останавливает обновление через `stopUpdate()`
+
+**Что очищает:**
+- Ссылки на другие OOP объекты (одиночные или в массивах)
+- Handles обновлений (`startUpdate`), чтобы предотвратить выполнение кода после удаления объекта
+
+**Где используется в проекте:**
+- **Оружие (`RangedWeapon.sqf`)**: Патрон в патроннике (`bullet`) и магазин (`magazine`) - при удалении оружия автоматически удаляются связанные патрон и магазин
+- **Магазин (`Magazines.sqf`)**: Массив патронов (`content`) - при удалении магазина автоматически удаляются все патроны из массива
+- **Ловушки (`ITrapItem`)**: Структура ловушки (`trapStruct`) - при удалении предмета-ловушки автоматически удаляется структура ловушки на карте
+- **Части тела (`Bodyparts.sqf`)**: Наложенный бинт (`bandage`) - при удалении части тела автоматически удаляется наложенный на неё бинт
+- **Сетевые дисплеи (`Mob.sqf`, `BasicMob.sqf`)**: Ссылки на открытые дисплеи - автоматически закрываются при удалении персонажа
+- **Handles обновлений**: Handles от `startUpdate()` - автоматически останавливаются при удалении объекта, предотвращая выполнение кода после удаления
+
+**Синтаксис:**
 ```sqf
-class(MyClass) extends(BaseClass)
-    autoref
-    var(refObject, nullPtr);
+// Пример 1: Одиночный объект (из RangedWeapon.sqf)
+class(RangedWeapon) extends(Item)  // Item наследуется от GameObject -> ManagedObject
+    autoref var(bullet, nullPtr);  // Патрон в патроннике - будет удален при удалении оружия
+    autoref var(magazine, nullPtr);  // Магазин - будет удален при удалении оружия
+endclass
+
+// Пример 2: Массив объектов (из Magazines.sqf)
+class(Magazine) extends(Item)
+    autoref var(content, []);  // Массив патронов - все патроны будут удалены при удалении магазина
+endclass
+
+// Пример 3: Handle обновления (из Campfires.sqf)
+class(Campfire) extends(IStruct)
+    autoref var(handleUpdate, -1);  // Handle обновления - будет остановлен при удалении костра
 endclass
 ```
+
+**Ограничения и предупреждения:**
+- **Критично:** Нельзя использовать для массивов, которые изменяются при удалении объектов (например, содержимое контейнера). Если объект в массиве при удалении вызывает методы, которые изменяют сам массив (например, `removeItem`), это приведет к смещению индексов и утечкам памяти. В таких случаях нужно использовать явную очистку в деструкторе:
+```sqf
+func(destructor)
+{
+    objParams();
+    {
+        delete(_x);
+    } foreach array_copy(getSelf(content));  // Явная очистка с копированием массива
+};
+```
+- `autoref` не работает для классов, которые не наследуются от `ManagedObject` (например, обычный `object`)
 
 ## Работа с памятью и производительностью
 
@@ -236,14 +341,14 @@ endclass
 // Плохо - создание объектов в цикле
 {
     private _obj = new(MyClass);
-    callFunc(_obj, process, [_x]);
+    callFunc(_obj,process, [_x]);
     delete(_obj);
 } forEach _largeArray;
 
 // Хорошо - переиспользование объекта
 private _processor = new(MyClass);
 {
-    callFunc(_processor, process, [_x]);
+    callFunc(_processor,process, [_x]);
 } forEach _largeArray;
 delete(_processor);
 ```
@@ -258,7 +363,7 @@ delete(_processor);
     };
 #endif
 
-callFunc(_obj, criticalMethod);
+callFunc(_obj,criticalMethod);
 ```
 
 ## Сетевые взаимодействия и безопасность
@@ -266,18 +371,20 @@ callFunc(_obj, criticalMethod);
 ### Валидация данных от клиента
 
 ```sqf
+#include "serverRpc.hpp"  // На сервере
+
 // На сервере - всегда валидируйте данные от клиента
-serverrpc_registerHandler("clientAction", {
+private _clientActionHandler = {
     params ["_clientData"];
     
     // Валидация
-    if (!(_clientData isEqualType [])) then {
-        errorformat("Security", "Invalid data from client");
-        return;
+    if (not_equalTypes(_clientData, [])) exitWith {
+        error("Security: Invalid data from client");
     };
     
     // Обработка
-});
+};
+rpcAdd("clientAction", _clientActionHandler);
 ```
 
 ### Проверка прав доступа
@@ -288,9 +395,8 @@ func(adminAction)
 {
     objParams();
     
-    if (!callFunc(_user, isAdmin)) then {
-        errorformat("Security", "Access denied");
-        return;
+    if (!callFunc(_user,isAdmin)) exitWith {
+        error("Security: Access denied");
     };
     
     // выполнение действия
@@ -306,9 +412,8 @@ func(processInput)
     objParams_1(_input);
     
     // Валидация
-    if (!(_input isEqualType "")) then {
+    if (not_equalTypes(_input, "")) exitWith {
         error("Invalid input type");
-        return;
     };
     
     // Обработка
@@ -327,8 +432,8 @@ private _val = myGlobal_obj getVariable "value";
 
 // Хорошо
 private _obj = new(MyClass);
-setVar(_obj, value, 10);
-private _val = getVar(_obj, value);
+setVar(_obj,value, 10);
+private _val = getVar(_obj,value);
 ```
 
 ### Пример 2: Обработка ошибок
@@ -346,12 +451,13 @@ func(processData)
 func(processData)
 {
     objParams_1(_data);
-    if (!(_data isEqualType []) || count _data == 0) then {
-        errorformat("MyClass", "Invalid data");
-        return [];
+    FHEADER;
+    if (not_equalTypes(_data, []) || count _data == 0) then {
+        error("MyClass: Invalid data");
+        RETURN([]);
     };
     private _result = _data select 0;
-    _result
+    RETURN(_result);
 };
 ```
 
@@ -362,7 +468,7 @@ func(processData)
 systemChat "Error occurred";
 
 // Хорошо
-errorformat("MyModule", "Error: %1", _errorMsg);
+errorformat("MyModule: Error: %1", _errorMsg);
 ```
 
 ## Комментирование кода
@@ -422,9 +528,10 @@ func(divide)
 {
     objParams_2(_a, _b);
     
+    FHEADER;
     if (_b == 0) then {
-        errorformat("Math", "Division by zero");
-        return 0;
+        error("Math: Division by zero");
+        RETURN(0);
     };
     
     _a / _b
