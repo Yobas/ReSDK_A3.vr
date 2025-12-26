@@ -541,6 +541,154 @@ logformat("Debug: Object fields: %1", _fields);
 - Логи клиента: `%LOCALAPPDATA%\Arma 3\arma3_YYYYMMDD_HHMMSS.rpt`
 - Используйте поиск по ключевым словам: `ERROR`, `WARNING`, название модуля
 
+## Типичные ошибки новичков
+
+Этот раздел содержит наиболее распространенные ошибки, которые допускают новые разработчики при работе с проектом.
+
+### Ошибка: использование `logformat` с несколькими аргументами напрямую
+
+**Проблема:**
+```sqf
+// ❌ НЕПРАВИЛЬНО
+logformat("Values: %1, %2", value1, value2);  // ОШИБКА: logformat принимает только 2 аргумента!
+```
+
+**Решение:**
+```sqf
+// ✅ ПРАВИЛЬНО - используйте arg для объединения значений
+logformat("Values: %1, %2", value1 arg value2);
+```
+
+**Объяснение:** Макрос `logformat` принимает только 2 аргумента: формат-строку и массив значений. Для нескольких значений используйте макрос `arg` для объединения их в единый аргумент.
+
+### Ошибка: попытка использовать `getSelf()` в `getterconst_func`
+
+**Проблема:**
+```sqf
+// ❌ НЕПРАВИЛЬНО
+class(MyClass) extends(BaseClass)
+    getterconst_func(getValue, getSelf(value));  // ОШИБКА: this не определен!
+endclass
+```
+
+**Решение:**
+```sqf
+// ✅ ПРАВИЛЬНО - используйте getter_func для доступа к полям объекта
+class(MyClass) extends(BaseClass)
+    var(value, 0);
+    getter_func(getValue, getSelf(value));  // Корректно - getter_func имеет доступ к this
+endclass
+
+// Или используйте getterconst_func только для константных значений
+getterconst_func(isItem, false);  // Корректно - константное значение
+```
+
+**Объяснение:** `getterconst_func` выполняется в контексте определения класса, а не объекта, поэтому не имеет доступа к `this`. Используйте его только для константных значений, одинаковых для всех экземпляров класса.
+
+### Ошибка: использование макросов OOP в CommonComponents
+
+**Проблема:**
+```sqf
+// ❌ НЕПРАВИЛЬНО - в CommonComponents/MyModule.sqf
+myModule_process = {
+    params ["_obj"];
+    callFunc(_obj,doSomething); // ОШИБКА: макрос callFunc не определен!
+    getVar(_obj,someField);     // ОШИБКА: макрос getVar не определен!
+};
+```
+
+**Решение:**
+```sqf
+// ✅ ПРАВИЛЬНО - CommonComponents не должны использовать OOP систему
+// Используйте прямую работу с объектами или передавайте данные через параметры
+myModule_process = {
+    params ["_data"];
+    // работа с данными без OOP макросов
+};
+```
+
+**Объяснение:** CommonComponents выполняются и на сервере, и на клиенте, но OOP система (`oop.hpp`) доступна только на сервере. Поэтому все макросы из `oop.hpp` не могут использоваться в CommonComponents.
+
+### Ошибка: пробелы в макросах OOP (после запятых)
+
+**Проблема:**
+```sqf
+// ❌ НЕПРАВИЛЬНО - пробелы до или после запятой
+callFuncParams(this, printData , [1 arg 2]);  // ОШИБКА: обращение к методу "printData "
+callFuncParams(this, printData, [1 arg 2]);   // ОШИБКА: обращение к методу " printData"
+getVar(obj, myField );  // ОШИБКА: обращение к полю "myField "
+```
+
+**Решение:**
+```sqf
+// ✅ ПРАВИЛЬНО - без пробелов до и после запятой
+callFuncParams(this,printData, [1 arg 2]);  // Корректно: обращение к методу "printData"
+getVar(obj,myField);  // Корректно: обращение к полю "myField"
+setVar(obj,value,10);  // Корректно: обращение к полю "value"
+```
+
+**Объяснение:** В макросах OOP второй аргумент (имя метода/поля) не должен содержать пробелов перед запятой или после. Макрос использует строкификацию, которая захватывает все символы между запятыми, включая пробелы.
+
+### Ошибка: смешение регистра в структурах
+
+**Проблема:**
+```sqf
+// ❌ НЕПРАВИЛЬНО - структуры РЕГИСТРОЗАВИСИМЫ!
+struct(MyStruct)
+    def(Value) 0;  // Поле с именем "Value"
+endstruct
+
+private _struct = struct_new(MyStruct);
+_struct getv(value);  // ОШИБКА: поле "value" не существует, нужно "Value"!
+```
+
+**Решение:**
+```sqf
+// ✅ ПРАВИЛЬНО - всегда используйте точный регистр при работе со структурами
+struct(MyStruct)
+    def(Value) 0;  // Поле с именем "Value"
+endstruct
+
+private _struct = struct_new(MyStruct);
+_struct getv(Value);  // Корректно - точное соответствие регистру
+_struct setv(Value, 10);  // Корректно
+```
+
+**Объяснение:** В отличие от OOP системы, где имена полей и методов НЕ регистрозависимы, в структурах имена полей и методов РЕГИСТРОЗАВИСИМЫ. Всегда используйте точный регистр, как объявлено в структуре.
+
+### Ошибка: попытка использовать `autoref` для классов, не наследованных от `ManagedObject`
+
+**Проблема:**
+```sqf
+// ❌ НЕПРАВИЛЬНО - класс не наследуется от ManagedObject
+class(MyClass) extends(object)  // object не наследуется от ManagedObject
+    autoref var(ref, nullPtr);  // ОШИБКА: autoref не работает для этого класса!
+endclass
+```
+
+**Решение:**
+```sqf
+// ✅ ПРАВИЛЬНО - используйте autoref только для классов, наследованных от ManagedObject
+class(MyClass) extends(Item)  // Item наследуется от GameObject -> ManagedObject
+    autoref var(ref, nullPtr);  // Корректно - autoref доступен
+endclass
+
+// Или используйте явную очистку в деструкторе
+class(MyClass) extends(object)
+    var(ref, nullPtr);
+    
+    func(destructor)
+    {
+        objParams();
+        if (!isNullVar(getSelf(ref))) then {
+            delete(getSelf(ref));
+        };
+    };
+endclass
+```
+
+**Объяснение:** `autoref` работает только для классов, унаследованных от `ManagedObject`. В проекте все игровые объекты (`GameObject`, `Item`, `IStruct`, `Decor`, `BasicMob`, `Mob` и т.д.) наследуются от `ManagedObject`, поэтому для них `autoref` доступен. Если класс не наследуется от `ManagedObject`, используйте явную очистку в деструкторе.
+
 ## Что дальше?
 
 - ➡️ [Отладка](05_DEBUGGING.md) - инструменты и техники отладки
