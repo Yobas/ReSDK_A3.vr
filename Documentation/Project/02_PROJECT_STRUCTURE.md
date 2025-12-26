@@ -351,7 +351,7 @@ host/CommonComponents/
 - `warning()`, `warningformat()` - предупреждения
 - `error()`, `errorformat()` - ошибки
 - `trace()`, `traceformat()` - детальная трассировка (только в DEBUG)
-- `breakpoint()`, `breakpoint_setfile()` - программные точки останова
+- `breakpoint()`, `breakpoint_setfile()` - логирование с информацией о местоположении (не останавливает выполнение)
 - `OBSOLETE()`, `NOTIMPLEMENTED()` - маркеры устаревших/нереализованных функций
 
 **Загрузка модулей:**

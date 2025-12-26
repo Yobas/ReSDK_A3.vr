@@ -34,7 +34,7 @@ logformat("Values: %1, %2", value1 arg value2);
 
 ```sqf
 breakpoint_setfile(filename)                    // Установить файл для breakpoints
-breakpoint(data)                                // Точка останова (только в DEBUG)
+breakpoint(data)                                // Логирование с информацией о местоположении (только в DEBUG, не останавливает выполнение)
 ```
 
 ### Утилиты для переменных
