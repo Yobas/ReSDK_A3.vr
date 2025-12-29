@@ -21,7 +21,7 @@
 **Причины:**
 - Макросы обеспечивают единообразие кода
 - Макросы могут иметь дополнительные проверки и оптимизации
-- Встроенные операторы Платформы (`isEqualTo`, `isEqualType`) не используются в продакшене
+- Встроенные операторы Платформы (`isEqualTo`, `isEqualType`) в явном виде не используются в продакшене
 
 ### Использование заголовочных файлов (.h и .hpp)
 
@@ -52,7 +52,7 @@
 
 ### Модульная архитектура
 
-Каждый модуль должен быть независимым:
+Каждый модуль должен быть независимым или иметь очень слабую зависимость от других модулей:
 
 ```sqf
 // Хорошо - модуль независим
@@ -67,9 +67,21 @@ otherModule_process = {
 };
 ```
 
-### Использование OOP системы
+Допускаются исключения в случае если есть обработка отсутствия зависимостей:
 
-Используйте классы для сложных сущностей:
+```sqf
+myModule_process = {
+    if !isNull(otherModule_function) then {
+        call otherModule_function;
+    } else {
+        error("MyModule: otherModule_function is not available");
+    };
+};
+```
+
+### Использование ООП парадигмы
+
+Используйте классы или структуры для сложных сущностей на сервере (для клиента вы можете использовать только структуры (см. [Структура модуля](03_SYNTAX_GUIDE.md#ограничения-клиентского-кода))):
 
 ```sqf
 // Хорошо - используем классы
@@ -82,6 +94,17 @@ class(MyEntity) extends(BaseClass)
         // логика обработки
     };
 endclass
+
+// Хорошо - используем структуры
+struct(MyEntity)
+    def(data) null
+    def(init) {
+        self setv(data,[]);
+    }
+    def(process) {
+        // логика обработки
+    }
+endstruct
 
 // Плохо - глобальные функции и переменные
 myEntity_data = [];
@@ -111,6 +134,310 @@ class(MyClass) extends(BaseClass)
     };
 endclass
 ```
+
+## Рекомендации по именованию
+
+Соблюдение единых правил именования улучшает читаемость кода и облегчает работу в команде.
+
+### Именование типов (классов)
+
+Используйте **PascalCase** для имен классов:
+
+```sqf
+// Хорошо
+class(GameObject) extends(ManagedObject)
+class(Item) extends(IDestructible)
+class(ServerClient)
+class(Intercom) extends(IStructRadioEDLogic)
+```
+
+**Интерфейсы** должны начинаться с префикса `I`:
+
+```sqf
+// Хорошо
+class(IStruct) extends(IDestructible)
+class(IDestructible) extends(GameObject)
+class(IContainer)
+class(IRadio)
+```
+
+**Исключения:**
+- Базовые типы могут не иметь префикса `I` (например, `GameObject`, `Item`)
+- Интерфейсы всегда должны иметь префикс `I`
+
+### Именование структур
+
+Используйте **PascalCase** для имен структур (аналогично классам):
+
+```sqf
+// Хорошо
+struct(OverlayLayerController)
+struct(OverlayBase)
+struct(OverlayFace) base(OverlayBase)
+struct(BABase)
+struct(AgentBase)
+```
+
+**Именование членов структур:**
+
+- **Публичные члены**: используют **camelCase** (без подчеркивания в начале)
+  ```sqf
+  struct(OverlayBase)
+      def(priority) 0
+      def(mode) OVERLAY_PRIORITY_NORMAL
+      def(cover) OVERLAY_LAYER_BODY
+      def(src) nullPtr;
+  endstruct
+  ```
+
+- **Приватные члены**: должны начинаться с **подчеркивания** `_` и использовать **camelCase**
+  ```sqf
+  struct(OverlayLayerController)
+      def(_allGroups) [];           // приватный член
+      def(_suppressionCounters) [];  // приватный член
+      
+      def(getLayerGroup)            // публичный метод
+      {
+          params ["_layer"];
+          self getv(_allGroups) get _layer
+      }
+  endstruct
+  ```
+
+**Правило:** Если член структуры предназначен только для внутреннего использования структурой, он должен начинаться с подчеркивания. Публичные члены (которые могут использоваться извне) не должны иметь подчеркивания.
+
+### Именование функций и методов
+
+Используйте **camelCase** для имен функций и методов. Имена должны начинаться с глагола, описывающего действие:
+
+```sqf
+// Хорошо
+func(getName)
+func(setWeight)
+func(canAdd)
+func(isInWorld)
+func(onContainerOpen)
+func(removeItem)
+func(dropAllItemsInHands)
+```
+
+**Паттерны именования методов:**
+
+- **Getter методы**: `get` + имя свойства
+  ```sqf
+  func(getName)
+  func(getWeight)
+  func(getRadioFrequencyKey)
+  ```
+
+- **Setter методы**: `set` + имя свойства
+  ```sqf
+  func(setWeight)
+  func(setRadioFrequency)
+  func(setRadioVolume)
+  ```
+
+- **Проверочные методы**: `is`/`can` + описание проверки
+  ```sqf
+  func(isInWorld)
+  func(isItem)
+  func(canAdd)
+  func(canUseAsCraftSpace)
+  ```
+
+- **Обработчики событий**: `on` + название события
+  ```sqf
+  func(onContainerOpen)
+  func(onContainerClose)
+  func(onMoveInItem)
+  func(onStopFlying)
+  ```
+
+- **Внутренние методы**: могут начинаться с `__` для обозначения приватности
+  ```sqf
+  func(__handlePreInitVars__)
+  ```
+
+### Именование переменных
+
+#### Переменные классов
+
+Используйте **camelCase** для переменных-членов классов:
+
+```sqf
+// Хорошо
+var(name,null);
+var(desc,null);
+var(weight,0);
+var(hp,0);
+var(hpMax,0);
+var(material,null);
+var(germs,0);
+```
+
+#### Локальные переменные
+
+Локальные переменные должны начинаться с **подчеркивания** `_` и использовать **camelCase**:
+
+```sqf
+// Хорошо
+private ["_args", "_PREF", "_color"];
+private ["_var", "_fnc", "_srcObj"];
+private ["_radio", "_count"];
+
+func(example) {
+    objParams_1(_item);
+    private _result = 0;
+    private _tempValue = getSelf(weight);
+    // ...
+};
+```
+
+#### Глобальные переменные модулей
+
+Глобальные переменные должны иметь **префикс модуля** (в полном или сокращенном виде) через подчеркивание для предотвращения конфликтов имен:
+
+```sqf
+// Хорошо
+
+// inventory - Inventory module
+inventory_containerData = [];
+
+// cprint - Console print
+cprint_isserver = isMultiplayer && isServer;
+cprint_usestdout = true;
+
+//le - Light engine (LightEngine module)
+le_allLights = []; //all light points
+```
+
+**Плохо:**
+```sqf
+// Плохо - нет префикса модуля
+counter = 0;
+isServer = true;
+```
+
+#### Индикаторы типа для глобальных переменных-коллекций
+
+Для улучшения читаемости кода рекомендуется использовать индикаторы типа (`_list`, `_map`) в именах глобальных переменных-коллекций. Эти индикаторы могут быть как суффиксами, так и частью имени в середине:
+
+- **`_list`** - для глобальных массивов (списков)
+  ```sqf
+  // В конце имени (суффикс)
+  verb_list = createHashMap;
+  verb_inverted_list = createHashMap;
+  begin_internal_hwcut_list = [];
+  lobby_sprite_list = [];
+  debug_objfalling_list = [];
+  debug_openspace_list = [];
+  
+  // В середине имени
+  soundengine_internal_debug_list_objs = [];
+  sound3d_internal_list_soundBuff = [];
+  smd_list_variables = [];
+  smd_list_allSlots = [];
+  ai_nav_internal_list_regionOffsets = [];
+  server_gameAspects_list_nopicked = [];
+  vs_list_langs = [];
+  ```
+
+- **`_map`** - для глобальных хэш-карт (HashMap)
+  ```sqf
+  // В конце имени (суффикс)
+  ie_actions_map = createHashMap;
+  medl_map = hashMapNew;
+  logger_internal_map = hashMapNew;
+  faith_map = createHashMap;
+  ata_assoc_map = createHashMap;
+  cm_commands_map = createHashMap;
+  lobby_faithDesc_map = createHashMap;
+  le_se_map = createHashMap;
+  inventory_slotpos_map = [];
+  
+  // В середине имени
+  vs_map_whohear = createHashMapFromArray [];
+  vs_map_waveSpeakers = createHashMap;
+  smd_internal_map_vis = createHashMapFromArray [];
+  serverclient_internal_map_sysmes = createHashMapFromArray [];
+  cm_map_ownerToDisIdAssoc = hashMapNew;
+  cm_map_nickColor = createHashMap;
+  cm_map_messagesColor = createHashMap;
+  vsm_map_freqAndCode = createHashMap;
+  vsm_map_inverted = createHashMap;
+  ```
+
+**Примечание:** Индикаторы типа необязательны, но их использование улучшает читаемость кода и явно указывает на тип данных переменной. Это особенно полезно для глобальных переменных, которые используются в разных частях кода. Индикаторы могут располагаться как в конце имени (суффикс), так и в середине, в зависимости от логической структуры имени переменной.
+
+### Именование макросов и констант
+
+Используйте **UPPER_SNAKE_CASE** для макросов и констант:
+
+```sqf
+// Хорошо
+#define PLATFORM_VERSION '__GAME_VER__'
+#define ISDEVBUILD false
+#define REQ_GET_VERSION "getVersion"
+#define CMD_CONNECT_VOICE "connectVoice"
+#define REQ_IS_CONNECTED_VOICE "isConnectedVoice"
+#define CMD_RADIO_ADD "addRadio"
+```
+
+**Паттерны для макросов:**
+
+- **Версии и конфигурация**: `PLATFORM_VERSION`, `ISDEVBUILD`
+- **Запросы (REQ)**: `REQ_GET_VERSION`, `REQ_IS_CONNECTED_VOICE`
+- **Команды (CMD)**: `CMD_CONNECT_VOICE`, `CMD_RADIO_ADD`
+- **Внутренние макросы**: могут начинаться с `__` для обозначения внутреннего использования
+  ```sqf
+  #define __pragma_preprocess preprocessFileLineNumbers
+  #define __post_message_RB(m)
+  ```
+
+**Макросы в заголовочных файлах (.h/.hpp):**
+
+Для макросов, которые экспортируются через заголовочные файлы (доступны другим модулям), **рекомендуется добавлять префикс модуля** в начале имени макроса:
+
+```sqf
+// Хорошо - макросы в NOEngine.h
+#define chunk_owners 0
+#define chunk_lastupdate 1
+#define chunk_objectsData 2
+#define chunk_getOwners(chunk) ((chunk) select chunk_owners)
+#define chunk_isEmptyOwnerList(chunk) equals(chunk_getOwners(chunk),[])
+
+// Хорошо - макросы в ReVoice.h
+#define REQ_GET_VERSION "getVersion"
+#define REQ_IS_CONNECTED_VOICE "isConnectedVoice"
+#define CMD_CONNECT_VOICE "connectVoice"
+#define CMD_RADIO_ADD "addRadio"
+#define REQ_AUDIO_GET_ALL_SOUNDS_IDS "audioGetAllSoundsIds"
+#define CMD_AUDIO_PLAY_SOUND "audioPlaySound"
+
+// Хорошо - макросы в GamemodeManager.h
+#define gprint(mes) conDllCall format["[GMM]:	%1 #0101",mes]
+#define gprintformat(mes,fmt) gprint(format[mes arg fmt])
+#define DEFAULT_TIME_TO_START 60
+#define PRE_LOBBY_AWAIT_TIME 60*5
+```
+
+**Правило:** Если макрос определен в заголовочном файле и может быть использован другими модулями, добавьте префикс модуля (например, `chunk_`, `REQ_`, `CMD_`, `gprint` для GamemodeManager) для предотвращения конфликтов имен.
+
+### Именование файлов
+
+- Используйте **PascalCase** для файлов классов: `GameObject.sqf`, `Item.sqf`
+- Используйте **snake_case** или **camelCase** для файлов с функциями: `functions.sqf`, `client.sqf`
+- Файлы инлайн-интерфейсов могут иметь суффикс `.Interface`: `IRadio.Interface`, `IContainer.Interface`
+- Файлы инициализации могут иметь суффикс `_init.sqf`: `ServerVoice_init.sqf`, `SMD_init.sqf`
+- Файлы содержащие определения структур могут иметь суффикс `_struct.sqf` или `structs.sqf`: `MyEntity_struct.sqf`, `ExampleModule_structs.sqf`
+
+### Общие принципы
+
+1. **Используйте понятные имена**: имена должны ясно описывать назначение
+2. **Избегайте сокращений**: предпочитайте полные слова (`getContainerClientInfo` вместо `getContClInfo`)
+3. **Будьте последовательны**: используйте одинаковые паттерны для похожих сущностей
+4. **Префиксы для модулей**: всегда используйте префиксы для глобальных переменных
+5. **Подчеркивание для локальных**: всегда начинайте локальные переменные с `_`
 
 ## Анти-паттерны и что избегать
 
