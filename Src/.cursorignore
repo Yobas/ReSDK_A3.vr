@@ -1,0 +1,46 @@
+# Сгенерированные файлы
+*.generated.*
+GENERATED/
+**/GENERATED/
+
+# Сборки
+build/
+dist/
+*.pbo
+
+# Временные файлы
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# Логи
+*.log
+
+# IDE файлы (опционально, раскомментируй если не нужны)
+# .vscode/
+# .idea/
+
+# Большие бинарные файлы
+*.dll
+*.so
+*.dylib
+*.exe
+
+# Сгенерированные проекты
+*.vcproj
+*.sln
+vcproj64/
+
+# Python кэш
+__pycache__/
+*.pyc
+*.pyo
+
+# Артефакты сборки
+*.obj
+*.o
+*.a
+*.lib
+
