@@ -534,7 +534,7 @@ private _distance = [_start, _end] call calculatePathDistance;
 */
 func(processPlayerData)
 {
-    objParams_2(_player, _data);
+    objParams_2(_player,_data);
     // код
 };
 ```
@@ -564,7 +564,7 @@ func(processPlayerData)
 ```sqf
 func(divide)
 {
-    objParams_2(_a, _b);
+    objParams_2(_a,_b);
     
     FHEADER;
     if (_b == 0) then {

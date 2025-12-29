@@ -333,7 +333,7 @@ func(destructor)
 
 **Профилактика:**
 - Всегда удаляйте объекты после использования
-- Используйте `autoref` для автоматической очистки ссылок
+- Используйте `autoref` для автоматической очистки ссылок (при условии что класс наследуется от `ManagedObject`)
 - Останавливайте updates и event handlers при удалении объектов
 
 ### Слишком частые сетевые запросы
@@ -361,7 +361,7 @@ func(destructor)
 ### Объект не создается
 
 **Симптомы:**
-- `new(MyClass)` возвращает null или invalid объект
+- `new(MyClass)` возвращает null
 - Ошибки при попытке использовать объект
 
 **Причины:**
@@ -415,7 +415,7 @@ callSelfParams(myMethod, [param1 arg param2]); // С параметрами
 // Проверяйте параметры метода
 func(myMethod)
 {
-    objParams_2(_param1, _param2);
+    objParams_2(_param1,_param2);
     if (isNullVar(_param1)) exitWith {
         error("MyClass: myMethod: param1 is required");
     };
@@ -474,6 +474,7 @@ if (isTypeOf(_obj,ParentClass)) then {
 - Поле не было инициализировано
 - Неправильное имя поля
 - Проблемы с областью видимости
+- Имя поля содержит кириллицу
 
 **Решение:**
 ```sqf
@@ -511,7 +512,7 @@ getVar(_obj,myField);         // Извне класса
 ### Редактор не загружается
 
 **Симптомы:**
-- Редактор не запускается
+- Редактор не запускается или некорректно отображается
 - Ошибки при загрузке редактора
 - Модули редактора не загружаются
 
@@ -523,11 +524,9 @@ getVar(_obj,myField);         // Извне класса
 **Решение:**
 1. Убедитесь, что мод @EditorContent установлен:
    - Запустите `RBuilder/DEPLOY.bat` или `rb deploy -editor`
-   - Проверьте наличие папки `@EditorContent` в директории Arma 3
-
-2. Отключите BattlEye в настройках лаунчера
-
-3. Проверьте логи на ошибки загрузки
+   - Проверьте наличие папки `@EditorContent` в директории Платформы
+2. Отключите BattlEye
+3. Проверьте rpt логи на ошибки загрузки
 
 **Профилактика:**
 - Всегда проверяйте установку @EditorContent после обновления
@@ -615,8 +614,8 @@ logformat("Debug: Object fields: %1", _fields);
 
 ### Работа с логами
 
-- Логи сервера: `%LOCALAPPDATA%\Arma 3\arma3server_YYYYMMDD_HHMMSS.rpt`
-- Логи клиента: `%LOCALAPPDATA%\Arma 3\arma3_YYYYMMDD_HHMMSS.rpt`
+- Логи сервера: `%LOCALAPPDATA%\Arma 3\arma3server_x64_YYYYMMDD_HHMMSS.rpt`
+- Логи клиента: `%LOCALAPPDATA%\Arma 3\arma3_x64_YYYYMMDD_HHMMSS.rpt`
 - Используйте поиск по ключевым словам: `ERROR`, `WARNING`, название модуля
 
 ## Типичные ошибки новичков
@@ -692,9 +691,9 @@ myModule_process = {
 **Проблема:**
 ```sqf
 // ❌ НЕПРАВИЛЬНО - пробелы до или после запятой
-callFuncParams(this, printData , [1 arg 2]);  // ОШИБКА: обращение к методу "printData "
+callFuncParams(this, printData , [1 arg 2]);  // ОШИБКА: обращение к методу " printData "
 callFuncParams(this, printData, [1 arg 2]);   // ОШИБКА: обращение к методу " printData"
-getVar(obj, myField );  // ОШИБКА: обращение к полю "myField "
+getVar(obj, myField );  // ОШИБКА: обращение к полю " myField "
 ```
 
 **Решение:**
