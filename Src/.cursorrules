@@ -20,6 +20,7 @@
 - **Интерфейсы:** PascalCase с префиксом `I` (`IDestructible`, `IContainer`)
 - **Функции и методы:** camelCase (`getName`, `setWeight`, `canAdd`)
 - **Локальные переменные:** начинаются с `_`, затем camelCase (`_item`, `_tempValue`)
+- **Объявление локальных переменных**: `private _variable = value;`
 - **Глобальные переменные:** префикс модуля + camelCase (`inventory_containerData`, `cprint_isserver`)
 - **Макросы и константы:** UPPER_SNAKE_CASE (`PLATFORM_VERSION`, `ISDEVBUILD`)
 - **Файлы классов:** PascalCase (`GameObject.sqf`)
@@ -31,6 +32,8 @@
 - Используй `not_equals(a, b)` вместо `!a isEqualTo b`
 - Используй `equalTypes(a, b)` вместо `a isEqualType b`
 - Используй `not_equalTypes(a, b)` вместо `!a isEqualType b`
+- Используй `isNullVar(localVar)`, `isNull(expression)` вместо `isnil'localVar'`, `isnil {expression}`
+- Используй `isNullReference(obj)` вместо `isNull obj`
 
 ### Логирование
 - `log(message)` - простое логирование (1 аргумент - строка)
@@ -51,15 +54,15 @@
 - Используй `objParams()`, `objParams_1(_arg)`, `objParams_2(_arg1, _arg2)` для получения параметров методов
 - Используй `getSelf(field)`, `setSelf(field, value)` для доступа к полям
 - Используй `callSelf(method)`, `callSelfParams(method, param1 arg param2)` для вызова методов
-- Используй `callFunc(obj, method)`, `callFuncParams(obj, method, param1 arg param2)` для вызова методов других объектов
-- Используй `callSuper(method)` или `super(method)` для вызова метода родителя
+- Используй `callFunc(obj,method)`, `callFuncParams(obj,method, param1 arg param2)` для вызова методов других объектов
+- Используй `callSuper(BaseClass,method)` или `super(BaseClass, method)` для вызова метода родителя
 
 ### Структуры (struct)
 - Используй `struct(StructName)` для определения структур
 - Публичные члены: camelCase без подчеркивания (`def(priority) 0`)
 - Приватные члены: начинаются с `_` и camelCase (`def(_allGroups) []`)
-- Используй `self getv(field)`, `self setv(field, value)` для доступа к полям
-- Используй `callSelf(method)` для вызова методов
+- Используй `obj getv(field)`, `obj setv(field, value)` для доступа к полям
+- Используй `obj callv(method)`, `obj callp(method,param1 arg paramN)` для вызова методов
 
 ### Модульная архитектура
 - Каждый модуль независим или имеет слабую зависимость
@@ -78,7 +81,7 @@
 
 ### Обработка аргументов в макросах
 - Используй `arg` вместо запятой при передаче аргументов в функции внутри макросов
-- Примеры: `format["text %1" arg var]`, `callFuncParams(obj,method,param1 arg param2)`
+- Примеры: `log(format["text %1" arg var])`, `callFuncParams(obj,method,param1 arg param2)`
 - Особенно важно в: `format`, `errorformat`, `traceformat`, `callFuncParams`, `callSelfParams`
 
 ### Legacy код
