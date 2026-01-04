@@ -81,3 +81,9 @@ class(StoneSmallLadder) extends(StepsLadder)
 	var(name,"Ступеньки");
 	var(material,"MatBeton");
 endclass
+
+editor_attribute("EditorGenerated")
+class(StoneMediumLadder) extends(StoneSmallLadder)
+	var(model,"csa_constr\csa_obj\lest_pod_3x4.p3d");
+	var(material,"MatBeton");
+endclass

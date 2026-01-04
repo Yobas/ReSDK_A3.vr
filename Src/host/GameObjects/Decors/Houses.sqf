@@ -16,6 +16,12 @@ class(BigHouse) extends(BigConstructions)
 endclass
 
 editor_attribute("EditorGenerated")
+class(StoneTower) extends(BigHouse)
+	var(model,"a3\structures_f\dominants\castle\castle_01_tower_f.p3d");
+	var(name,"Строение");
+endclass
+
+editor_attribute("EditorGenerated")
 class(BigTwoStoreyHouse) extends(BigHouse)
 	var(model,"a3\structures_f\households\house_big01\u_house_big_01_v1_dam_f.p3d");
 endclass

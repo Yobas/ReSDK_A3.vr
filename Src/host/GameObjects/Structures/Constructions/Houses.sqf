@@ -19,6 +19,13 @@ class(SmallHouse) extends(Constructions)
 endclass
 
 editor_attribute("EditorGenerated")
+class(SmallWoodenGridShelter) extends(SmallHouse)
+	var(name,"Навес");
+	var(material,"MatWood");
+	var(model,"a3\structures_f_epc\civ\tourism\touristshelter_01_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(SmallBrickHouse) extends(SmallHouse)
 	var(model,"ml_shabut\exodusss\domdiridom.p3d");
 endclass
