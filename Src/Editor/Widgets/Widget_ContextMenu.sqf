@@ -23,6 +23,10 @@ function(contextMenu_getContextParams)
 	(call contextMenu_getDisplay) getVariable ["_ctx",[]];
 }
 
+function(contextMenu_getCurrentActionContext)
+{
+	_actionContext
+}
 /*
 	//vec2: name, [code | list] ,["_condToVisible",{true}],["_desc",""]
 	[
@@ -100,7 +104,7 @@ function(contextMenu_internal_loadContext)
 
 	
 	for "_i" from 0 to (count _elements) - 1 do {
-		(_elements select _i) params ["_name",["_includedListOrAction",{}],["_condToVisible",{true}],["_desc",""]];
+		(_elements select _i) params ["_name",["_includedListOrAction",{}],["_condToVisible",{true}],["_desc",""],["_currentActionContext",[]]];
 		private _w = [_d,TEXT,[_posX,_posY + (_i*_sizeY)+0.5,_sizeX,_sizeY-1],_ctg] call createWidget;
 		_w ctrlSetTooltip _desc;
 		_w setVariable ["level",_level];
@@ -215,6 +219,7 @@ function(contextMenu_internal_loadContext)
 		} else {
 			
 			_w setVariable ["_action",_includedListOrAction];
+			_w setvariable ["_actionContext",_currentActionContext];
 			_w setvariable ["enabled__",_canVisible];
 			_w ctrlAddEventHandler ["MouseButtonUp",{
 				["enabled action %1",(_this select 0) getvariable "enabled__"] call printTrace;
@@ -224,6 +229,7 @@ function(contextMenu_internal_loadContext)
 					_nameContext = sanitizeHTML(ctrlText _buttonContext);
 					_indexContext = _buttonContext getVariable "index";
 					_levelContext = _buttonContext getVariable "level";
+					private _actionContext = _buttonContext getvariable "_actionContext";
 					call (_buttonContext getVariable "_action");
 				};
 
@@ -427,6 +433,128 @@ function(ContextMenu_loadMouseObject)
 		]
 	];
 	};
+
+
+	private _commonLayers = {
+		private _listActions = [];
+		private _data = ["Слои",_listActions];
+
+		if (([_obj,false] call layer_getObjectLayer) != -1) then {
+			_listActions pushBack ["Убрать из слоя",{
+					_obj = (call contextMenu_getContextParams) select 0;
+					private _layer = _obj call layer_getObjectLayer;
+					[_obj] call layer_removeObject;
+					nextFrame(inspector_menuLoad);
+				}];
+		};
+
+		// Функция для сбора родительских слоев (от текущего до корня)
+		private _collectParentLayers = {
+			params ["_currentLayer"];
+			private _parents = [];
+			private _layer = _currentLayer;
+			
+			while {_layer != -1} do {
+				_parents pushBack _layer;
+				_layer = get3DENLayer _layer;
+			};
+			
+			// Убираем текущий слой из списка родителей
+			if (count _parents > 0) then {
+				_parents deleteAt 0;
+			};
+			
+			_parents
+		};
+
+		// Функция для сбора дочерних слоев (рекурсивно)
+		private _collectChildLayers = {
+			params ["_parentLayer"];
+			private _allChildren = [];
+			
+			// Проверяем доступность карты дочерних слоев
+			if isNullVar(layer_internal_map_childs) exitWith {_allChildren};
+			
+			private _childsMap = layer_internal_map_childs;
+			
+			if (_parentLayer in _childsMap) then {
+				private _directChildren = _childsMap get _parentLayer;
+				if !isNullVar(_directChildren) then {
+					{
+						_allChildren pushBack _x;
+						// Рекурсивно собираем дочерние слои
+						private _nestedChildren = [_x] call _collectChildLayers;
+						_allChildren = _allChildren + _nestedChildren;
+					} foreach _directChildren;
+				};
+			};
+			
+			_allChildren
+		};
+
+		// Функция-обертка для создания обработчика с захваченным ID слоя
+		private _layerMoveHandler = {
+			private _targetLayerId = (call contextMenu_getCurrentActionContext) select 0;
+			_obj = (call contextMenu_getContextParams) select 0;
+			[_obj,_targetLayerId] call layer_addObject;
+			nextFrame(inspector_menuLoad); //sync inspector menu
+		};
+
+		// Добавляем категории "Выше" и "Ниже" если объект в слое
+		private _currentLayer = [_obj,false] call layer_getObjectLayer;
+		if (_currentLayer != -1) then {
+			// Собираем родительские слои
+			private _parentLayers = [_currentLayer] call _collectParentLayers;
+			if (count _parentLayers > 0) then {
+				private _parentMenu = [];
+				{
+					private _layerId = _x;
+					private _layerName = _layerId call layer_internal_getLayerNameByPtr;
+					if (_layerName != "") then {
+						_parentMenu pushBack [
+							_layerName,
+							_layerMoveHandler,
+							null,
+							format["Переместить объект в родительский слой: %1",_layerName],
+							[_layerId]
+						];
+					};
+				} foreach _parentLayers;
+				
+				if (count _parentMenu > 0) then {
+					_listActions pushBack ["Выше",_parentMenu];
+				};
+			};
+
+			// Собираем дочерние слои
+			private _childLayers = [_currentLayer] call _collectChildLayers;
+			if (count _childLayers > 0) then {
+				private _childMenu = [];
+				{
+					private _layerId = _x;
+					private _layerName = _layerId call layer_internal_getLayerNameByPtr;
+					if (_layerName != "") then {
+						_childMenu pushBack [
+							_layerName,
+							_layerMoveHandler,
+							null,
+							format["Переместить объект в дочерний слой: %1",_layerName],
+							[_layerId]
+						];
+					};
+				} foreach _childLayers;
+				
+				if (count _childMenu > 0) then {
+					_listActions pushBack ["Ниже",_childMenu];
+				};
+			};
+		};
+
+		if (count _listActions > 0) then {
+			_stackMenu pushBack _data;
+		};
+	};
+	
 	private _commonCheckDistance = {
 		_stackMenu pushBack ["Измерить расстояние",{
 			_obj = (call contextMenu_getContextParams) select 0;
@@ -525,6 +653,7 @@ function(ContextMenu_loadMouseObject)
 	};
 
 	call _commonSimStart;
+	call _commonLayers;
 
 	_stackMenu pushBack [
 		"Создать префаб (новый класс)",
