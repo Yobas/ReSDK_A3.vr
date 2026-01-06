@@ -68,12 +68,12 @@ function(contextMenu_create) {
 	
 	widget_internal_contextmenu_tree = [];
 	
-	[_elements,_posBase,0] call contextMenu_internal_loadContext;
+	[_elements,_posBase,0,nullPtr,1] call contextMenu_internal_loadContext;
 };
 
 function(contextMenu_internal_loadContext)
 {
-	params ["_elements","_pointStart","_level","_pressedWidget"];
+	params ["_elements","_pointStart","_level","_pressedWidget",["_parentDirection",1]];
 
 	private _sizeX = 15;
 	private _sizeY = 4;
@@ -87,6 +87,7 @@ function(contextMenu_internal_loadContext)
 	_back setBackgroundColor [.2,.2,.2,0.9];
 	_back ctrlEnable false;
 	_back setVariable ["level",_level];
+	_back setVariable ["direction",_parentDirection];
 	private _backItems = [];
 	_back setVariable ["items",_backItems];
 	if (_level > 0) then {
@@ -177,8 +178,39 @@ function(contextMenu_internal_loadContext)
 		if equalTypes(_includedListOrAction,[]) then {
 			if (count _includedListOrAction > 0) then {
 				private _miniOfs = 0.5;
-				private _addOffset = if (_posX+_sizeX+_miniOfs>=(100-_sizeX)) then {-_sizeX-_miniOfs} else {_sizeX+_miniOfs};
-				[_includedListOrAction,[_posX + _addOffset,_posY+(_i*_sizeY)],_level + 1,_w] call contextMenu_internal_loadContext;
+				// Вычисляем абсолютную позицию для следующего уровня
+				private _nextPosXRight = _posX + _sizeX + _miniOfs;
+				private _nextPosXLeft = _posX - _sizeX - _miniOfs;
+				// Определяем направление размещения следующего уровня
+				// Если родитель находится слева, пытаемся разместить слева, иначе справа
+				private _nextDirection = _parentDirection;
+				private _addOffset = 0;
+				
+				// Если родитель справа или это первый уровень, пытаемся разместить справа
+				if (_parentDirection >= 0) then {
+					if (_nextPosXRight >= (100-_sizeX)) then {
+						// Не помещается справа, размещаем слева
+						_addOffset = -_sizeX-_miniOfs;
+						_nextDirection = -1;
+					} else {
+						// Помещается справа
+						_addOffset = _sizeX+_miniOfs;
+						_nextDirection = 1;
+					};
+				} else {
+					// Родитель слева, размещаем слева
+					if (_nextPosXLeft < 0) then {
+						// Не помещается слева, размещаем справа
+						_addOffset = _sizeX+_miniOfs;
+						_nextDirection = 1;
+					} else {
+						// Помещается слева
+						_addOffset = -_sizeX-_miniOfs;
+						_nextDirection = -1;
+					};
+				};
+				
+				[_includedListOrAction,[_posX + _addOffset,_posY+(_i*_sizeY)],_level + 1,_w,_nextDirection] call contextMenu_internal_loadContext;
 			};
 		} else {
 			
