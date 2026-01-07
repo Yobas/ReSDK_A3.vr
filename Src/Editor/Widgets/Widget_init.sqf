@@ -219,3 +219,4 @@ menu_structureLayout = [
 #include "LoadingScreen.sqf"
 #include "DrawNames.sqf"
 #include "Widget_WinApi.sqf"
+#include "LayersUtility.sqf"

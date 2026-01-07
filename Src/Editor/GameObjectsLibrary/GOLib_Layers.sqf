@@ -69,7 +69,7 @@ function(layer_internal_reloadLayerTree)
 
 function(layer_openSelectLayer)
 {
-	params [["_tex","Выберите слой"],["_des","Выберите слой по названию"],["_firstId",-1]];
+	params [["_tex","Выберите слой"],["_des","Выберите слой по названию"],["_firstId",-1],["_multiple",false]];
 	private _dictinf_data = [];
 	private _getname_ = { format["%1 #%2",__getname(_this),_this] };
 	private _selItm = "";
@@ -101,13 +101,20 @@ function(layer_openSelectLayer)
 		_newval,
 		_tex,
 		_des,
-		_dictinf_data
+		_dictinf_data,
+		null,
+		_multiple
 	] call widget_winapi_openTreeView) then {
-		if (refget(_newval) == "") exitWith {-1};
+		if (refget(_newval) == "") exitWith {ifcheck(_multiple,[],-1)};
+		
 		private _v = refget(_newval);
-		parseNumber(_v select [(_v find "#") + 1])
+		if (_multiple) then {
+			_v splitString (toString [9]) apply {parseNumber(_x select [(_x find "#") + 1])};
+		} else {
+			parseNumber(_v select [(_v find "#") + 1]);
+		};
 	} else {
-		-1
+		ifcheck(_multiple,[],-1)
 	};
 }
 
@@ -286,6 +293,15 @@ function(layer_addObject)
 	if (_layer == -1) exitwith {false};
 
 	_object set3DENLayer _layer;
+}
+
+function(layer_removeObject)
+{
+	params ["_object"];
+	private _layer = [_object,false] call layer_getObjectLayer;
+	if (_layer == -1) exitwith {false};
+	_object set3DENLayer -1;
+	true
 }
 
 function(layer_getObjects)

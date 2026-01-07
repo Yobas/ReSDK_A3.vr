@@ -300,7 +300,7 @@ function(golib_vis_onFrame)
 		};
 		//["%1 - is inside %2",__FUNC__,call golib_vis_isMouseInsideTree] call printTrace;
 	};
-	golib_vis_isEnteredInWidget = call golib_vis_isMouseInsideTree || call golib_vis_isMouseInsideInspector;
+	golib_vis_isEnteredInWidget = call golib_vis_isMouseInsideTree || call golib_vis_isMouseInsideInspector || ((call LayersUtility_getWidgetGroup) call isMouseInsideWidget);
 	if (golib_vis_isEnteredInWidget) then {
 		if equals(golib_vis_lastBeforeEnterMousePos,vec3(0,0,0)) then {
 			golib_vis_lastBeforeEnterMousePos = getposasl get3dencamera;

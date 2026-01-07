@@ -246,6 +246,18 @@ init_function(menu_internal_initialize)
 	_e ctrlEnable false;
 	_e ctrlshow false;
 
+	_pos = ctrlposition _e;
+	_ctg = ctrlParentControlsGroup _e;
+	_layerPalette = [getEdenDisplay,"ctrlButtonToolbar",[0,0,100,100],_ctg] call createWidget;
+	["layerpalette_bind",_layerPalette] call widget_bind;
+	_layerPalette ctrlsetposition _pos;
+	_layerPalette ctrlcommit 0;
+	_layerPalette ctrlsettext "a3\3den\data\displays\display3den\PanelLeft\entityList_layerShow_ca.paa";
+	_layerPalette ctrlsettooltip "Рабочий набор слоев";
+	_layerPalette ctrlAddEventHandler ["MouseButtonClick",{
+		call layersUtility_toggleMode;
+	}];
+
 
 	//disable create entitymenu (in right panel)
 	// Это убирае сами кнопки переключения
