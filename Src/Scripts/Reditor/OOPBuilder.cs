@@ -143,10 +143,12 @@ class OOPBuilder : IScript
 		{
 			var mpos = Control.MousePosition;
 			string val = ScriptContext.GetArg(3);
+			bool multiple = ScriptContext.GetArg(4).ToLower() == "true";
 			if (CreateTree(
 				ScriptContext.GetArg(0),
 				ScriptContext.GetArg(1),
 				ScriptContext.GetArg(2),
+				multiple,
 				ref val
 				) == DialogResult.OK)
 			{
@@ -302,7 +304,7 @@ class OOPBuilder : IScript
 	}
 
 
-	public static DialogResult CreateTree(string title,string promptText,string treeData,ref string value)
+	public static DialogResult CreateTree(string title,string promptText,string treeData,bool multiple,ref string value)
     {
 		Form form = new Form();
 		Label label = new Label();
@@ -330,8 +332,28 @@ class OOPBuilder : IScript
 		buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 		buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 
+		// Включаем чекбоксы для мультивыбора
+		if (multiple)
+		{
+			treeView.CheckBoxes = true;
+		}
+
 		// Добавляем данные в дерево
 		ParseToTreeView(treeView, treeData);
+
+		// Инициализируем выбранные элементы из value (разделенные \t)
+		if (multiple && !string.IsNullOrEmpty(value))
+		{
+			string[] selectedItems = value.Split(new[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
+			foreach (string item in selectedItems)
+			{
+				TreeNode node = FindNodeByText(treeView.Nodes, item.Trim());
+				if (node != null)
+				{
+					node.Checked = true;
+				}
+			}
+		}
 
 		// Оригинальные данные дерева для сброса фильтра
 		TreeNode[] originalNodes = new TreeNode[treeView.Nodes.Count];
@@ -342,6 +364,13 @@ class OOPBuilder : IScript
 		{
 			string searchText = searchBox.Text.ToLower();
 			treeView.BeginUpdate(); // Отключаем перерисовку во время обновления
+
+			// Сохраняем состояние чекбоксов перед очисткой
+			Dictionary<string, bool> checkedStates = new Dictionary<string, bool>();
+			if (multiple)
+			{
+				CollectCheckedStates(treeView.Nodes, checkedStates);
+			}
 
 			treeView.Nodes.Clear();
 
@@ -366,6 +395,12 @@ class OOPBuilder : IScript
 				treeView.ExpandAll();
 			}
 
+			// Восстанавливаем состояние чекбоксов после фильтрации
+			if (multiple)
+			{
+				RestoreCheckedStates(treeView.Nodes, checkedStates);
+			}
+
 			treeView.EndUpdate(); // Включаем перерисовку после обновления
 		};
 
@@ -378,10 +413,27 @@ class OOPBuilder : IScript
 		form.CancelButton = buttonCancel;
 
 		DialogResult dialogResult = form.ShowDialog();
-		if (treeView.SelectedNode != null)
+		
+		// Собираем выбранные элементы
+		if (dialogResult == DialogResult.OK)
 		{
-			value = treeView.SelectedNode.Text;
+			if (multiple)
+			{
+				// Собираем все отмеченные узлы
+				List<string> selectedItems = new List<string>();
+				CollectCheckedNodes(treeView.Nodes, selectedItems);
+				value = string.Join("\t", selectedItems);
+			}
+			else
+			{
+				// Одиночный выбор
+				if (treeView.SelectedNode != null)
+				{
+					value = treeView.SelectedNode.Text;
+				}
+			}
 		}
+
 		return dialogResult;
     }
 
@@ -422,6 +474,64 @@ class OOPBuilder : IScript
 		}
 
 		return null; // Если совпадений нет, возвращаем null
+	}
+
+	// Поиск узла по тексту в коллекции узлов
+	private static TreeNode FindNodeByText(TreeNodeCollection nodes, string text)
+	{
+		foreach (TreeNode node in nodes)
+		{
+			if (node.Text == text)
+			{
+				return node;
+			}
+			
+			// Рекурсивный поиск в дочерних узлах
+			TreeNode found = FindNodeByText(node.Nodes, text);
+			if (found != null)
+			{
+				return found;
+			}
+		}
+		return null;
+	}
+
+	// Сбор всех отмеченных узлов
+	private static void CollectCheckedNodes(TreeNodeCollection nodes, List<string> checkedItems)
+	{
+		foreach (TreeNode node in nodes)
+		{
+			if (node.Checked)
+			{
+				checkedItems.Add(node.Text);
+			}
+			
+			// Рекурсивно проверяем дочерние узлы
+			CollectCheckedNodes(node.Nodes, checkedItems);
+		}
+	}
+
+	// Сохранение состояния чекбоксов
+	private static void CollectCheckedStates(TreeNodeCollection nodes, Dictionary<string, bool> checkedStates)
+	{
+		foreach (TreeNode node in nodes)
+		{
+			checkedStates[node.Text] = node.Checked;
+			CollectCheckedStates(node.Nodes, checkedStates);
+		}
+	}
+
+	// Восстановление состояния чекбоксов
+	private static void RestoreCheckedStates(TreeNodeCollection nodes, Dictionary<string, bool> checkedStates)
+	{
+		foreach (TreeNode node in nodes)
+		{
+			if (checkedStates.ContainsKey(node.Text))
+			{
+				node.Checked = checkedStates[node.Text];
+			}
+			RestoreCheckedStates(node.Nodes, checkedStates);
+		}
 	}
 
 
