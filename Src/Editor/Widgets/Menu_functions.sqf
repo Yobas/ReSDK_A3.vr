@@ -225,9 +225,12 @@ init_function(menu_internal_initialize)
 	//hide mission cat
 	_mcat = (getEdenDisplay displayCtrl 10306);
 	_mcat ctrlEnable false;
+	_mcat ctrlshow false;
+
 	//night vision
 	_mcat = (getEdenDisplay displayCtrl 10304);
 	_mcat ctrlEnable false;
+	_mcat ctrlshow false;
 	
 	//steam
 	_mcat = (getEdenDisplay displayCtrl 10091);
