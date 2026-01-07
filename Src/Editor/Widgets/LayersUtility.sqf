@@ -55,7 +55,7 @@ init_function(LayersUtility_init)
 	_background = [getEdenDisplay,BACKGROUND,WIDGET_FULLSIZE,_ctg] call createWidget;
 	_background setBackgroundColor [0.1,0.1,0.1,0.2];
 
-	private _sizeItem = 13;
+	private _sizeItem = 15;
 	private _titleSize = 15;
 
 	private _title = [getEdenDisplay,TEXT,[0,0,90 + 10,_titleSize],_ctg] call createWidget;
@@ -158,7 +158,7 @@ init_function(LayersUtility_init)
 	private _ctgIn = [getEdenDisplay,WIDGETGROUP_H,[0,_titleSize,100,100-_titleSize],_ctg] call createWidget;
 
 	for "_i" from 0 to (layersUtility_countWorkingSetItems-1) do {
-		private _item = [getEdenDisplay,TEXT,[0,_sizeItem * _i,100,_sizeItem],_ctgIn] call createWidget;
+		private _item = [getEdenDisplay,TEXT,[0,_sizeItem * _i + (1*_i),100,_sizeItem],_ctgIn] call createWidget;
 		_item setBackgroundColor layersUtility_layerButtonStyle_mouseExit;
 		_widgets pushBack _item;
 		[_item,format["Слой %1",_i + 1]] call widgetSetText;
