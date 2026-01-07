@@ -269,6 +269,24 @@ init_function(LayersUtility_init)
 				}];
 			};
 
+			private _layerId = layersUtility_workingSet select _i;
+			if (_layerId != -1) then {
+				_stackMenu pushBack ["Управление",[
+					[ifcheck([_layerId] call layer_isLocked,"Разблокировать слой","Заблокировать слой"),{
+						private _i = (call contextMenu_getContextParams) select 0;
+						private _layerId = layersUtility_workingSet select _i;
+						if (_layerId == -1) exitWith {};
+						[_layerId,!([_layerId] call layer_isLocked)] call layer_setLocked;
+					}],
+					[ifcheck([_layerId] call layer_isVisible,"Скрыть слой","Показать слой"),{
+						private _i = (call contextMenu_getContextParams) select 0;
+						private _layerId = layersUtility_workingSet select _i;
+						if (_layerId == -1) exitWith {};
+						[_layerId,!([_layerId] call layer_isVisible)] call layer_setVisible;
+					}]
+				]];
+			};
+
 			_stackMenu pushback ["Отмена",{}];
 
 			[
@@ -298,7 +316,13 @@ function(LayersUtility_addObject)
 {
 	params ["_obj","_layer"];
 	["Рабочий набор слоев", "Автоматическое добавление объекта в слой через рабочий набор", "a3\3den\data\cfg3den\history\changeAttributes_ca.paa"] collect3DENHistory {
-		[_obj,_layer] call layer_addObject;
+		if equalTypes(_obj,[]) then {
+			{
+				[_x,_layer] call layer_addObject;
+			} foreach _obj;
+		} else {
+			[_obj,_layer] call layer_addObject;
+		};
 	};
 }
 

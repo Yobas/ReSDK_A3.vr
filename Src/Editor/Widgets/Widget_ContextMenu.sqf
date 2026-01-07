@@ -275,6 +275,22 @@ function(ContextMenu_loadMouseObjectList)
 	["Context selected object count %1",count _objList] call printTrace;
 	private _ctxParams = [_objList];
 
+
+	private _actionsList = [];
+	_stackMenu pushBack ["Слои",_actionsList];
+
+	private _curLayer = call LayersUtility_getSelectedLayer;
+	if (_curLayer != -1) then {
+		_actionsList pushBack ["Назначить в раб.слой",{
+			private _objList = (call contextMenu_getContextParams) select 0;
+			private _curLayer = call LayersUtility_getSelectedLayer;
+			if (_curLayer == -1) exitWith {};
+			
+			[_objList,_curLayer] call LayersUtility_addObject;
+		}];
+	};
+	
+
 	private _energyListIs = _objList apply {_x call golib_en_obj_isEnergyObject};
 	if (any_of(_energyListIs)) then {
 		_stackMenu pushBack [
@@ -791,7 +807,6 @@ function(ContextMenu_loadMouseObject)
 		_obj set3DENAttribute ["Name","debug_mob_gen_" + ((toArray hashValue _obj)joinString "_")];
 		[_obj,_atlPos,false,golib_history_skippedHistoryStageFlag + " - fixpos"] call golib_om_setPosition;
 	}];
-
 
 	[
 		_stackMenu,
