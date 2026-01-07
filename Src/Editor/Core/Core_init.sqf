@@ -149,7 +149,9 @@ Core_internal_map_events = createHashMapFromArray [
 	["onEntityAdded",[]],
 	["onEntityRemoved",[]],
 
-	["onMouseAreaPressed",[]] //событие при отпускании мыши по зоне 52(MouseArea)
+	["onMouseAreaPressed",[]], //событие при отпускании мыши по зоне 52(MouseArea)
+
+	["onEditorLoaded",[]] //событие загрузки редактора // params ["_isreload"]
 ];
 
 addMissionEventHandler ["draw3D",{
