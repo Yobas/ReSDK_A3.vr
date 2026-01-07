@@ -57,7 +57,7 @@ function(widget_winapi_openTreeView)
 	//private _cachedMousePos = getMousePosition; //replaced inside c#-side
 	private _result = ["OOPBuilder","tree",[_header,_desc,_itemTree,_curItem,_multiple],true] call rescript_callCommand;
 	
-	widget_winapi_lastpressTree = tickTime + ifcheck(_multiple,0.8,0.3);
+	widget_winapi_lastpressTree = tickTime + 0.3;
 	
 	//setMousePosition _cachedMousePos;
 	if (_result != "$CLOSED$") exitWith {

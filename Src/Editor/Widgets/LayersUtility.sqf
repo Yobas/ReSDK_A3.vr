@@ -192,6 +192,7 @@ init_function(LayersUtility_init)
 			}];
 			_stackMenu pushBack ["Задать рабочий слой",{
 				private _i = (call contextMenu_getContextParams) select 0;
+				ContextMenu_internal_openedMousePos call mouseSetPosition;
 				private _newLayerId = [
 					"Выберите слой",
 					format["Выберите слой для %1 рабочей области",_i + 1],
@@ -207,6 +208,7 @@ init_function(LayersUtility_init)
 
 			_stackMenu pushBack ["Задать раб.слои (несколько)",{
 				private _i = (call contextMenu_getContextParams) select 0;
+				ContextMenu_internal_openedMousePos call mouseSetPosition;
 				private _newLayerIdList = [
 					"Выберите слой",
 					format["Выберите слои для %1 рабочей области",_i + 1],
@@ -234,38 +236,36 @@ init_function(LayersUtility_init)
 				},null,"Удалить слой из рабочего набора"];
 
 				_stackMenu pushBack ["Удалить раб.наборы (несколько)",{
-					_afterCall = {
-						private _list = [];
-						private _listIndexes = [];
+					private _list = [];
+					private _listIndexes = [];
+					{
+						if (_x == -1) then {continue};
+						_list pushBack ((_x call layer_internal_getLayerNameByPtr)+" (#"+(str _x)+")");
+						_listIndexes pushBack _foreachIndex;
+					} foreach layersUtility_workingSet;
+					if (count _list == 0) exitWith {};
+					
+					private _del = refcreate(0);
+					ContextMenu_internal_openedMousePos call mouseSetPosition;
+					if ([
+						_del,
+						"Удалить слои",
+						"Выберите слои для удаления из рабочего набора",
+						_list apply {_x + ":ROOT"} joinString ";",
+						null,
+						true
+					] call widget_winapi_openTreeView) then {
+						if (refget(_del) == "") exitWith {};
+						private _delList = (refget(_del) splitString (toString [9]));
 						{
-							if (_x == -1) then {continue};
-							_list pushBack ((_x call layer_internal_getLayerNameByPtr)+" (#"+(str _x)+")");
-							_listIndexes pushBack _foreachIndex;
-						} foreach layersUtility_workingSet;
-						if (count _list == 0) exitWith {};
-						
-						private _del = refcreate(0);
-						if ([
-							_del,
-							"Удалить слои",
-							"Выберите слои для удаления из рабочего набора",
-							_list apply {_x + ":ROOT"} joinString ";",
-							null,
-							true
-						] call widget_winapi_openTreeView) then {
-							if (refget(_del) == "") exitWith {};
-							private _delList = (refget(_del) splitString (toString [9]));
-							{
-								private _id = _list find _x;
-								if (_id == -1) then {continue};
-								private _index = _listIndexes select _id;
-								layersUtility_workingSet set [_index,-1];
-							} foreach _delList;
-							call LayersUtility_syncWorkingSetText;
-							call LayersUtility_saveStorage;
-						};
+							private _id = _list find _x;
+							if (_id == -1) then {continue};
+							private _index = _listIndexes select _id;
+							layersUtility_workingSet set [_index,-1];
+						} foreach _delList;
+						call LayersUtility_syncWorkingSetText;
+						call LayersUtility_saveStorage;
 					};
-					invokeAfterDelay(_afterCall,0.5);
 				}];
 			};
 
