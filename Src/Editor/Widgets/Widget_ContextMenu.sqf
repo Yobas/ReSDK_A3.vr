@@ -462,17 +462,18 @@ function(ContextMenu_loadMouseObject)
 					[_obj] call layer_removeObject;
 					nextFrame(inspector_menuLoad);
 				}];
-		} else {
-			if (call LayersUtility_getSelectedLayer != -1) then {
-
-				_listActions pushBack ["Добавить в раб.слой",{
-					private _obj = (call contextMenu_getContextParams) select 0;
-					private _curLayer = call LayersUtility_getSelectedLayer;
-					if (_curLayer == -1) exitWith {};
-					[_obj,_curLayer] call LayersUtility_addObject;
-				}];
-			};
 		};
+		
+		if (call LayersUtility_getSelectedLayer != -1) then {
+
+			_listActions pushBack ["Добавить в раб.слой",{
+				private _obj = (call contextMenu_getContextParams) select 0;
+				private _curLayer = call LayersUtility_getSelectedLayer;
+				if (_curLayer == -1) exitWith {};
+				[_obj,_curLayer] call LayersUtility_addObject;
+			}];
+		};
+		
 
 		// Функция для сбора родительских слоев (от текущего до корня)
 		private _collectParentLayers = {

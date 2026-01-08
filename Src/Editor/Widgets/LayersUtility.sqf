@@ -17,7 +17,7 @@ init_function(LayersUtility_init)
 		if not_equalTypes(_entity,-1) exitWith {}; //skip models (only id's)
 		if equals(get3DENEntity _entity,_entity) then {
 			if array_exists(all3DENEntities select 6,_entity) then {
-				call LayersUtility_syncExistsLayers;
+				[true] call LayersUtility_syncExistsLayers;
 				call LayersUtility_syncWorkingSetText; //sync visual
 			};
 		};
@@ -154,12 +154,14 @@ init_function(LayersUtility_init)
 	layersUtility_layerButtonStyle_mouseExit = [0.4,0.4,0.4,0.8];
 
 	private _widgets = [];
+	private _widgetsCheckboxes = [];
 	_ctg setvariable ["widgets",_widgets];
+	_ctg setvariable ["widgetsCheckboxes",_widgetsCheckboxes];
 
 	private _ctgIn = [getEdenDisplay,WIDGETGROUP_H,[0,_titleSize,100,100-_titleSize],_ctg] call createWidget;
 
 	for "_i" from 0 to (layersUtility_countWorkingSetItems-1) do {
-		private _item = [getEdenDisplay,TEXT,[0,_sizeItem * _i + (1*_i),100,_sizeItem],_ctgIn] call createWidget;
+		private _item = [getEdenDisplay,TEXT,[0,_sizeItem * _i + (1*_i),80,_sizeItem],_ctgIn] call createWidget;
 		_item setBackgroundColor layersUtility_layerButtonStyle_mouseExit;
 		_widgets pushBack _item;
 		[_item,format["Слой %1",_i + 1]] call widgetSetText;
@@ -299,6 +301,36 @@ init_function(LayersUtility_init)
 			] call contextMenu_create;
 
 		}];
+
+		_checkboxLayer = [getEdenDisplay,"ctrlButtonToolbar",[80,_sizeItem * _i + (1*_i),8,_sizeItem],_ctgIn] call createWidget;
+		_checkboxLayer setvariable ["layerindex",_i];
+		_checkboxLayer ctrlSetTooltip "Переключить блокировку слоя";
+		_checkboxLayer ctrlSetText "a3\3den\data\displays\display3den\panelLeft\entityList_layerEnable_ca.paa";
+		_checkboxLayer ctrlAddEventHandler ["MouseButtonUp",{
+			params ["_ctrl"];
+			private _i = _ctrl getvariable ["layerindex",-1];
+			if (_i == -1) exitWith {};
+			private _layerId = layersUtility_workingSet select _i;
+			if (_layerId == -1) exitWith {};
+			[_layerId,!([_layerId] call layer_isLocked)] call layer_setLocked;
+			call LayersUtility_syncWorkingSetText;
+		}];
+
+		_checkboxLayer2 = [getEdenDisplay,"ctrlButtonToolbar",[88,_sizeItem * _i + (1*_i),8,_sizeItem],_ctgIn] call createWidget;
+		_checkboxLayer2 setvariable ["layerindex",_i];
+		_checkboxLayer2 ctrlSetTooltip "Переключить видимость слоя";
+		_checkboxLayer2 ctrlSetText "a3\3den\data\displays\display3den\panelLeft\entityList_layerShow_ca.paa";
+		_checkboxLayer2 ctrlAddEventHandler ["MouseButtonUp",{
+			params ["_ctrl"];
+			private _i = _ctrl getvariable ["layerindex",-1];
+			if (_i == -1) exitWith {};
+			private _layerId = layersUtility_workingSet select _i;
+			if (_layerId == -1) exitWith {};
+			[_layerId,!([_layerId] call layer_isVisible)] call layer_setVisible;
+			call LayersUtility_syncWorkingSetText;
+		}];
+
+		_widgetsCheckboxes pushBack [_checkboxLayer,_checkboxLayer2];
 	};
 
 	call LayersUtility_syncWorkingSetText;
@@ -330,31 +362,32 @@ function(LayersUtility_addObject)
 }
 
 function(LayersUtility_syncWorkingSetText) {
+	
+	[false] call LayersUtility_syncExistsLayers;
+
+	private _checkboxes = (call LayersUtility_getWidgetGroup) getvariable "widgetsCheckboxes"; //x -> vec2(lock,visible)
 	{
 		private _i = _x getvariable ["layerindex",-1];
+		private _checkboxes = _checkboxes select _i;
 		private _layerId = layersUtility_workingSet select _i;
 		if (_layerId == -1) then {
 			[_x,"- нет -"] call widgetSetText;
+			{_x ctrlshow false} foreach _checkboxes;
 		} else {
-			private _fmtString = ifcheck(_i == layersUtility_selectedLayerIndex,"<t color='#00FF00'>+%1+ (%2)</t>","%1 (%2)") + "%3%4";
-			private _lockIcon =" <img color='%1' image='a3\3den\data\displays\display3den\panelLeft\entityList_layerEnable_ca.paa'/>";
-			if ([_layerId] call layer_isLocked) then {
-				_lockIcon = format[_lockIcon,"#ffffff"];
-			} else {
-				_lockIcon = format[_lockIcon,"#3fffffff"];
-			};
-			private _visibleIcon =" <img color='%1' image='a3\3den\data\displays\display3den\panelLeft\entityList_layerShow_ca.paa'/>";
-			if !([_layerId] call layer_isVisible) then {
-				_visibleIcon = format[_visibleIcon,"#3fffffff"];
-			} else {
-				_visibleIcon = format[_visibleIcon,"#ffffff"];
-			};
+			{_x ctrlshow true} foreach _checkboxes;
+
+			(_checkboxes select 0) ctrlSetTextColor ifcheck([_layerId] call layer_isLocked,vec4(1,1,1,1),vec4(0.6,0.6,0.6,0.5));
+			(_checkboxes select 1) ctrlSetTextColor ifcheck(!([_layerId] call layer_isVisible),vec4(0.3,0.3,0.3,0.8),vec4(1,1,1,1));
+			
+			private _fmtString = ifcheck(_i == layersUtility_selectedLayerIndex,"<t color='#00FF00'>+%1+ (%2)</t>","%1 (%2)");
+			
 			[_x,format[_fmtString,_layerId call layer_internal_getLayerNameByPtr,_layerId,_lockIcon,_visibleIcon]] call widgetSetText;
 		};
 	} foreach ((call LayersUtility_getWidgetGroup) getvariable "widgets");
 }
 
 function(LayersUtility_syncExistsLayers) {
+	params [["_forceResyncText",true]];
 	private _resyncText = false;
 	{
 		private _layerId = _x;
@@ -368,9 +401,11 @@ function(LayersUtility_syncExistsLayers) {
 			};
 		};
 	} foreach layersUtility_workingSet;
-	if (_resyncText) then {
-		call LayersUtility_syncWorkingSetText;
-		call LayersUtility_saveStorage;
+	if (_forceResyncText) then {
+		if (_resyncText) then {
+			call LayersUtility_syncWorkingSetText;
+			call LayersUtility_saveStorage;
+		};
 	};
 }
 
