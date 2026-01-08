@@ -18,6 +18,7 @@ init_function(LayersUtility_init)
 		if equals(get3DENEntity _entity,_entity) then {
 			if array_exists(all3DENEntities select 6,_entity) then {
 				call LayersUtility_syncExistsLayers;
+				call LayersUtility_syncWorkingSetText; //sync visual
 			};
 		};
 	};
@@ -277,12 +278,14 @@ init_function(LayersUtility_init)
 						private _layerId = layersUtility_workingSet select _i;
 						if (_layerId == -1) exitWith {};
 						[_layerId,!([_layerId] call layer_isLocked)] call layer_setLocked;
+						call LayersUtility_syncWorkingSetText;
 					}],
 					[ifcheck([_layerId] call layer_isVisible,"Скрыть слой","Показать слой"),{
 						private _i = (call contextMenu_getContextParams) select 0;
 						private _layerId = layersUtility_workingSet select _i;
 						if (_layerId == -1) exitWith {};
 						[_layerId,!([_layerId] call layer_isVisible)] call layer_setVisible;
+						call LayersUtility_syncWorkingSetText;
 					}]
 				]];
 			};
@@ -333,11 +336,20 @@ function(LayersUtility_syncWorkingSetText) {
 		if (_layerId == -1) then {
 			[_x,"- нет -"] call widgetSetText;
 		} else {
-			if (_i == layersUtility_selectedLayerIndex) then {
-				[_x,format["<t color='#00FF00'>+%1+ (%2)</t>",_layerId call layer_internal_getLayerNameByPtr,_layerId]] call widgetSetText;
+			private _fmtString = ifcheck(_i == layersUtility_selectedLayerIndex,"<t color='#00FF00'>+%1+ (%2)</t>","%1 (%2)") + "%3%4";
+			private _lockIcon =" <img color='%1' image='a3\3den\data\displays\display3den\panelLeft\entityList_layerEnable_ca.paa'/>";
+			if ([_layerId] call layer_isLocked) then {
+				_lockIcon = format[_lockIcon,"#ffffff"];
 			} else {
-				[_x,format["%1 (%2)",_layerId call layer_internal_getLayerNameByPtr,_layerId]] call widgetSetText;
+				_lockIcon = format[_lockIcon,"#3fffffff"];
 			};
+			private _visibleIcon =" <img color='%1' image='a3\3den\data\displays\display3den\panelLeft\entityList_layerShow_ca.paa'/>";
+			if !([_layerId] call layer_isVisible) then {
+				_visibleIcon = format[_visibleIcon,"#3fffffff"];
+			} else {
+				_visibleIcon = format[_visibleIcon,"#ffffff"];
+			};
+			[_x,format[_fmtString,_layerId call layer_internal_getLayerNameByPtr,_layerId,_lockIcon,_visibleIcon]] call widgetSetText;
 		};
 	} foreach ((call LayersUtility_getWidgetGroup) getvariable "widgets");
 }

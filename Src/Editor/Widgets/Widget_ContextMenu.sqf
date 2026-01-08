@@ -462,6 +462,16 @@ function(ContextMenu_loadMouseObject)
 					[_obj] call layer_removeObject;
 					nextFrame(inspector_menuLoad);
 				}];
+		} else {
+			if (call LayersUtility_getSelectedLayer != -1) then {
+
+				_listActions pushBack ["Добавить в раб.слой",{
+					private _obj = (call contextMenu_getContextParams) select 0;
+					private _curLayer = call LayersUtility_getSelectedLayer;
+					if (_curLayer == -1) exitWith {};
+					[_obj,_curLayer] call LayersUtility_addObject;
+				}];
+			};
 		};
 
 		// Функция для сбора родительских слоев (от текущего до корня)
@@ -759,24 +769,26 @@ function(ContextMenu_loadMouseObject)
 	call _commonSelectQuery;
 	call _commonCheckDistance;
 
-	_stackMenu pushBack ["<t size='0.9'>Открыть редактор позиций модели</t>",{nextFrameParams(vcom_relposEditorOpen,(call contextMenu_getContextParams) select 0)}];
-	_stackMenu pushBack ["Открыть редактор эмиттеров",{
-		private _obj = (call contextMenu_getContextParams) select 0;
-		private _params = [_obj];
-		private _cfg = [_obj] call lsim_resolveObjectConfig;
-		if (_cfg != "") then {
-			_params pushBack _cfg;
-		};
-		private _code = {
-			params ["_obj",["_cfg",""]];
-			[_obj] call vcom_emit_createVisualWindow;
-			
+	_stackMenu pushBack ["Редакторы",[
+		["<t size='0.9'>Открыть редактор позиций модели</t>",{nextFrameParams(vcom_relposEditorOpen,(call contextMenu_getContextParams) select 0)}],
+		["Открыть редактор эмиттеров",{
+			private _obj = (call contextMenu_getContextParams) select 0;
+			private _params = [_obj];
+			private _cfg = [_obj] call lsim_resolveObjectConfig;
 			if (_cfg != "") then {
-				[_cfg] call vcom_emit_io_loadConfigCheck;
+				_params pushBack _cfg;
 			};
-		};
-		nextFrameParams(_code,_params);
-	}];
+			private _code = {
+				params ["_obj",["_cfg",""]];
+				[_obj] call vcom_emit_createVisualWindow;
+				
+				if (_cfg != "") then {
+					[_cfg] call vcom_emit_io_loadConfigCheck;
+				};
+			};
+			nextFrameParams(_code,_params);
+		}]
+	]];
 
 	// _stackMenu pushBack ["Добавить комментарий",{
 	// 	do3DENAction "CreateComment";
