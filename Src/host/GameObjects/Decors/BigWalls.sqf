@@ -17,6 +17,13 @@ class(BigWall) extends(BigConstructions)
 endclass
 
 editor_attribute("EditorGenerated")
+class(MediumStoneWall) extends(BigWall)
+	var(name,"Каменная стена");
+	var(material,"MatStone");
+	var(model,"a3\structures_f_enoch\cultural\castleruins\castleruins_01_wall_10m_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(BigGermoGate) extends(BigWall)
 	var(model,"ml\ml_germogate\l_02_alex_vorota.p3d");
 endclass
