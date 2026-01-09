@@ -75,6 +75,8 @@ init_function(LayersUtility_init)
 		getEdenDisplay displayRemoveEventHandler ["MouseMoving", layersUtility_dragMouseMovingHandle];
 	};
 	if !isNull(layersUtility_ctgPosition) then {
+		if (isNull(layersUtility_ctgPosition select 0) || isNull(layersUtility_ctgPosition select 1)) exitWith {};
+		
 		[_ctg,layersUtility_ctgPosition call convertScreenCoords] call widgetSetPositionOnly;
 	};
 
