@@ -24,6 +24,11 @@ class(StonePole) extends(SmallPole)
 endclass
 
 editor_attribute("EditorGenerated")
+class(StonePoleLight) extends(StonePole)
+	var(model,"a3\structures_f\walls\stone_pillar_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(WoodPole) extends(SmallPole)
 	var(name,"Позорник");
 	var(desc,"Чтобы на нём оказаться - много ума не надо!");
@@ -111,4 +116,3 @@ endclass
 class(BrickPole2) extends(BrickPole)
 	var(model,"a3\structures_f_enoch\walls\brick\brickwall_01_l_pole_f.p3d");
 endclass
-

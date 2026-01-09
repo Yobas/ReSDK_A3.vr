@@ -56,6 +56,12 @@ class(StoneWall) extends(SmallWall)
 endclass
 
 editor_attribute("EditorGenerated")
+class(StoneWallLong) extends(StoneWall)
+	var(model,"a3\structures_f\walls\stone_8m_f.p3d");
+endclass
+
+
+editor_attribute("EditorGenerated")
 class(BigStoneWallWithPassage) extends(StoneWall)
 	var(model,"ml\ml_object_new\model_24\barikada.p3d");
 endclass
