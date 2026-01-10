@@ -72,12 +72,12 @@ function(contextMenu_create) {
 	
 	widget_internal_contextmenu_tree = [];
 	
-	[_elements,_posBase,0,nullPtr,1] call contextMenu_internal_loadContext;
+	[_elements,_posBase,0,nullPtr,1,-1] call contextMenu_internal_loadContext;
 };
 
 function(contextMenu_internal_loadContext)
 {
-	params ["_elements","_pointStart","_level","_pressedWidget",["_parentDirection",1]];
+	params ["_elements","_pointStart","_level","_pressedWidget",["_parentDirection",1],["_parentPosX",-1]];
 
 	private _sizeX = 15;
 	private _sizeY = 4;
@@ -217,7 +217,40 @@ function(contextMenu_internal_loadContext)
 					};
 				};
 				
-				[_includedListOrAction,[_posX + _addOffset,_posY+(_i*_sizeY)],_level + 1,_w,_nextDirection] call contextMenu_internal_loadContext;
+				private _nextPosX = _posX + _addOffset;
+				
+				if (_nextDirection != _parentDirection && _parentPosX >= 0) then {
+					private _parentMenuLeftEdge = _parentPosX;
+					private _parentMenuRightEdge = _parentPosX + _sizeX;
+					private _nextMenuLeftEdge = _nextPosX;
+					private _nextMenuRightEdge = _nextPosX + _sizeX;
+					
+					if (_nextDirection < 0 && _parentDirection > 0) then {
+						if (_nextMenuRightEdge > _parentMenuLeftEdge) then {
+							_addOffset = _addOffset - (_nextMenuRightEdge - _parentMenuLeftEdge + _miniOfs);
+							_nextPosX = _posX + _addOffset;
+
+							if (_nextPosX < 0) then {
+								_nextPosX = 0;
+								_addOffset = _nextPosX - _posX;
+							};
+						};
+					};
+
+					if (_nextDirection > 0 && _parentDirection < 0) then {
+						if (_nextMenuLeftEdge < _parentMenuRightEdge) then {
+							_addOffset = _addOffset + (_parentMenuRightEdge - _nextMenuLeftEdge + _miniOfs);
+							_nextPosX = _posX + _addOffset;
+
+							if (_nextPosX + _sizeX > 100) then {
+								_nextPosX = 100 - _sizeX;
+								_addOffset = _nextPosX - _posX;
+							};
+						};
+					};
+				};
+				
+				[_includedListOrAction,[_posX + _addOffset,_posY+(_i*_sizeY)],_level + 1,_w,_nextDirection,_posX] call contextMenu_internal_loadContext;
 			};
 		} else {
 			
