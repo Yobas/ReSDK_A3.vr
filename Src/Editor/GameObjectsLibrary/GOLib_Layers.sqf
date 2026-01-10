@@ -287,7 +287,7 @@ function(layer_isLocked)
 	if (_layer == -1) exitwith {false};
 	if (_includeParent) then {
 		private _d = layer_internal_map_parents get _layer;
-		if (((_layer get3DENAttribute "Transformation") select 0)) exitWith {true};
+		if (!((_layer get3DENAttribute "Transformation") select 0)) exitWith {true};
 		if isNullVar(_d) exitWith { !((_layer get3DENAttribute "Transformation") select 0) };
 
 		any_of(_d apply {[_x] call layer_isLocked})
