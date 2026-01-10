@@ -106,7 +106,10 @@ function(contextMenu_internal_loadContext)
 	for "_i" from 0 to (count _elements) - 1 do {
 		(_elements select _i) params ["_name",["_includedListOrAction",{}],["_condToVisible",{true}],["_desc",""],["_currentActionContext",[]]];
 		private _w = [_d,TEXT,[_posX,_posY + (_i*_sizeY)+0.5,_sizeX,_sizeY-1],_ctg] call createWidget;
-		_w ctrlSetTooltip _desc;
+		if (_level == 0) then {
+			_w ctrlSetTooltip _desc;
+		};
+		_w setvariable ["originalDesc",_desc];
 		_w setVariable ["level",_level];
 		_w setVariable ["back",_back];
 		_w setVariable ["index",_i];
@@ -252,6 +255,8 @@ function(contextMenu_internal_hideCat)
 		_x setFade 1;
 		_x commit 0.1;
 		_x ctrlEnable false;
+		//! убираем описание так как выключенные элементы продолжают показывать описание
+		_x ctrlSetTooltip "";
 	} foreach (_back getVariable "items");
 }
 
@@ -264,6 +269,7 @@ function(contextMenu_internal_showCat)
 		_x setFade 0;
 		_x commit 0.2;
 		_x ctrlEnable true;
+		_x ctrlSetTooltip (_x getvariable "originalDesc");
 	} foreach (_back getVariable "items");
 }
 
