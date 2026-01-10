@@ -494,7 +494,8 @@ function(ContextMenu_loadMouseObject)
 		private _listActions = [];
 		private _data = ["Слои",_listActions];
 
-		if (([_obj,false] call layer_getObjectLayer) != -1) then {
+		private _currentLayer = [_obj,false] call layer_getObjectLayer;
+		if (_currentLayer != -1) then {
 			_listActions pushBack ["Убрать из слоя",{
 					_obj = (call contextMenu_getContextParams) select 0;
 					private _layer = _obj call layer_getObjectLayer;
@@ -511,6 +512,51 @@ function(ContextMenu_loadMouseObject)
 				if (_curLayer == -1) exitWith {};
 				[_obj,_curLayer] call LayersUtility_addObject;
 			}];
+		};
+
+		if (_currentLayer != -1) then {
+			if ([_obj] call layer_isObjectLocked) then {
+				_listActions pushBack ["Разблокировать слой",{
+					private _obj = (call contextMenu_getContextParams) select 0;
+					private _curLayer = [_obj,false] call layer_getObjectLayer;
+
+					private _parents = [_curLayer] call layer_getAllParentLayers;
+					if (count _parents > 0 && any_of(_parents apply {[_x] call layer_isLocked})) then {
+						{
+							[_x,false] call layer_setLocked;
+						} foreach _parents;
+						["Родительские слои также разблокированы"] call showInfo;
+					};
+
+					[_curLayer,false] call layer_setLocked;
+					
+					nextFrame(inspector_menuLoad);
+				},null,"Разблокировать слой, в котором находится объект"];
+				_listActions pushBack ["Копировать объект",{
+					private _obj = (call contextMenu_getContextParams) select 0;
+					private _oldSelected = call golib_getSelectedObjects;
+					[_obj] call golib_setSelectedObjects;
+					do3denAction "CopyUnit";
+					[_oldSelected] call golib_setSelectedObjects;
+					
+				}];
+			} else {
+				_listActions pushBack ["Заблокировать слой",{
+					private _obj = (call contextMenu_getContextParams) select 0;
+					private _curLayer = [_obj,false] call layer_getObjectLayer;
+					[_curLayer,true] call layer_setLocked;
+					nextFrame(inspector_menuLoad);
+				},null,"Заблокировать слой, в котором находится объект"];
+			};
+
+			private _workLayer = call LayersUtility_getSelectedLayer;
+			if (_workLayer != -1) then {
+				_listActions pushBack ["Заменить слой в раб.области",{
+					private _obj = (call contextMenu_getContextParams) select 0;
+					private _curLayer = [_obj,false] call layer_getObjectLayer;
+					[_curLayer] call LayersUtility_setSelectedLayer;
+				},null,format["Устанавливает слой '%1' в активный рабочий слой",([_obj,false] call layer_getObjectLayer) call layer_internal_getLayerNameByPtr]];
+			};
 		};
 		
 
@@ -567,7 +613,7 @@ function(ContextMenu_loadMouseObject)
 		};
 
 		// Добавляем категории "Выше" и "Ниже" если объект в слое
-		private _currentLayer = [_obj,false] call layer_getObjectLayer;
+		
 		if (_currentLayer != -1) then {
 			// Собираем родительские слои
 			private _parentLayers = [_currentLayer] call _collectParentLayers;
