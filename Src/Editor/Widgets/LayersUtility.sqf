@@ -419,6 +419,13 @@ function(LayersUtility_getSelectedLayer) {
 	_layerId
 }
 
+function(LayersUtility_setSelectedLayer) {
+	params ["_layerId"];
+	layersUtility_workingSet set [layersUtility_selectedLayerIndex,-1];
+	call LayersUtility_syncWorkingSetText;
+	call LayersUtility_saveStorage;
+}
+
 function(LayersUtility_saveStorage)
 {
 	golib_com_objectHash set ["layersWorkingSet",layersUtility_workingSet];
