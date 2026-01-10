@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4034.333,53.428001,3968.9033};
-		dir[]={0.13974816,-0.67889053,-0.72098374};
-		up[]={0.12919892,0.73412907,-0.66655666};
-		aside[]={-0.98182529,-1.3929675e-06,-0.19030049};
+		pos[]={4077.2739,32.573925,3941.7832};
+		dir[]={0.73288959,-0.68015194,0.022722399};
+		up[]={0.67993712,0.73287654,0.02108036};
+		aside[]={0.030990524,-2.8354298e-06,-0.99961549};
 	};
 };
 binarizationWanted=0;
@@ -1165,7 +1165,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""layersSelectedIndex"",0],[""missionName"",""GryaznoyamskV2""],[""version"",5],[""layersWorkingSet"",[10758,10759,11152,11153,10760,10964,10761,5763,-1,-1]]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""layersSelectedIndex"",1],[""missionName"",""GryaznoyamskV2""],[""version"",5],[""layersWorkingSet"",[8191,8192,9229,-1,-1,-1,-1,-1,-1,-1]]]}";
 			};
 			id=2205;
 			type="Land_Orange_01_F";
@@ -12155,7 +12155,6 @@ class Mission
 				{
 					dataType="Layer";
 					name="c. Дома";
-					state=1;
 					class Entities
 					{
 						items=2;
@@ -12674,7 +12673,7 @@ class Mission
 								class Item29
 								{
 									dataType="Layer";
-									name="Слой 780";
+									name="Крыша";
 									state=2;
 									class Entities
 									{
