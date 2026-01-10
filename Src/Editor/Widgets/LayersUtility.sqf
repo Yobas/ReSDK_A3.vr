@@ -421,7 +421,7 @@ function(LayersUtility_getSelectedLayer) {
 
 function(LayersUtility_setSelectedLayer) {
 	params ["_layerId"];
-	layersUtility_workingSet set [layersUtility_selectedLayerIndex,-1];
+	layersUtility_workingSet set [layersUtility_selectedLayerIndex,_layerId];
 	call LayersUtility_syncWorkingSetText;
 	call LayersUtility_saveStorage;
 }
