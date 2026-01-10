@@ -529,7 +529,7 @@ function(ContextMenu_loadMouseObject)
 					};
 
 					[_curLayer,false] call layer_setLocked;
-					
+
 					nextFrame(inspector_menuLoad);
 				},null,"Разблокировать слой, в котором находится объект"];
 				_listActions pushBack ["Копировать объект",{
@@ -550,7 +550,9 @@ function(ContextMenu_loadMouseObject)
 			};
 
 			private _workLayer = call LayersUtility_getSelectedLayer;
-			if (_workLayer != -1) then {
+			if (_workLayer != -1 && 
+				{_workLayer != _currentLayer}
+			) then {
 				_listActions pushBack ["Заменить слой в раб.области",{
 					private _obj = (call contextMenu_getContextParams) select 0;
 					private _curLayer = [_obj,false] call layer_getObjectLayer;
