@@ -497,11 +497,18 @@ function(ContextMenu_loadMouseObject)
 		private _currentLayer = [_obj,false] call layer_getObjectLayer;
 		if (_currentLayer != -1) then {
 			_listActions pushBack ["Убрать из слоя",{
-					_obj = (call contextMenu_getContextParams) select 0;
-					private _layer = _obj call layer_getObjectLayer;
-					[_obj] call layer_removeObject;
-					nextFrame(inspector_menuLoad);
-				}];
+				_obj = (call contextMenu_getContextParams) select 0;
+				private _layer = _obj call layer_getObjectLayer;
+				[_obj] call layer_removeObject;
+				nextFrame(inspector_menuLoad);
+			}];
+			
+			if ([_obj] call layer_isObjectLocked) then {
+				_listActions pushBack ["Выделить объект",{
+					private _obj = (call contextMenu_getContextParams) select 0;
+					[_obj] call golib_setSelectedObjects;
+				},null,"Выделяет объект в заблокированном слое"];
+			};
 		};
 		
 		if (call LayersUtility_getSelectedLayer != -1) then {
