@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4030.3376,53.524441,3961.3804};
-		dir[]={0.67700273,-0.73543417,0.032625664};
-		up[]={0.7346555,0.67734957,0.035402387};
-		aside[]={0.048147149,-1.4234392e-06,-0.99891371};
+		pos[]={4049.7866,32.63731,3967.2454};
+		dir[]={0.77580595,-0.62967998,-0.040354226};
+		up[]={0.62882996,0.77685457,-0.03270914};
+		aside[]={-0.051945657,0,-0.99865001};
 	};
 };
 binarizationWanted=0;
@@ -26114,7 +26114,7 @@ class Mission
 											};
 											id=14150;
 											type="Land_NetFence_02_m_2m_F";
-											atlOffset=1.5917091;
+											atlOffset=1.5917072;
 										};
 										class Item269
 										{
@@ -26465,7 +26465,7 @@ class Mission
 											};
 											id=14175;
 											type="Land_WoodenTable_large_F";
-											atlOffset=0.11722565;
+											atlOffset=0.11723709;
 										};
 										class Item289
 										{
@@ -26483,7 +26483,7 @@ class Mission
 											};
 											id=14176;
 											type="Land_WoodenTable_large_F";
-											atlOffset=0.18379593;
+											atlOffset=0.18380737;
 										};
 										class Item290
 										{
@@ -26518,6 +26518,7 @@ class Mission
 											};
 											id=14178;
 											type="Land_WoodenTable_large_F";
+											atlOffset=9.5367432e-06;
 										};
 										class Item292
 										{
@@ -26551,7 +26552,7 @@ class Mission
 											};
 											id=14180;
 											type="CUP_A2_l1_2m5_ep1";
-											atlOffset=0.79137611;
+											atlOffset=0.79137802;
 										};
 										class Item294
 										{
@@ -26619,7 +26620,7 @@ class Mission
 											};
 											id=14184;
 											type="Land_WoodenTable_small_F";
-											atlOffset=2.470911;
+											atlOffset=2.4637184;
 										};
 										class Item298
 										{
@@ -26705,7 +26706,7 @@ class Mission
 											};
 											id=14193;
 											type="Land_WoodenTable_large_F";
-											atlOffset=0.23417282;
+											atlOffset=0.23312187;
 										};
 										class Item303
 										{
@@ -26844,7 +26845,7 @@ class Mission
 											};
 											id=14203;
 											type="Land_WoodenTable_large_F";
-											atlOffset=0.053470612;
+											atlOffset=0.053438187;
 										};
 										class Item311
 										{
@@ -26879,7 +26880,7 @@ class Mission
 											};
 											id=14205;
 											type="Land_WoodenTable_large_F";
-											atlOffset=0.02797699;
+											atlOffset=0.027986526;
 										};
 										class Item313
 										{
@@ -26929,7 +26930,7 @@ class Mission
 											};
 											id=14208;
 											type="Land_WoodenTable_large_F";
-											atlOffset=4.1036987;
+											atlOffset=4.1036263;
 										};
 										class Item316
 										{
@@ -27137,6 +27138,7 @@ class Mission
 											};
 											id=14220;
 											type="Land_ChairWood_F";
+											atlOffset=4.0054321e-05;
 										};
 										class Item328
 										{
@@ -27293,7 +27295,7 @@ class Mission
 											};
 											id=14230;
 											type="Land_ChairWood_F";
-											atlOffset=0.1940937;
+											atlOffset=0.0016689301;
 										};
 										class Item337
 										{
@@ -27346,7 +27348,7 @@ class Mission
 											};
 											id=14233;
 											type="CUP_A2_l1_2m5_ep1";
-											atlOffset=0.75476837;
+											atlOffset=0.75477028;
 										};
 										class Item340
 										{
@@ -27363,7 +27365,7 @@ class Mission
 											};
 											id=14234;
 											type="CUP_A2_l1_2m5_ep1";
-											atlOffset=0.8531208;
+											atlOffset=0.85312271;
 										};
 										class Item341
 										{
@@ -29059,7 +29061,7 @@ class Mission
 											};
 											id=14369;
 											type="Land_ShelvesWooden_F";
-											atlOffset=0.1580677;
+											atlOffset=0.15700722;
 										};
 										class Item439
 										{
@@ -29111,7 +29113,7 @@ class Mission
 											};
 											id=14372;
 											type="Land_Metal_rack_F";
-											atlOffset=0.059305191;
+											atlOffset=0.05934906;
 										};
 										class Item442
 										{
@@ -29267,7 +29269,7 @@ class Mission
 											};
 											id=14381;
 											type="Land_ShelvesWooden_F";
-											atlOffset=0.19443321;
+											atlOffset=0.19445801;
 										};
 										class Item451
 										{
@@ -29303,6 +29305,7 @@ class Mission
 											};
 											id=14383;
 											type="Land_ShelvesWooden_F";
+											atlOffset=0.00054359436;
 										};
 										class Item453
 										{
@@ -29336,6 +29339,7 @@ class Mission
 											};
 											id=14385;
 											type="Land_ShelvesWooden_F";
+											atlOffset=0.00054359436;
 										};
 										class Item455
 										{
@@ -29548,7 +29552,7 @@ class Mission
 										};
 									};
 									id=13602;
-									atlOffset=0.55563354;
+									atlOffset=0.55532074;
 								};
 								class Item2
 								{
@@ -29606,11 +29610,11 @@ class Mission
 								};
 							};
 							id=13600;
-							atlOffset=21.643879;
+							atlOffset=21.64386;
 						};
 					};
 					id=8191;
-					atlOffset=2.8797855;
+					atlOffset=2.879776;
 				};
 				class Item4
 				{
