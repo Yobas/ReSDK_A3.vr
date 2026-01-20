@@ -794,7 +794,7 @@ function(ContextMenu_loadMouseObject)
 									if equalTypes(_cfg,[]) then {
 										_cfg = _cfg select 0;
 									};
-									["===============mcfg: %1",[_cfg,_x]] call printTrace;
+									//["===============mcfg: %1",[_cfg,_x]] call printTrace;
 									_o = ["IStruct",false,[_cfg,_x]] call golib_om_placeObjectAtMouse;
 									_sel pushBack _o;
 								} foreach _value;

@@ -135,8 +135,9 @@ function(golib_om_placeObjectAtMouse)
 		private _modelPath = "";
 		private _postInitModel = {};
 		if (!isNullVar(_cfgAndModel)) then {
-			_cfgAndModel params ["_cfgNew","_modelPath"];
+			_cfgAndModel params ["_cfgNew","_modelPathNew"];
 			_cfg = _cfgNew;
+			_modelPath = _modelPathNew;
 			_postInitModel = {
 				_this get "customProps" set ["model",_modelPath];
 			};
