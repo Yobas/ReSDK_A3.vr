@@ -777,14 +777,47 @@ function(ContextMenu_loadMouseObject)
 	call _commonLayers;
 
 	_stackMenu pushBack [
-		"Создать префаб (новый класс)",
-		{
-			_obj = (call contextMenu_getContextParams) select 0;
-			if (([_obj] call golib_getChangedCustomPropsCount) == 0) exitWith {
-				["Нельзя создать новый класс с такими же свойствами. Измените свойства и попробуйте снова."] call showWarning
-			};
-			//TODO open input new classname
-		}
+		"Создать",[
+			["Набор IStruct-ов",
+				{
+					_next = {
+						
+						[{
+							_n = {
+								ContextMenu_internal_openedMousePos call mouseSetPosition;
+								private _value = _this;
+								//["items: %1",_value] call printTrace;
+
+								private _sel = [];
+								{
+									private _cfg = core_model2cfg getVariable _x;	
+									if equalTypes(_cfg,[]) then {
+										_cfg = _cfg select 0;
+									};
+									["===============mcfg: %1",[_cfg,_x]] call printTrace;
+									_o = ["IStruct",false,[_cfg,_x]] call golib_om_placeObjectAtMouse;
+									_sel pushBack _o;
+								} foreach _value;
+								//["selected: %1",_sel] call printTrace;
+								set3DENSelected _sel;
+							};
+							invokeAfterDelayParams(_n,0.1,_value);
+						},{
+							
+						},true] call golib_openModelViewer;
+					};
+					invokeAfterDelay(_next,0.1);
+				}
+			],
+			["Создать префаб (новый класс)",
+			{
+				_obj = (call contextMenu_getContextParams) select 0;
+				if (([_obj] call golib_getChangedCustomPropsCount) == 0) exitWith {
+					["Нельзя создать новый класс с такими же свойствами. Измените свойства и попробуйте снова."] call showWarning
+				};
+				//TODO open input new classname
+			}]
+		]
 	];
 
 	private _class = [_obj] call golib_getClassName;

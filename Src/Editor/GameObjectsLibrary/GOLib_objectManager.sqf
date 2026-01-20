@@ -108,7 +108,7 @@ function(golib_om_createObject)
 
 function(golib_om_placeObjectAtMouse)
 {
-	params ["_gameObject"];
+	params ["_gameObject",["_setSelected",true],["_cfgAndModel",null]];
 	
 	if ([_gameObject,"InterfaceClass"] call goasm_attributes_hasAttributeClass) exitWith {
 		["Классы, помеченные атрибутом InterfaceClass не могут быть созданы в сцене."] call showWarning;
@@ -129,8 +129,18 @@ function(golib_om_placeObjectAtMouse)
 		["Не удалось создать объект типа "+_gameObject] call showWarning;
 		["%1 - Error on create game object %2",__FUNC__,_gameObject] call printError;
 	};
+	private _newObject = objNull;
 	["Добавление объекта", "Создан объект типа "+_gameObject, "a3\3den\data\cfg3den\history\create_ca.paa"] collect3DENHistory
 	{
+		private _modelPath = "";
+		private _postInitModel = {};
+		if (!isNullVar(_cfgAndModel)) then {
+			_cfgAndModel params ["_cfgNew","_modelPath"];
+			_cfg = _cfgNew;
+			_postInitModel = {
+				_this get "customProps" set ["model",_modelPath];
+			};
+		};
 		_screenToWorldPos = screenToWorld getMousePosition;
 		([_screenToWorldPos] call golib_om_getRayCastData) params ["_obj","_atlPos"];
 		if equals(_atlPos,vec3(0,0,0)) then {
@@ -145,16 +155,20 @@ function(golib_om_placeObjectAtMouse)
 			// История судя по всему не работает в этом же фрейме, в котором объект создан
 			[_obj,_atlPos,false,golib_history_skippedHistoryStageFlag + " - fixpos"] call golib_om_setPosition;
 		};
-		[_obj,_gameObject] call golib_initHashData;
+		[_obj,_gameObject,null,_postInitModel] call golib_initHashData;
 		
 		[_obj] call golib_om_internal_handleTransformEvent;
 		[_obj,true] call Core_initObjectEvents;
 		if (_flagEffect) then {
 			[_obj,_gameObject] call goasm_iapi_effect_preparModel;
 		};
+		_newObject = _obj;
 
-		set3DENSelected [_obj];
+		if (_setSelected) then {
+			set3DENSelected [_obj];
+		};
 	};
+	_newObject
 }
 
 function(golib_setSelectedObjects)

@@ -271,10 +271,11 @@ function(golib_deserializeHashData)
 //Регистрация нового объекта созданного перетаскиванием мыши
 function(golib_initHashData)
 {
-	params ["_worldObj","_go",["_applyToWorldObject",true]];
+	params ["_worldObj","_go",["_applyToWorldObject",true],["_postInitCode",{}]];
 	private _mapData = createHashMap;
 	_mapData set ["class",_go];
 	_mapData set ["customProps",createHashMap];
+	_mapData call _postInitCode;
 	if (_applyToWorldObject) then {
 		[_worldObj,_mapData] call golib_setHashData;
 	};

@@ -89,10 +89,10 @@ function(golib_mv_observ_checkGeom)
 
 //функция выбора модели. данный дисплей возможно использовать во многих элементах
 //например как в выборе модели, создателе игрового объекта и тд...
-//Парамтер _eventOnPressElement принимает в себя переменную _value равную путю до модели
+//Парамтер _eventOnPressElement принимает в себя переменную _value равную путю до модели или листу путей
 function(golib_openModelViewer)
 {
-	params ["_eventOnPressElement",["_eventOnExit",{}]];
+	params ["_eventOnPressElement",["_eventOnExit",{}],["_multiselect",false]];
 	
 	_d = [[],[]] call displayOpen;
 	
@@ -233,6 +233,14 @@ function(golib_openModelViewer)
 		
 		_event = _b getVariable ["_evOnSel",{}];
 		_valData = _lb lbData _val;
+		if (_lb getvariable ["_isMultiSelect",false]) then {
+			_valData = [];
+			for "_i" from 0 to (lbSize _lb)-1 do {
+				if equals(_lb lbcolor _i,vec4(0,1,0,1)) then {
+					_valData pushBack (_lb lbData _i);
+				};
+			};
+		};
 		["Selected model: %1",_valData] call printTrace;
 		nextFrame(displayClose);
 		nextFrameParams({params ["_value" arg "_hasGeometry" arg "___event"]; _value call ___event },vec3(_valData,golib_mv_observ_hasGeom,_event));
@@ -324,15 +332,44 @@ function(golib_openModelViewer)
 		if isNullReference(_dummy) exitWith {
 			["Cannot load model " + _modelPath] call showWarning;
 		};
-		
+		//["load model %1",_modelPath] call printTrace;
 		//diag_log text format["[Reditor]: (Model loader)		try load model %1",_modelPath];
 		
 		_modelPath call golib_mv_loadModel;
 		
 		_zoneDrag = _wid getVariable "_zoneDrag";
 		_zoneDrag setVariable ["_curPos",0.7];
+
+		if (_wid getvariable ["_multiModifier",false]) then {
+			_curcolor = _wid lbcolor _idx;
+			if equals(_curcolor,vec4(1,1,1,1)) then {
+				_wid lbsetcolor [_idx,[0,1,0,1]];
+			} else {
+				_wid lbsetcolor [_idx,[1,1,1,1]];
+			};
+		};
 	}];
 	
+	if (_multiselect) then {
+		_lb setvariable ["_isMultiSelect",true];
+		private _t = [_d,TEXT,[50,95,50,5]] call createWidget;
+		[_t,null,[""]+( notificationSounds select 1 select [1,2] )] call setNotificationContext;
+		["onDisplayClose",{[null] call setNotificationContext;}] call Core_addEventHandler;
+		["Нажмите Пробел чтобы выделить объект. Выделите несколько объектов",15] call showInfo;
+		_lb ctrladdeventhandler ["KeyDown",{
+			params ["_wid","_but"];
+			if (_but == KEY_SPACE) then {
+				_wid setvariable ["_multiModifier",true];
+			};
+		}];
+		_lb ctrladdeventhandler ["KeyUp",{
+			params ["_wid","_but"];
+			if (_but == KEY_SPACE) then {
+				_wid setvariable ["_multiModifier",false];
+			};
+		}];
+	};
+
 	_lb setVariable ["_back",_back];
 	_lb ctrlAddEventHandler ["KeyUp",{
 		params ["_lb","_key","_shift","_ctrl","_alt"];
