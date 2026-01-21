@@ -795,7 +795,7 @@ function(ContextMenu_loadMouseObject)
 										_cfg = _cfg select 0;
 									};
 									//["===============mcfg: %1",[_cfg,_x]] call printTrace;
-									_o = ["IStruct",false,[_cfg,_x]] call golib_om_placeObjectAtMouse;
+									_o = ["IStruct",false,[_cfg,_x],true] call golib_om_placeObjectAtMouse;
 									_sel pushBack _o;
 								} foreach _value;
 								//["selected: %1",_sel] call printTrace;

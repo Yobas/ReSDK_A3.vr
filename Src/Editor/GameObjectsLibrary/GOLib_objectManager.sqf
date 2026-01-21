@@ -108,7 +108,7 @@ function(golib_om_createObject)
 
 function(golib_om_placeObjectAtMouse)
 {
-	params ["_gameObject",["_setSelected",true],["_cfgAndModel",null]];
+	params ["_gameObject",["_setSelected",true],["_cfgAndModel",null],["_resetRotation",false]];
 	
 	if ([_gameObject,"InterfaceClass"] call goasm_attributes_hasAttributeClass) exitWith {
 		["Классы, помеченные атрибутом InterfaceClass не могут быть созданы в сцене."] call showWarning;
@@ -155,6 +155,13 @@ function(golib_om_placeObjectAtMouse)
 			["Fixed position"] call printTrace;
 			// История судя по всему не работает в этом же фрейме, в котором объект создан
 			[_obj,_atlPos,false,golib_history_skippedHistoryStageFlag + " - fixpos"] call golib_om_setPosition;
+		};
+		if (_resetRotation) then {
+			private _rot = _obj call golib_om_getRotation;
+			if ((_rot select 0) != 0 || (_rot select 1) != 0) then {
+				_rot set [0,0]; _rot set [1,0];
+				[_obj,_rot] call golib_om_setRotation;
+			};
 		};
 		[_obj,_gameObject,null,_postInitModel] call golib_initHashData;
 		
