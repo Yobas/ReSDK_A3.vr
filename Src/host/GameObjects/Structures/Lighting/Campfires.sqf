@@ -205,3 +205,13 @@ endclass
 class(CampfireBigDisabled) extends(CampfireBig)
 	var(lightIsEnabled,false);
 endclass
+
+class(Brazier) extends(CampfireBig)
+	var(name,"Жаровня");
+	var(model,"sterben_top\am_items\props\wastes\firepita\firepita.p3d");
+endclass
+
+class(TorchPost) extends(CampfireBig)
+	var(name,"Большой факел");
+	var(model,"sterben_top\am_items_2\props\furniture\home\lamps\oasistorchoff.p3d");
+endclass
