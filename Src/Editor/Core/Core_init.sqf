@@ -387,4 +387,4 @@ function(Core_getStackTrace)
 ["WorkspaceHelper"] call rescript_initScript;
 ["FileWatcher"] call rescript_initScript;
 ["VisualScripting"] call rescript_initScript;
-call nbp_initDebugger;
+//call nbp_initDebugger;
