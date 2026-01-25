@@ -16,7 +16,7 @@ namespace(Rendering,NULL)
 #include "Render_zpass.sqf"
 #include "Decals\Decals_init.sqf"
 #include "ViewDistance\vd_init.sqf"
-
+#include "Culling\cul_init.sqf"
 #include "Render_debug.sqf"
 
 //call render_dist_init;
