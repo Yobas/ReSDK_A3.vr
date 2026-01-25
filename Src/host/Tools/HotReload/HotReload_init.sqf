@@ -6,7 +6,7 @@
 #include "..\..\engine.hpp"
 #include "..\..\oop.hpp"
 
-fileWatcher_enableSystem = true;
+fileWatcher_enableSystem = "enableFWS" call sdk_hasSystemFlag;
 
 fileWatcher_autoReloadObjects = true;
 

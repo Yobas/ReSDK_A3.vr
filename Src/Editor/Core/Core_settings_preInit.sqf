@@ -382,6 +382,13 @@ core_settings_list_default = [
 				[false,"check"],validate_check
 			]
 		],
+		["sim_enableFWS",
+			[
+				"Включить отcлеживание изменений в симуляции",
+				"При старте симуляции включает отслеживание изменений файлов",
+				[true,"check"],validate_check
+			]
+		],
 	["region","Map",""],
 		
 		["map_autosaveBinary",

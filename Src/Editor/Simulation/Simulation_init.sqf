@@ -145,6 +145,9 @@ function(sim_internal_processLaunchSim)
 	if (cfg_sim_disableRayCastSphere) then {
 		__systemFlags pushBack "disableRayCastSphere";
 	};
+	if (cfg_sim_enableFWS) then {
+		__systemFlags pushBack "enableFWS";
+	};
 
 	{
 		__systemFlags pushBackUnique _x;
