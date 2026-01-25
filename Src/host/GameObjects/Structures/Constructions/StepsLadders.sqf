@@ -30,6 +30,11 @@ class(SmallSteelRustyStairs) extends(StepsLadder)
 endclass
 
 editor_attribute("EditorGenerated")
+class(SmallSteelRustyStairsDouble) extends(SmallSteelRustyStairs)
+	var(model,"ml_exodusnew\mostyobes.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(StoneSmallPandus) extends(StepsLadder)
 	var(model,"csa_constr\csa_obj\pand_3x6.p3d");
 	var(material,"MatBeton");
@@ -73,6 +78,11 @@ editor_attribute("EditorGenerated")
 class(SteelRustyStairs) extends(StepsLadder)
 	var(model,"ml\ml_object_new\ml_object_2\l01_props\stair.p3d");
 	var(name,"Стальная лестница");
+endclass
+
+editor_attribute("EditorGenerated")
+class(SteelRustyStairsCorner) extends(SteelRustyStairs)
+	var(model,"ml_shabut\exoduss\metallest1.p3d");
 endclass
 
 editor_attribute("EditorGenerated")

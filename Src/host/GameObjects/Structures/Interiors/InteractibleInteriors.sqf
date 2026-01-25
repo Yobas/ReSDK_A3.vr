@@ -17,6 +17,51 @@ class(InteractibleInterior) extends(SmallDecorations)
 	var(dr,2);
 endclass
 
+editor_attribute("EditorGenerated")
+class(TruthMachine) extends(InteractibleInterior)
+	var(model,"ml_exodusnew\priborchks_1.p3d");
+	var(name,"Правдоруб");
+endclass
+
+editor_attribute("EditorGenerated")
+class(MachineTool) extends(InteractibleInterior)
+	var(model,"ml_shabut\stanok\stanok.p3d");
+	var(name,"Станок");
+endclass
+
+editor_attribute("EditorGenerated")
+class(MachineTool2) extends(MachineTool)
+	var(model,"ml_shabut\stanok_2\stanok_2.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(TechBlock) extends(InteractibleInterior)
+	var(model,"ml\ml_object_new\model_24\teh_shkaf.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(MainframeConsole) extends(InteractibleInterior)
+	var(model,"ml\ml_object_new\model_14_10\d6table.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ATSBlock) extends(InteractibleInterior)
+	var(model,"ml_exodusnew\ostankinoprops.p3d");
+	var(name,"Связной узел");
+endclass
+
+editor_attribute("EditorGenerated")
+class(MetalProcessor) extends(InteractibleInterior)
+	var(model,"a3\structures_f_enoch\industrial\agriculture\drainage_01_f.p3d");
+	var(name,"nilРаботчик");
+endclass
+
+editor_attribute("EditorGenerated")
+class(AcientClock) extends(InteractibleInterior)
+	var(model,"ml_shabut\chasiks\chasiks.p3d");
+	var(name,"Тикалка");
+endclass
+
 
 class(PipeStove) extends(InteractibleInterior)
 	var(model,"ca\buildings\furniture\dkamna_bila.p3d");
@@ -77,4 +122,10 @@ endclass
 class(Anvil) extends(InteractibleInterior)
 	var(model,"ml\ml_object_new\model_14_10\nakowal.p3d");
 	getter_func(isMovable,true);
+endclass
+
+class(Grindstone) extends(InteractibleInterior)
+	var(name,"Точилка");
+	var(model,"ml\ml_object_new\model_05\napilnik.p3d");
+	var(material,"MatMetal");
 endclass

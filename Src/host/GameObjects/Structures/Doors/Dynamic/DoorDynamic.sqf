@@ -53,6 +53,17 @@ class(DoorDynamic) extends(DynamicStruct)
 
 endclass
 
+editor_attribute("EditorGenerated")
+class(NetfenceDoor) extends(DoorDynamic)
+	var(model,"a3\structures_f_exp\walls\backalleys\backalley_01_l_gate_f.p3d");
+	var(name,"Сетка");
+endclass
+
+editor_attribute("EditorGenerated")
+class(NetfenceDoorSmall) extends(NetfenceDoor)
+	var(model,"a3\structures_f_argo\walls\net\netfence_02_m_gate_v1_closed_f.p3d");
+endclass
+
 
 
 /*

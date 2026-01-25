@@ -16,6 +16,29 @@ class(BigHouse) extends(BigConstructions)
 endclass
 
 editor_attribute("EditorGenerated")
+class(RustyIronBox) extends(BigHouse)
+	var(model,"ml_exodusnew\zhelxata_2.p3d");
+	var(name,"Ящик");
+endclass
+
+editor_attribute("EditorGenerated")
+class(BigComplexHallway) extends(BigHouse)
+	var(model,"ml_shabut\tontech\tekton.p3d");
+	var(name,"Место");
+endclass
+
+editor_attribute("EditorGenerated")
+class(MetalFutureVagon) extends(BigHouse)
+	var(model,"ml\ml_object_new\model_14_10\monorail.p3d");
+	var(material,"MatMetal");
+endclass
+
+editor_attribute("EditorGenerated")
+class(LargeStoneTower) extends(BigHouse)
+	var(model,"ca\structures\castle\a_castle_bergfrit_dam.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(StoneTower) extends(BigHouse)
 	var(model,"a3\structures_f\dominants\castle\castle_01_tower_f.p3d");
 	var(name,"Строение");
@@ -81,6 +104,11 @@ editor_attribute("EditorGenerated")
 class(BigConcreteUnfinishedBuilding) extends(BigHouse)
 	var(model,"a3\structures_f\households\wip\unfinished_building_01_f.p3d");
 	var(name,"Бетонное здание");
+endclass
+
+editor_attribute("EditorGenerated")
+class(BigConcreteUnfinishedBuilding2) extends(BigConcreteUnfinishedBuilding)
+	var(model,"a3\structures_f_argo\civilian\unfinished_building_01\unfinished_building_01_noladder_f.p3d");
 endclass
 
 editor_attribute("EditorGenerated")

@@ -24,6 +24,11 @@ class(SteelGridDoor) extends(DoorStatic)
 	getter_func(canBreakDoor,true);
 endclass
 
+editor_attribute("EditorGenerated")
+class(SteelStrongDoor) extends(SteelGridDoor)
+	var(model,"ml\ml_object_new\model_14_10\dwerca.p3d");
+endclass
+
 class(SteelGreenDoor) extends(SteelGridDoor)
 	var(name,"Стальная дверь");
 	getter_func(animateData,[vec3(-0.73,0.7,-1.365) arg 270]);

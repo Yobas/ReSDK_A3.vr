@@ -17,6 +17,52 @@ class(BigWall) extends(BigConstructions)
 endclass
 
 editor_attribute("EditorGenerated")
+class(LargeConcretePillars) extends(BigWall)
+	var(model,"a3\structures_f_exp\infrastructure\bridges\bridgesea_01_pillar_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(CanalWallWithLadder) extends(BigWall)
+	var(model,"a3\structures_f\walls\canal_wall_stairs_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(AcientStonebrickWall) extends(BigWall)
+	var(model,"a3\structures_f\dominants\castle\castle_01_wall_16_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(AcientLightStoneWall) extends(BigWall)
+	var(model,"a3\structures_f\dominants\castle\castle_01_wall_01_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(AcientLightStoneWall2) extends(AcientLightStoneWall)
+	var(model,"a3\structures_f\dominants\castle\castle_01_wall_15_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(LargeConcreteAcientWall) extends(BigWall)
+	var(model,"ca\structures\nav_pier\nav_pier_c_l10.p3d");
+	var(name,"Бетон");
+endclass
+
+editor_attribute("EditorGenerated")
+class(LargeConcreteAcientWall2) extends(LargeConcreteAcientWall)
+	var(model,"ca\structures\nav_pier\nav_pier_c2.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(BigTransferConveyor) extends(BigWall)
+	var(model,"a3\structures_f_enoch\industrial\mines\mine_01_conveyor_end_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(BigTransferConveyor2) extends(BigTransferConveyor)
+	var(model,"a3\structures_f_enoch\industrial\coalplant_01\coalplant_01_conveyor_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(MediumStoneWall) extends(BigWall)
 	var(name,"Каменная стена");
 	var(material,"MatStone");

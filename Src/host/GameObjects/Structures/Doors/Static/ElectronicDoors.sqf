@@ -80,6 +80,11 @@ class(GateCity) extends(ElectronicDeviceDoor)
 	getter_func(getCloseSoundParams,["doors\bulkhead_close" arg getRandomPitchInRange(0.6,1.3) arg null]);
 endclass
 
+editor_attribute("EditorGenerated")
+class(GateCity2) extends(GateCity)
+	var(model,"ml\ml_germogate\l19_police_germozatbor.p3d");
+endclass
+
 class(GateCity1) extends(GateCity)
 	var(model,"smg_metro_building\drugoe\smg_germozatvor1.p3d");
 	getter_func(animateData,[vec3(-1.8,-1.8,-2) arg 300]);

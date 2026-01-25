@@ -23,6 +23,16 @@ class(WoodenDoor) extends(DoorDynamic)
 endclass
 
 editor_attribute("EditorGenerated")
+class(WoodenSmallGate) extends(WoodenDoor)
+	var(model,"a3\structures_f_enoch\walls\wooden\woodenwall_03_s_gate_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(WoodenSmallGate2) extends(WoodenSmallGate)
+	var(model,"ca\structures\wall\wall_gate_wood1.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(WoodenGridDoor) extends(WoodenDoor)
 	var(model,"Land_GameProofFence_01_l_gate_F");
 	var(material,"MatWood");
@@ -42,4 +52,9 @@ class(WoodenDoubleDoor) extends(DoorDynamic)
 	var(serializedAnim,[-1 arg -1 arg -1 arg -1 arg -1 arg -1]);
 	getter_func(isWoodenDoor,true);
 	getter_func(canBreakDoor,true);
+endclass
+
+editor_attribute("EditorGenerated")
+class(WoodenDoubleDoor2) extends(WoodenDoubleDoor)
+	var(model,"ca\structures_e\wall\wall_l\wall_l1_gate_ep1.p3d");
 endclass

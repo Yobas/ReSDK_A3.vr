@@ -19,6 +19,28 @@ class(SmallPole) extends(Constructions)
 endclass
 
 editor_attribute("EditorGenerated")
+class(ConcreteArchPole) extends(SmallPole)
+	var(model,"a3\structures_f_exp\walls\concrete\concretewall_02_m_gate_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ConcreteArchPole2) extends(ConcreteArchPole)
+	var(model,"a3\structures_f_enoch\walls\brick\brickwall_03_l_gate_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(LuxuryConcretePole) extends(SmallPole)
+	var(model,"a3\structures_f_exp\walls\concrete\concretewall_02_m_pole_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ClayPillar) extends(SmallPole)
+	var(model,"ca\structures_e\wall\wall_l\wall_l3_pillar_ep1.p3d");
+	var(name,"Глинянная колонна");
+	var(material,"MatDirt");
+endclass
+
+editor_attribute("EditorGenerated")
 class(StonePole) extends(SmallPole)
 	var(model,"a3\structures_f_exp\cultural\basaltruins\basaltkerb_01_2m_f.p3d");
 endclass
@@ -34,6 +56,12 @@ class(WoodPole) extends(SmallPole)
 	var(desc,"Чтобы на нём оказаться - много ума не надо!");
 	var(model,"ca\structures\ruins\rubble_wood_girder.p3d");
 	var(material,"MatWood");
+endclass
+
+editor_attribute("EditorGenerated")
+class(WoodPole2) extends(WoodPole)
+	var(model,"a3\structures_f_enoch\industrial\materials\timberlog_05_f.p3d");
+	var(name,"Бревно");
 endclass
 
 editor_attribute("EditorGenerated")
@@ -96,8 +124,24 @@ class(ConcreteLongPole) extends(SmallPole)
 endclass
 
 editor_attribute("EditorGenerated")
+class(ConcreteSmallPole) extends(ConcreteLongPole)
+	var(model,"a3\structures_f_exp\walls\concrete\concretewall_01_l_pole_f.p3d");
+	var(name,"Бетонный столб");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ConcreteSmallPole2) extends(ConcreteSmallPole)
+	var(model,"a3\structures_f_exp\walls\concrete\concretewall_01_m_pole_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(ConcretePole) extends(ConcreteLongPole)
 	var(model,"ca\structures\wall\wall_indcnc_pole.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ConcretePole2) extends(ConcretePole)
+	var(model,"a3\structures_f_exp\walls\net\netfence_02_m_pole_f.p3d");
 endclass
 
 editor_attribute("EditorGenerated")
@@ -107,6 +151,16 @@ endclass
 
 class(BrickPole) extends(SmallPole)
 	var(model,"a3\structures_f_enoch\walls\brick\brickwall_03_l_pole_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(BrickPole4) extends(BrickPole)
+	var(model,"ca\structures\wall\wall_cbrk_corner.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(BrickPole3) extends(BrickPole)
+	var(model,"a3\structures_f_enoch\walls\brick\brickwall_04_l_pole_old_f.p3d");
 endclass
 
 class(BrickPole1) extends(BrickPole)

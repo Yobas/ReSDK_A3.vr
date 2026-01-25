@@ -18,6 +18,13 @@ class(BasicPipe) extends(Constructions)
 	var(dr,2);
 endclass
 
+editor_attribute("EditorGenerated")
+class(FurnacePipe) extends(BasicPipe)
+	var(model,"a3\structures_f_enoch\ruins\housechimney_ruin_01_f.p3d");
+	var(name,"Труба печи");
+	var(material,"MatBeton");
+endclass
+
 //Ржавые Индустриальные трубы (Коллекция похожих объектов)
 class(IndPipeGround) extends(BasicPipe)
 	var(model,"ca\buildings2\ind_pipeline\indpipe1\indpipe1_ground.p3d");
@@ -183,4 +190,8 @@ endclass
 editor_attribute("EditorGenerated")
 class(BigConcretePipe) extends(BasicPipe)
 	var(model,"ca\structures_e\misc\misc_construction\misc_concpipeline_ep1.p3d");
+endclass
+editor_attribute("EditorGenerated")
+class(BigConcretePipe2) extends(BigConcretePipe)
+	var(model,"a3\structures_f\civ\constructions\concretepipe_f.p3d");
 endclass

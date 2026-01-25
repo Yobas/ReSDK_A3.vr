@@ -17,6 +17,16 @@ class(BigRuins) extends(BigConstructions)
 endclass
 
 editor_attribute("EditorGenerated")
+class(LargeSteelShedRuins) extends(BigRuins)
+	var(model,"a3\structures_f\ind\concretemixingplant\cmp_shed_ruins_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(GreenBrickWallDestroyed) extends(BigRuins)
+	var(model,"ca\structures\castle\a_castle_wall1_20_ruins.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(MediumStoneHouseRuins) extends(BigRuins)
 	var(model,"a3\structures_f_argo\civilian\stone_shed_01\stone_shed_01_b_raw_ruins_f.p3d");
 	var(name,"Руины");

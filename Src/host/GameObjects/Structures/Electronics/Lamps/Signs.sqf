@@ -48,6 +48,24 @@ class(SignTableKabak) extends(IStruct)
 	var(dr,1);
 endclass
 
+editor_attribute("EditorGenerated")
+class(SignTableKuznya) extends(SignTableKabak)
+	var(model,"ml\ml_object_new\model_05\kyznya.p3d");
+	var(name,"Кузня");
+	var(material,"MatMetal");
+endclass
+
+editor_attribute("EditorGenerated")
+class(SignTableGostinitca) extends(SignTableKabak)
+	var(model,"ca\signs2\signb_pub_ru3.p3d");
+	var(name,"Гостиница");
+endclass
+
+editor_attribute("EditorGenerated")
+class(SignTableGostinitca2) extends(SignTableGostinitca)
+	var(model,"ca\signs2\signb_pub_ru2.p3d");
+endclass
+
 
 //крест лекарни
 class(SignMedical) extends(SignBar)

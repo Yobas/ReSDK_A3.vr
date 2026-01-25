@@ -22,6 +22,12 @@ class(InterierProp) extends(SmallDecorations)
 	var(material,"MatGlass");
 endclass
 
+editor_attribute("EditorGenerated")
+class(Wheelcart) extends(InterierProp)
+	var(model,"a3\structures_f\civ\constructions\wheelcart_f.p3d");
+	var(name,"Телега");
+endclass
+
 class(Vase) extends(InterierProp) 
 	var(name,"Великолепная ваза");
 	var(desc,"Потрясающее изделие невиданной красоты");
@@ -173,6 +179,11 @@ class(SmallSign) extends(SmallDecorations)
 	var(material,"MatWood");
 	getterconst_func(getCoefAutoWeight,50);
 	var(dr,1);
+endclass
+
+editor_attribute("EditorGenerated")
+class(SmallVentilationGrate) extends(SmallSign)
+	var(model,"metro_ob\model\l19_cell_type_03.p3d");
 endclass
 
 editor_attribute("EditorGenerated")
@@ -354,4 +365,8 @@ endclass
 editor_attribute("EditorGenerated")
 class(OldTombstoneGrave) extends(OldTombstone)
 	var(model,"a3\structures_f_exp\cultural\cemeteries\grave_07_f.p3d");
+endclass
+editor_attribute("EditorGenerated")
+class(OldTombstoneGrave2) extends(OldTombstoneGrave)
+	var(model,"a3\structures_f_exp\cultural\cemeteries\grave_04_f.p3d");
 endclass

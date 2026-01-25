@@ -19,6 +19,12 @@ class(SmallGarbage) extends(Constructions)
 endclass
 
 editor_attribute("EditorGenerated")
+class(MetalDestroyedBarrel1) extends(SmallGarbage)
+	var(name,"Сломанная бочка");
+	var(model,"a3\props_f_enoch\military\garbage\garbagebarrel_02_buried_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(ConcreteGarbage) extends(SmallGarbage)
 	var(model,"ca\structures\ruins\rubble_concrete_03.p3d");
 	var(material,"MatBeton");

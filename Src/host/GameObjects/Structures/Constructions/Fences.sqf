@@ -19,6 +19,85 @@ class(SmallFence) extends(Constructions)
 endclass
 
 editor_attribute("EditorGenerated")
+class(WoodenMediumFence) extends(SmallFence)
+	var(model,"ml_shabut\exodus\woodzaborka.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ConcreteFence) extends(SmallFence)
+	var(model,"a3\structures_f_exp\walls\concrete\concretewall_02_m_4m_f.p3d");
+	var(material,"MatBeton");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ConcreteFenceSmall) extends(ConcreteFence)
+	var(model,"a3\structures_f_exp\walls\concrete\concretewall_02_m_2m_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ConcreteFenceLong) extends(ConcreteFence)
+	var(model,"a3\structures_f_exp\walls\concrete\concretewall_02_m_8m_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ConcreteFenceDamaged) extends(ConcreteFence)
+	var(model,"a3\structures_f_exp\walls\concrete\concretewall_02_m_d_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(PipeFence) extends(SmallFence)
+	var(model,"a3\structures_f_exp\walls\pipe\pipefence_02_s_4m_f.p3d");
+	var(material,"MatMetal");
+endclass
+
+editor_attribute("EditorGenerated")
+class(PipeFenceLong) extends(PipeFence)
+	var(model,"a3\structures_f_exp\walls\pipe\pipefence_02_s_8m_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(PolesWithRopeFence) extends(SmallFence)
+	var(name,"Ограда");
+	var(model,"a3\structures_f_exp\walls\polewalls\polewall_01_3m_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(MediumPolesWithRopeFence) extends(PolesWithRopeFence)
+	var(model,"a3\structures_f_exp\walls\polewalls\polewall_01_6m_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ConcreteFenceWithBars) extends(SmallFence)
+	var(name,"Бетонная ограда");
+	var(model,"a3\structures_f_exp\walls\pipe\pipefence_01_m_4m_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ConcreteFenceWithBarsSmall) extends(ConcreteFenceWithBars)
+	var(model,"a3\structures_f_exp\walls\pipe\pipefence_01_m_2m_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ConcreteFenceWithBarsDamaged) extends(ConcreteFenceWithBars)
+	var(model,"a3\structures_f_exp\walls\pipe\pipefence_01_m_d_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(BrickLightMiniwall) extends(SmallFence)
+	var(model,"ca\structures\wall\wall_cgrylow_5.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(BrickLightMiniwallPart) extends(BrickLightMiniwall)
+	var(model,"ca\structures\wall\wall_cgrylow_end2.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(BrickLightMiniwallPart2) extends(BrickLightMiniwallPart)
+	var(model,"ca\structures\wall\wall_cgrylow_end1.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(SmallCornerFenceMadeOfJunk) extends(SmallFence)
 	var(model,"ml_shabut\ferrum\xlamfence2.p3d");
 	var(name,"Забор");
@@ -49,6 +128,11 @@ class(RustyCell) extends(SmallFence)
 	var(model,"ml_shabut\exodus\kaleetka.p3d");
 	var(material,"MatMetal");
 	var(dr,2);
+endclass
+
+editor_attribute("EditorGenerated")
+class(RustySmallCell) extends(RustyCell)
+	var(model,"ml_shabut\kapeze\reshetow.p3d");
 endclass
 
 editor_attribute("EditorGenerated")
@@ -136,6 +220,21 @@ class(TinFence) extends(SmallFence)
 endclass
 
 editor_attribute("EditorGenerated")
+class(TinFenceSmall) extends(TinFence)
+	var(model,"a3\structures_f_exp\walls\backalleys\backalley_02_l_1m_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(TinyTinFence) extends(TinFence)
+	var(model,"a3\structures_f_exp\walls\slum\slumwall_01_s_4m_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(TinyTinFenceSmall) extends(TinyTinFence)
+	var(model,"a3\structures_f_exp\walls\slum\slumwall_01_s_2m_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(SheetMetalTinFence) extends(TinFence)
 	var(model,"ml_exodusnew\zhelezodozz.p3d");
 	var(material,"MatMetal");
@@ -153,4 +252,11 @@ class(MedicalCurtainSmall) extends(SmallFence)
 	var(name,"Ширма");
 	var(material,"MatCloth");
 	getter_func(isMovable,true);
+endclass
+
+editor_attribute("EditorGenerated")
+class(SteelCurtainSmall) extends(MedicalCurtainSmall)
+	var(model,"ml_shabut\zhel_panel\zhel_panel.p3d");
+	var(name,"Железный занавес");
+	var(material,"MatMetal");
 endclass

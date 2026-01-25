@@ -299,6 +299,21 @@ class(ElectricalShield) extends(ElectronicDeviceNode)
 
 endclass
 
+editor_attribute("EditorGenerated")
+class(ElectricalShieldSmall2) extends(ElectricalShield)
+	var(model,"metro_ob\model\big_box.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ElectricalShieldBlock) extends(ElectricalShield)
+	var(model,"ml_exodusnew\svetonychka\svetonychka.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ElectricalShieldRed) extends(ElectricalShield)
+	var(model,"ml_shabut\elboxxx\elbox.p3d");
+endclass
+
 class(ElectricalShieldSmall) extends(ElectricalShield)
 	var(model,"ml\ml_object_new\model_24\transformator.p3d");
 endclass

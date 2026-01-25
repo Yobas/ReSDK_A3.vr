@@ -73,6 +73,11 @@ class(SteelArmoredDoor) extends(DoorDynamic)
 	
 endclass
 
+editor_attribute("EditorGenerated")
+class(SteelArmoredDoor3) extends(SteelArmoredDoor)
+	var(model,"apalon\metro_a3\bronedwerks\skurwysyn.p3d");
+endclass
+
 class(SteelArmoredDoor2) extends(SteelArmoredDoor)
 	var(desc,"Массивная стальная дверь");
 	getter_func(animateData,[["reshotks" arg 2.5 arg 5] arg vec3("plomba5",1.78,1.4)]);
@@ -85,6 +90,11 @@ class(SteelLatticeGate) extends(DoorDynamic)
 	getter_func(animateData,[["door_1_rot" arg 2.5 arg ifcheck(!getSelf(isOpen),1.5,0.5)] arg ["door_2_rot" arg 2.5 arg ifcheck(!getSelf(isOpen),1.5,0.5)]]);
 	var(serializedAnim,[-1 arg -1 arg -1 arg -1 arg -1 arg -1]);
 	var(material,"MatMetal");
+endclass
+
+editor_attribute("EditorGenerated")
+class(NetfenceGate) extends(SteelLatticeGate)
+	var(model,"a3\structures_f_exp\walls\net\netfence_01_m_gate_f.p3d");
 endclass
 
 class(TinGate) extends(DoorDynamic)

@@ -19,6 +19,16 @@ class(SmallDirtPile) extends(Constructions)
 endclass
 
 editor_attribute("EditorGenerated")
+class(SmallLightDirtPile) extends(SmallDirtPile)
+	var(model,"ca\structures_e\wall\wall_l\wall_l4_10m_ep1.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(MediumLightDirtPile) extends(SmallLightDirtPile)
+	var(model,"ca\structures_e\wall\wall_l\wall_l5_10m_ep1.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(MediumStonePile) extends(SmallDirtPile)
 	var(model,"ca\structures\ruins\rubble_rocks_01.p3d");
 endclass
@@ -76,6 +86,11 @@ endclass
 editor_attribute("EditorGenerated")
 class(DirtCraterLong) extends(SmallDirtPile)
 	var(model,"a3\structures_f_enoch\military\training\craterlong_02_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(DirtCraterBrownLong) extends(DirtCraterLong)
+	var(model,"a3\data_f\particleeffects\craterlong\craterlong.p3d");
 endclass
 
 editor_attribute("EditorGenerated")

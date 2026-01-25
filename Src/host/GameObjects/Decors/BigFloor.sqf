@@ -19,3 +19,7 @@ editor_attribute("EditorGenerated")
 class(BigConcreteFloor) extends(BigFloor)
 	var(model,"ca\structures\rail\rail_misc\rail_najazdovarampa.p3d");
 endclass
+editor_attribute("EditorGenerated")
+class(BigConcreteFloor2) extends(BigConcreteFloor)
+	var(model,"csa_constr\csa_obj\pod_18x18.p3d");
+endclass

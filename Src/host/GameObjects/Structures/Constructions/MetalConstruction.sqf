@@ -19,6 +19,35 @@ class(MetalConstruction) extends(Constructions)
 endclass
 
 editor_attribute("EditorGenerated")
+class(PipeSupport) extends(MetalConstruction)
+	var(model,"a3\structures_f\ind\pipes\indpipe2_big_support_f.p3d");
+	var(name,"Железяка");
+endclass
+
+editor_attribute("EditorGenerated")
+class(LargeTrashCan) extends(MetalConstruction)
+	var(material,"MatMetal");
+	var(model,"ml\ml_object_new\model_14_10\mysorka.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(MetalMinitrain) extends(MetalConstruction)
+	var(model,"ml\ml_object_new\model_14_10\d6train.p3d");
+	var(name,"Катун");
+endclass
+
+editor_attribute("EditorGenerated")
+class(SteelBarrelWheels) extends(MetalConstruction)
+	var(model,"a3\structures_f_enoch\wrecks\trailercistern_wreck_f.p3d");
+	var(name,"Бочка");
+endclass
+
+editor_attribute("EditorGenerated")
+class(WoodenSmallGate3) extends(MetalConstruction)
+	var(model,"a3\structures_f_enoch\walls\wooden\woodenwall_04_s_gate_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(SteamBarrel) extends(MetalConstruction)
 	var(model,"ml_shabut\exodus\baloonexo.p3d");
 	var(name,"Паровик");

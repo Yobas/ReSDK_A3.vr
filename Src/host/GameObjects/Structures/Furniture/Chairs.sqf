@@ -68,6 +68,11 @@ class(OldLightToilet) extends(OldGreenToiletBowl)
 endclass
 
 editor_attribute("EditorGenerated")
+class(OldLightToilet2) extends(OldLightToilet)
+	var(model,"ca\buildings\furniture\toilet_b.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(BrownOldArmchair) extends(IChair)
 	var(model,"ml\ml_object_new\model_14_10\kreslo.p3d");
 	getter_func(getChairOffsetPos,[0 arg 0.3 arg -0.5]);
@@ -95,6 +100,11 @@ class(ArmChair) extends(IChair)
 	getterconst_func(getChairOffsetPos,vec3(0,0,-0.5));
 	getterconst_func(restBias,vec3(0,0.68,0));
 	var(model,"a3\props_f_orange\furniture\armchair_01_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ArmChair2) extends(ArmChair)
+	var(model,"ml_exodusnew\kreslishko.p3d");
 endclass
 
 class(ArmChairBrown) extends(IChair)
@@ -200,4 +210,10 @@ class(Bath) extends(IChair)
 		callSelfParams(playSound,"reagents\sink.ogg" arg getRandomPitchInRange(0.9,1.3));
 	};
 
+endclass
+
+editor_attribute("EditorGenerated")
+class(DrinkingBowl) extends(Bath)
+	var(model,"a3\structures_f_enoch\industrial\agriculture\trough_01_f.p3d");
+	var(name,"Поилка");
 endclass

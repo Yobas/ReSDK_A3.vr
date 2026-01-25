@@ -20,6 +20,16 @@ class(ShelfBase) extends(Furniture)
 endclass
 
 editor_attribute("EditorGenerated")
+class(ClosedWoodenBox) extends(ShelfBase)
+	var(model,"a3\props_f_exp\commercial\market\woodencrate_01_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(WoodenShelf) extends(ShelfBase)
+	var(model,"ml\ml_object_new\model_05\polka_2.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(Sink) extends(ShelfBase)
 	var(model,"ca\structures\furniture\bathroom\sink\sink.p3d");
 	var(name,"Раковина");
@@ -79,6 +89,11 @@ class(Sink) extends(ShelfBase)
 endclass
 
 editor_attribute("EditorGenerated")
+class(Sink2) extends(Sink)
+	var(model,"ca\structures\furniture\bathroom\basin_a\basin_a.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(Shower) extends(Sink)
 	var(model,"ml\ml_object_new\model_05\dysh.p3d");
 	var(name,"Мытьё");
@@ -135,4 +150,9 @@ class(Shelves) extends(ShelfBase)
 	var(material,"MatMetal");
 	var(name,"Полки");
 	getter_func(isMovable,true);
+endclass
+
+editor_attribute("EditorGenerated")
+class(Shelves2) extends(Shelves)
+	var(model,"ca\structures\furniture\cases\case_d\case_d.p3d");
 endclass

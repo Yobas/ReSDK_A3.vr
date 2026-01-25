@@ -60,3 +60,13 @@ class(MotherBunchOfShit) extends(BunchOfShit)
 	getterconst_func(getDesc,"Будто каменная засохшая однородная масса. Её не покопаешь...");
 	var(model,"a3\structures_f_enoch\military\training\shellcrater_02_small_f.p3d");
 endclass
+
+editor_attribute("EditorGenerated")
+class(MotherBunchOfShitBig2) extends(MotherBunchOfShit)
+	var(model,"a3\structures_f_enoch\military\training\shellcrater_02_extralarge_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(MotherBunchOfShitBig) extends(MotherBunchOfShit)
+	var(model,"a3\structures_f_enoch\military\training\shellcrater_02_large_f.p3d");
+endclass

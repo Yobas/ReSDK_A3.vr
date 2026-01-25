@@ -20,6 +20,12 @@ class(TableBase) extends(Furniture)
 endclass
 
 editor_attribute("EditorGenerated")
+class(SteelTableHandmade) extends(TableBase)
+	var(model,"ml\ml_object_new\ml_object_2\l00_intro_props\l01_tir_stol.p3d");
+	var(material,"MatMetal");
+endclass
+
+editor_attribute("EditorGenerated")
 class(Workbench) extends(TableBase)
 	var(model,"a3\structures_f_heli\furniture\workbench_01_f.p3d");
 	var(material,"MatMetal");
@@ -115,6 +121,17 @@ endclass
 editor_attribute("EditorGenerated")
 class(SmallWoodenTable) extends(MediumWoodenTable)
 	var(model,"a3\structures_f_epa\civ\camping\woodentable_small_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(SmallWoodenTable4) extends(SmallWoodenTable)
+	var(model,"ca\structures\furniture\tables\lobby_table\lobby_table.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ReadingWoodenTable) extends(SmallWoodenTable)
+	var(model,"ml\ml_object_new\model_14_10\stol.p3d");
+	var(name,"Читальный столик");
 endclass
 
 class(SmallWoodenTable1) extends(SmallWoodenTable)
