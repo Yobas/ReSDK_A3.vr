@@ -29,6 +29,8 @@
 
 #include "EscapeMenu.sqf"
 
+#include "EscapeMenu_inputsNative.sqf"
+
 #include "VersionViewer.sqf"
 
 #include "ClientData_ConnectionManager.sqf"
