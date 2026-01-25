@@ -15,6 +15,7 @@ namespace(Rendering,NULL)
 #include "RenderDistance.sqf"
 #include "Render_zpass.sqf"
 #include "Decals\Decals_init.sqf"
+#include "ViewDistance\vd_init.sqf"
 
 #include "Render_debug.sqf"
 
