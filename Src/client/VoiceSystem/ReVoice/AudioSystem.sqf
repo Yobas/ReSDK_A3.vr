@@ -162,7 +162,7 @@ vs_audio_playSound3d = {
 			
 			_lowp call vs_audio_setLowpassEffect;
 			_reverb call vs_audio_setReverbEffect;
-			traceformat("[%3] lowp: %1, reverb: %2",_lowp arg _reverb arg _obj);
+			//traceformat("[%3] lowp: %1, reverb: %2",_lowp arg _reverb arg _obj);
 			false
 		},
 		{},
