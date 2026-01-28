@@ -51,13 +51,6 @@ class(MediumPileOfDirtAndStones) extends(SmallDirtPile)
 endclass
 
 editor_attribute("EditorGenerated")
-class(SmallGrayStone) extends(SmallDirtPile)
-	var(model,"ca\rocks2\r2_stone.p3d");
-	var(name,"Маленький камень");
-	var(material,"MatStone");
-endclass
-
-editor_attribute("EditorGenerated")
 class(Grave) extends(SmallDirtPile)
 	var(model,"a3\structures_f_enoch\cultural\cemeteries\grave_11_f.p3d");
 	var(name,"Могила");

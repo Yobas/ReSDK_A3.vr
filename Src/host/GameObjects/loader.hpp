@@ -71,6 +71,7 @@ loadFile("src\host\GameObjects\Items\Captives\CaptiveBase.sqf");
 loadFile("src\host\GameObjects\Structures\IStruct.sqf");
 loadFile("src\host\GameObjects\Structures\Constructions\Construction.sqf");
 	loadFile("src\host\GameObjects\Structures\Constructions\DirtPiles.sqf");
+	loadFile("src\host\GameObjects\Structures\Constructions\Stones.sqf");
 	loadFile("src\host\GameObjects\Structures\Constructions\Fences.sqf");
 	loadFile("src\host\GameObjects\Structures\Constructions\Floors.sqf");
 	loadFile("src\host\GameObjects\Structures\Constructions\Rails.sqf");

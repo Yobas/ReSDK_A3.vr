@@ -53,14 +53,6 @@ class(MediumBarrelGarbage) extends(SmallGarbage)
 endclass
 
 editor_attribute("EditorGenerated")
-class(SmallStoneFragments) extends(SmallGarbage)
-	var(model,"a3\rocks_f_argo\limestone\limestone_01_erosion_f.p3d");
-	var(name,"Камни"); 
-	var(desc,"Просто камни");
-	var(material,"MatStone");
-endclass
-
-editor_attribute("EditorGenerated")
 class(MediumFireGarbagePile) extends(SmallGarbage)
 	var(model,"ml_shabut\exodus\pozharishe.p3d");
 endclass
