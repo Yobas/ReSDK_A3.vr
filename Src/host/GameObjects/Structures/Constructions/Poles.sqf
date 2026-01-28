@@ -41,6 +41,11 @@ class(ClayPillar) extends(SmallPole)
 endclass
 
 editor_attribute("EditorGenerated")
+class(ClayPillarDestroyed) extends(ClayPillar)
+	var(model,"ca\structures_e\wall\wall_l\wall_l3_pillar_ruins_ep1.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(StonePole) extends(SmallPole)
 	var(model,"a3\structures_f_exp\cultural\basaltruins\basaltkerb_01_2m_f.p3d");
 endclass

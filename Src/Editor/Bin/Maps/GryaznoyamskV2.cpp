@@ -8,18 +8,18 @@ class EditorData
 	toggles=42;
 	class ItemIDProvider
 	{
-		nextID=15299;
+		nextID=15307;
 	};
 	class LayerIndexProvider
 	{
-		nextID=3186;
+		nextID=3269;
 	};
 	class Camera
 	{
-		pos[]={4009.8491,34.812645,3983.3015};
-		dir[]={-0.89690179,-0.44162244,-0.028245484};
-		up[]={-0.44156763,0.89711279,-0.013903879};
-		aside[]={-0.031474505,-3.3646211e-06,0.99961513};
+		pos[]={4010.0105,38.519604,3987.3989};
+		dir[]={0.80213809,-0.44307047,0.40064639};
+		up[]={0.39648098,0.8963989,0.19803549};
+		aside[]={0.44689134,-1.3156096e-06,-0.89471394};
 	};
 };
 binarizationWanted=0;
@@ -7925,7 +7925,7 @@ class Mission
 									side="Empty";
 									class Attributes
 									{
-										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\water\stonesharp_big_w.p3d""]]],[""class"",""IStruct""]]}";
+										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigGrayRockGeneral4""]]}";
 									};
 									id=14875;
 									type="Land_StoneSharp_big_W";
@@ -16394,7 +16394,7 @@ class Mission
 								};
 							};
 							id=8192;
-							atlOffset=0.3073864;
+							atlOffset=0.65296173;
 						};
 						class Item1
 						{
@@ -18699,7 +18699,7 @@ class Mission
 								};
 							};
 							id=11644;
-							atlOffset=0.97735596;
+							atlOffset=0.62461853;
 						};
 						class Item3
 						{
@@ -32772,7 +32772,7 @@ class Mission
 						};
 					};
 					id=8191;
-					atlOffset=0.90663528;
+					atlOffset=0.90212631;
 				};
 				class Item4
 				{
@@ -37819,7 +37819,7 @@ class Mission
 						};
 					};
 					id=8348;
-					atlOffset=0.90060425;
+					atlOffset=1.8968372;
 				};
 				class Item7
 				{
@@ -41746,7 +41746,7 @@ class Mission
 						};
 					};
 					id=8351;
-					atlOffset=1.6903419;
+					atlOffset=0.22019958;
 				};
 				class Item9
 				{
@@ -46995,7 +46995,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\structures_e\wall\wall_l\wall_l3_5m_ruins_ep1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigLuxuryClayWallPile""]]}";
 							};
 							id=8676;
 							type="CUP_A2_l3_5m_ruins_ep1";
@@ -47012,7 +47012,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\structures_e\wall\wall_l\wall_l_mosque_1_ruins_ep1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""ClayWallpartThickDamaged""]]}";
 							};
 							id=8677;
 							type="CUP_A2_mosque_1_ruins_ep1";
@@ -47029,7 +47029,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\structures_e\wall\wall_l\wall_l3_pillar_ruins_ep1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""ClayPillarDestroyed""]]}";
 							};
 							id=8679;
 							type="CUP_A2_l3_pillar_ruins_ep1";
@@ -51015,7 +51015,7 @@ class Mission
 						};
 					};
 					id=8353;
-					atlOffset=0.20961761;
+					atlOffset=0.31962967;
 				};
 				class Item11
 				{
@@ -51071,7 +51071,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntrock_apart.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumBrownRock""]]}";
 							};
 							id=8002;
 							type="Land_BluntRock_apart";
@@ -55139,7 +55139,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntrock_apart.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumBrownRock""]]}";
 							};
 							id=4822;
 							type="Land_BluntRock_apart";
@@ -55157,7 +55157,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments3""]]}";
 							};
 							id=4831;
 							type="Land_BluntStones_erosion";
@@ -55174,7 +55174,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments3""]]}";
 							};
 							id=4820;
 							type="Land_BluntStones_erosion";
@@ -55280,7 +55280,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments3""]]}";
 							};
 							id=4832;
 							type="Land_BluntStones_erosion";
@@ -55898,7 +55898,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\structures_e\wall\wall_l\wall_l_mosque_2_ruins_ep1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""ClayWallpartThick2Damaged""]]}";
 							};
 							id=13068;
 							type="CUP_A2_mosque_2_ruins_ep1";
@@ -55915,7 +55915,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\structures_e\wall\wall_l\wall_l_mosque_1_ruins_ep1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""ClayWallpartThickDamaged""]]}";
 							};
 							id=13067;
 							type="CUP_A2_mosque_1_ruins_ep1";
@@ -74905,7 +74905,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\buildings2\houseblocks\houseblock_c\houseblock_c5_ruins.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""WhiteDestroyedHouse""]]}";
 							};
 							id=14511;
 							type="CUP_A2_houseblock_c5_ruins";
@@ -74923,7 +74923,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\buildings2\houseblocks\houseblock_a\houseblock_a3_ruins.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""WhiteDestroyedHouse2""]]}";
 							};
 							id=14515;
 							type="CUP_A2_houseblock_a3_ruins";
@@ -74941,7 +74941,7 @@ class Mission
 							flags=5;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\structures_f_enoch\ruins\houseruin_big_05_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""WhiteDestroyedHouse3""]]}";
 							};
 							id=14524;
 							type="Land_HouseRuin_Big_05_F";
@@ -75030,7 +75030,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\structures_e\housec\house_c_4_ruins_ep1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumSquareHouseRuins""]]}";
 							};
 							id=14521;
 							type="CUP_A2_house_c_4_ruins_ep1";
@@ -75047,7 +75047,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\buildings2\houseblocks\houseblock_c\houseblock_c5_ruins.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""WhiteDestroyedHouse""]]}";
 							};
 							id=14510;
 							type="CUP_A2_houseblock_c5_ruins";
@@ -75065,7 +75065,7 @@ class Mission
 							flags=1;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\structures_f\ind\factory\factory_main_ruins_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LargeYellowHouseRuin""]]}";
 							};
 							id=14519;
 							type="Land_Factory_Main_ruins_F";
@@ -75118,7 +75118,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\buildings2\houseblocks\houseblock_d\houseblock_d1_ruins.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""WhiteDestroyedHouse4""]]}";
 							};
 							id=14513;
 							type="CUP_A2_houseblock_d1_ruins";
@@ -76003,7 +76003,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_enoch\r_rock_general1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigGrayRockGeneral""]]}";
 							};
 							id=14602;
 							type="Land_R_rock_general1";
@@ -76021,7 +76021,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_enoch\r_rock_general1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigGrayRockGeneral""]]}";
 							};
 							id=14603;
 							type="Land_R_rock_general1";
@@ -76038,7 +76038,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_enoch\r_rock_general1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigGrayRockGeneral""]]}";
 							};
 							id=14604;
 							type="Land_R_rock_general1";
@@ -76056,7 +76056,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_enoch\r_rock_general1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigGrayRockGeneral""]]}";
 							};
 							id=14606;
 							type="Land_R_rock_general1";
@@ -76073,7 +76073,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_enoch\r_rock_general1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigGrayRockGeneral""]]}";
 							};
 							id=14607;
 							type="Land_R_rock_general1";
@@ -76269,7 +76269,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\sharp\sharpstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments4""]]}";
 							};
 							id=14669;
 							type="Land_SharpStones_erosion";
@@ -76287,7 +76287,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\sharp\sharpstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments4""]]}";
 							};
 							id=14670;
 							type="Land_SharpStones_erosion";
@@ -76305,7 +76305,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\sharp\sharpstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments4""]]}";
 							};
 							id=14671;
 							type="Land_SharpStones_erosion";
@@ -76323,7 +76323,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\sharp\sharpstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments4""]]}";
 							};
 							id=14672;
 							type="Land_SharpStones_erosion";
@@ -76340,7 +76340,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\sharp\sharpstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments4""]]}";
 							};
 							id=14673;
 							type="Land_SharpStones_erosion";
@@ -76358,7 +76358,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\sharp\sharpstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments4""]]}";
 							};
 							id=14674;
 							type="Land_SharpStones_erosion";
@@ -76375,7 +76375,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_exp\lavastones\lavastonecluster_large_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumStoneFragments3""]]}";
 							};
 							id=14675;
 							type="Land_LavaStoneCluster_large_F";
@@ -76392,7 +76392,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_exp\lavastones\lavastonecluster_large_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumStoneFragments3""]]}";
 							};
 							id=14676;
 							type="Land_LavaStoneCluster_large_F";
@@ -76410,7 +76410,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_exp\lavastones\lavastonecluster_small_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumStoneFragments""]]}";
 							};
 							id=14677;
 							type="Land_LavaStoneCluster_small_F";
@@ -76427,7 +76427,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_exp\lavastones\lavastonecluster_small_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumStoneFragments""]]}";
 							};
 							id=14678;
 							type="Land_LavaStoneCluster_small_F";
@@ -76444,7 +76444,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_exp\lavastones\lavastonecluster_small_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumStoneFragments""]]}";
 							};
 							id=14679;
 							type="Land_LavaStoneCluster_small_F";
@@ -76462,7 +76462,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_exp\lavastones\lavastonecluster_small_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumStoneFragments""]]}";
 							};
 							id=14680;
 							type="Land_LavaStoneCluster_small_F";
@@ -76480,7 +76480,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_exp\lavastones\lavastonecluster_small_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumStoneFragments""]]}";
 							};
 							id=14681;
 							type="Land_LavaStoneCluster_small_F";
@@ -76497,7 +76497,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments3""]]}";
 							};
 							id=14682;
 							type="Land_BluntStones_erosion";
@@ -76514,7 +76514,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments3""]]}";
 							};
 							id=14683;
 							type="Land_BluntStones_erosion";
@@ -76531,7 +76531,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments3""]]}";
 							};
 							id=14684;
 							type="Land_BluntStones_erosion";
@@ -76547,7 +76547,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments3""]]}";
 							};
 							id=14685;
 							type="Land_BluntStones_erosion";
@@ -76564,7 +76564,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments3""]]}";
 							};
 							id=14686;
 							type="Land_BluntStones_erosion";
@@ -76580,7 +76580,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments3""]]}";
 							};
 							id=14687;
 							type="Land_BluntStones_erosion";
@@ -76597,7 +76597,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments3""]]}";
 							};
 							id=14688;
 							type="Land_BluntStones_erosion";
@@ -76614,7 +76614,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments3""]]}";
 							};
 							id=14689;
 							type="Land_BluntStones_erosion";
@@ -76631,7 +76631,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments3""]]}";
 							};
 							id=14690;
 							type="Land_BluntStones_erosion";
@@ -76649,7 +76649,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments3""]]}";
 							};
 							id=14691;
 							type="Land_BluntStones_erosion";
@@ -76667,7 +76667,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\water\w_sharpstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments2""]]}";
 							};
 							id=14692;
 							type="Land_W_sharpStones_erosion";
@@ -76685,7 +76685,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\water\w_sharpstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments2""]]}";
 							};
 							id=14693;
 							type="Land_W_sharpStones_erosion";
@@ -76702,7 +76702,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\water\w_sharpstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments2""]]}";
 							};
 							id=14694;
 							type="Land_W_sharpStones_erosion";
@@ -76720,7 +76720,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\water\w_sharpstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments2""]]}";
 							};
 							id=14695;
 							type="Land_W_sharpStones_erosion";
@@ -76738,7 +76738,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\water\w_sharpstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments2""]]}";
 							};
 							id=14696;
 							type="Land_W_sharpStones_erosion";
@@ -76756,7 +76756,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\water\w_sharpstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments2""]]}";
 							};
 							id=14697;
 							type="Land_W_sharpStones_erosion";
@@ -76774,7 +76774,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\water\w_sharpstones_erosion.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments2""]]}";
 							};
 							id=14698;
 							type="Land_W_sharpStones_erosion";
@@ -76792,7 +76792,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_exp\cliff\cliff_stonecluster_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments5""]]}";
 							};
 							id=14699;
 							type="Land_Cliff_stoneCluster_F";
@@ -76810,7 +76810,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_exp\cliff\cliff_stonecluster_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments5""]]}";
 							};
 							id=14700;
 							type="Land_Cliff_stoneCluster_F";
@@ -76827,7 +76827,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_exp\cliff\cliff_stonecluster_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments5""]]}";
 							};
 							id=14701;
 							type="Land_Cliff_stoneCluster_F";
@@ -76845,7 +76845,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_exp\cliff\cliff_stonecluster_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments5""]]}";
 							};
 							id=14702;
 							type="Land_Cliff_stoneCluster_F";
@@ -76861,7 +76861,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_exp\cliff\cliff_stonecluster_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments5""]]}";
 							};
 							id=14703;
 							type="Land_Cliff_stoneCluster_F";
@@ -76878,7 +76878,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_exp\cliff\cliff_stonecluster_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallStoneFragments5""]]}";
 							};
 							id=14704;
 							type="Land_Cliff_stoneCluster_F";
@@ -77786,7 +77786,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\small_stone_01_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumGrayStone""]]}";
 							};
 							id=14770;
 							type="Land_Small_Stone_01_F";
@@ -77803,7 +77803,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\water\stonesharp_small_w.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumStoneFragments4""]]}";
 							};
 							id=14775;
 							type="Land_StoneSharp_small_W";
@@ -77821,7 +77821,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\water\stonesharp_medium_w.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigGrayRockGeneral3""]]}";
 							};
 							id=14782;
 							type="Land_StoneSharp_medium_W";
@@ -77838,7 +77838,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\water\stonesharp_big_w.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigGrayRockGeneral4""]]}";
 							};
 							id=14783;
 							type="Land_StoneSharp_big_W";
@@ -77855,7 +77855,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\stonesharp_wall.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigStonesharpWall""]]}";
 							};
 							id=14784;
 							type="Land_StoneSharp_wall";
@@ -77872,7 +77872,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\stonesharp_medium.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigGrayRockGeneral2""]]}";
 							};
 							id=14786;
 							type="Land_StoneSharp_medium";
@@ -77889,7 +77889,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\stonesharp_small.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumStoneFragments2""]]}";
 							};
 							id=14787;
 							type="Land_StoneSharp_small";
@@ -77906,7 +77906,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\stonesharp_small.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumStoneFragments2""]]}";
 							};
 							id=14788;
 							type="Land_StoneSharp_small";
@@ -77924,7 +77924,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\stone_small_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumGrayStone2""]]}";
 							};
 							id=14789;
 							type="Land_Stone_small_F";
@@ -77941,7 +77941,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\stone_small_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumGrayStone2""]]}";
 							};
 							id=14790;
 							type="Land_Stone_small_F";
@@ -77959,7 +77959,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\small_stone_01_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumGrayStone""]]}";
 							};
 							id=14792;
 							type="Land_Small_Stone_01_F";
@@ -77977,7 +77977,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\small_stone_01_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumGrayStone""]]}";
 							};
 							id=14794;
 							type="Land_Small_Stone_01_F";
@@ -77994,7 +77994,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_enoch\r_rock_general1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigGrayRockGeneral""]]}";
 							};
 							id=14795;
 							type="Land_R_rock_general1";
@@ -78272,7 +78272,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\water\stonesharp_big_w.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigGrayRockGeneral4""]]}";
 							};
 							id=14871;
 							type="Land_StoneSharp_big_W";
@@ -78289,7 +78289,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f_enoch\r_rock_general1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigGrayRockGeneral""]]}";
 							};
 							id=14872;
 							type="Land_R_rock_general1";
@@ -78644,11 +78644,11 @@ class Mission
 								};
 							};
 							id=14913;
-							atlOffset=0.030767441;
+							atlOffset=0.030771255;
 						};
 					};
 					id=14912;
-					atlOffset=0.030767441;
+					atlOffset=0.030771255;
 				};
 				class Item21
 				{
@@ -80507,11 +80507,11 @@ class Mission
 						};
 					};
 					id=15231;
-					atlOffset=7.3991127;
+					atlOffset=0.29787445;
 				};
 			};
 			id=6726;
-			atlOffset=0.29107475;
+			atlOffset=23.38332;
 		};
 		class Item6
 		{
@@ -85339,7 +85339,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\buildings2\houseblocks\houseblock_c\houseblock_c5_ruins.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""WhiteDestroyedHouse""]]}";
 							};
 							id=6155;
 							type="CUP_A2_houseblock_c5_ruins";
@@ -85356,7 +85356,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\buildings2\houseblocks\houseblock_c\houseblock_c5_ruins.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""WhiteDestroyedHouse""]]}";
 							};
 							id=6156;
 							type="CUP_A2_houseblock_c5_ruins";
@@ -88651,7 +88651,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\structures_e\wall\wall_l\wall_l3_5m_ruins_ep1.p3d""]]],[""class"",""IStruct""]]}";
+						init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""BigLuxuryClayWallPile""]]}";
 					};
 					id=8597;
 					type="CUP_A2_l3_5m_ruins_ep1";
@@ -88667,7 +88667,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\structures_e\wall\wall_l\wall_l_mosque_1_ruins_ep1.p3d""]]],[""class"",""IStruct""]]}";
+						init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""ClayWallpartThickDamaged""]]}";
 					};
 					id=8603;
 					type="CUP_A2_mosque_1_ruins_ep1";
@@ -88750,7 +88750,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\structures_e\wall\wall_l\wall_l3_pillar_ruins_ep1.p3d""]]],[""class"",""IStruct""]]}";
+						init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""ClayPillarDestroyed""]]}";
 					};
 					id=8615;
 					type="CUP_A2_l3_pillar_ruins_ep1";
@@ -89037,7 +89037,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\structures_e\wall\wall_l\wall_l_mosque_2_ruins_ep1.p3d""]]],[""class"",""IStruct""]]}";
+						init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""ClayWallpartThick2Damaged""]]}";
 					};
 					id=8611;
 					type="CUP_A2_mosque_2_ruins_ep1";
@@ -99476,7 +99476,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\rocks_f\blunt\bluntrock_apart.p3d""]]],[""class"",""IStruct""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumBrownRock""]]}";
 			};
 			id=7980;
 			type="Land_BluntRock_apart";

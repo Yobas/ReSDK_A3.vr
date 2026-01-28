@@ -394,8 +394,18 @@ class(ClayWallpartThick) extends(ClayWallSmall)
 endclass
 
 editor_attribute("EditorGenerated")
+class(ClayWallpartThickDamaged) extends(ClayWallpartThick)
+	var(model,"ca\structures_e\wall\wall_l\wall_l_mosque_1_ruins_ep1.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(ClayWallpartThick2) extends(ClayWallpartThick)
 	var(model,"ca\structures_e\wall\wall_l\wall_l_mosque_2_ep1.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(ClayWallpartThick2Damaged) extends(ClayWallpartThick2)
+	var(model,"ca\structures_e\wall\wall_l\wall_l_mosque_2_ruins_ep1.p3d");
 endclass
 
 editor_attribute("EditorGenerated")
@@ -406,6 +416,11 @@ endclass
 editor_attribute("EditorGenerated")
 class(BigLuxuryClayWall) extends(ClayWallSmall)
 	var(model,"ca\structures_e\wall\wall_l\wall_l3_5m_ep1.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(BigLuxuryClayWallPile) extends(BigLuxuryClayWall)
+	var(model,"ca\structures_e\wall\wall_l\wall_l3_5m_ruins_ep1.p3d");
 endclass
 
 editor_attribute("EditorGenerated")

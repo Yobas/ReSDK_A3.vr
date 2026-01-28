@@ -17,6 +17,36 @@ class(BigRuins) extends(BigConstructions)
 endclass
 
 editor_attribute("EditorGenerated")
+class(MediumSquareHouseRuins) extends(BigRuins)
+	var(model,"ca\structures_e\housec\house_c_4_ruins_ep1.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(LargeYellowHouseRuin) extends(BigRuins)
+	var(model,"a3\structures_f\ind\factory\factory_main_ruins_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(WhiteDestroyedHouse) extends(BigRuins)
+	var(model,"ca\buildings2\houseblocks\houseblock_c\houseblock_c5_ruins.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(WhiteDestroyedHouse4) extends(WhiteDestroyedHouse)
+	var(model,"ca\buildings2\houseblocks\houseblock_d\houseblock_d1_ruins.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(WhiteDestroyedHouse3) extends(WhiteDestroyedHouse)
+	var(model,"a3\structures_f_enoch\ruins\houseruin_big_05_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
+class(WhiteDestroyedHouse2) extends(WhiteDestroyedHouse)
+	var(model,"ca\buildings2\houseblocks\houseblock_a\houseblock_a3_ruins.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(LargeSteelShedRuins) extends(BigRuins)
 	var(model,"a3\structures_f\ind\concretemixingplant\cmp_shed_ruins_f.p3d");
 endclass
