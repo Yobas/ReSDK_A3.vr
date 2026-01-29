@@ -125,6 +125,11 @@ class(OldBrickWallMedium) extends(SmallWall)
 endclass
 
 editor_attribute("EditorGenerated")
+class(OldBrickWallMediumDamaged2) extends(OldBrickWallMedium)
+	var(model,"a3\structures_f_enoch\walls\brick\brickwall_04_l_5m_d_f.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(OldBrickWallMediumDamaged) extends(OldBrickWallMedium)
 	var(model,"a3\structures_f_enoch\ruins\housewallruin_door_01_f.p3d");
 endclass
