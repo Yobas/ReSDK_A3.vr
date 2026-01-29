@@ -131,11 +131,6 @@ class(GreenArmChair) extends(IChair)
 	getterconst_func(getChairOffsetDir,180);
 	var(model,"ml\ml_object_new\model_14_10\diwan.p3d");
 endclass
-	//EQUALS
-	editor_attribute("Deprecated" arg "Заменить на GreenArmChair. Будет удален с редактором 1.20")
-	class(GreenChair) extends(GreenArmChair)
-		var(model,"ml\ml_object_new\model_14_10\diwan.p3d");
-	endclass
 
 class(Bath) extends(IChair)
 	var(model,"ca\structures\furniture\bathroom\bath\bath.p3d");
