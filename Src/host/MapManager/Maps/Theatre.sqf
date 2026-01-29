@@ -2535,7 +2535,7 @@ if (!isNil'_4201_390633942_3186042_96576') then {
 	[_4201_390633942_3186042_96576,'HatBandana',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'HatBeret',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'HatUshankaUp2',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
-	[_4201_390633942_3186042_96576,'HatGrayOldUshanka',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
+	[_4201_390633942_3186042_96576,'HatUshankaUp',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'Crown1',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'Crown2',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'HatShemag',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
@@ -2547,7 +2547,7 @@ if (!isNil'_4201_390633942_3186042_96576') then {
 	[_4201_390633942_3186042_96576,'HoodChemicalProt',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'HoodClirik',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'WorkerCap',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
-	[_4201_390633942_3186042_96576,'WorkerCoolCap',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
+	[_4201_390633942_3186042_96576,'WorkerCap2',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'BalaclavaMask',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'BalaclavaMask2',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'BrownBandannaMask',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
@@ -2647,7 +2647,7 @@ if (!isNil'_4196_870613937_1977543_87497') then {
 	[_4196_870613937_1977543_87497,'HatBandana3',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4196_870613937_1977543_87497,'HatBeret',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4196_870613937_1977543_87497,'HatUshankaUp2',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
-	[_4196_870613937_1977543_87497,'HatGrayOldUshanka',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
+	[_4196_870613937_1977543_87497,'HatUshankaUp',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4196_870613937_1977543_87497,'HatShemag',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4196_870613937_1977543_87497,'HatUshanka',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4196_870613937_1977543_87497,'HatRedSaloon',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
@@ -2660,7 +2660,7 @@ if (!isNil'_4196_870613937_1977543_87497') then {
 	[_4196_870613937_1977543_87497,'WorkerCap',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4196_870613937_1977543_87497,'WorkerCap1',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4196_870613937_1977543_87497,'WorkerCap2',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
-	[_4196_870613937_1977543_87497,'WorkerCoolCap',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
+	[_4196_870613937_1977543_87497,'WorkerCap2',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
 };
 if (!isNil'_4182_579103945_0637249_28441') then {
 	_4182_579103945_0637249_28441 setvariable ['name',"""Роскошь 1"""];

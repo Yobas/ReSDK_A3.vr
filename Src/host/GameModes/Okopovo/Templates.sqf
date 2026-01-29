@@ -286,7 +286,7 @@ class(ROkopovoCombatCommonRole) extends(ROkopovoCombatRole)
 			callSelfParams(createDocsInCloth,_cl arg _mob);
 			if prob(60) then {
 				[
-				pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
+				pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCap2","HatUshankaUp"],
 				_mob,INV_HEAD
 				] call createItemInInventory;
 			};

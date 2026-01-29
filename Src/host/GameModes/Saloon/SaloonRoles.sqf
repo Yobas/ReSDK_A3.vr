@@ -180,7 +180,7 @@ class(RCitizenSaloon) extends(BasicRoleSaloon)
 		
 		if prob(70) then {
 			[
-			pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
+			pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCap2","HatUshankaUp"],
 			_mob,INV_HEAD
 			] call createItemInInventory;
 		};
@@ -336,7 +336,7 @@ class(RDoctorSaloon) extends(BasicRoleSaloon)
 		private _cloth = ["DoctorCloth",_mob,INV_CLOTH] call createItemInInventory;
 		setVar(_cloth,name,"Лекарские одеяния");
 		["Rag",_cloth] call createItemInContainer;
-		["HatGrayOldUshanka",_mob,INV_HEAD] call createItemInInventory;
+		["HatUshankaUp",_mob,INV_HEAD] call createItemInInventory;
 		private _keyOwn = ["RDoctorSaloonKey"];
 		regKeyInUniform(_cloth,_keyOwn,"Лекарский ключ");
 		private _shot = ["Revolver",_mob,INV_BELT] call createItemInInventory; // Оружие на слоте пояса
@@ -378,7 +378,7 @@ class(RTrampSaloon) extends(BasicRoleSaloon)
 		callFuncParams(_cloth,initMoney,randInt(2,8));
 		if prob(60) then {
 			[
-			pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
+			pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCap2","HatUshankaUp"],
 			_mob,INV_HEAD
 			] call createItemInInventory;
 		};
@@ -586,7 +586,7 @@ class(RBanditMiniSaloon) extends(BasicRoleSaloon)
 		
 		if prob(40) then {
 			[
-			pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
+			pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCap2","HatUshankaUp"],
 			_mob,INV_HEAD
 			] call createItemInInventory;
 		};

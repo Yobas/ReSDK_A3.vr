@@ -61,7 +61,7 @@ CityCloth_tier2:
       prob: 3%
     HatUshankaUp2:
       prob: 3%
-    HatGrayOldUshanka:
+    HatUshankaUp:
       prob: 3%
     HatUshanka:
       prob: 3%
@@ -104,7 +104,7 @@ CityCloth_tier3:
       prob: 2%
     WorkerCap2:
       prob: 2%
-    WorkerCoolCap:
+    WorkerCap2:
       prob: 2%
 
     #Маски

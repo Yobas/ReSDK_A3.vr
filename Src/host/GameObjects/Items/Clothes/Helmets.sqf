@@ -153,12 +153,6 @@ class(HatUshankaUp3) extends(HatUshankaUp)
 	var(name,"Светло-коричневая безухая шапка");
 endclass
 
-//Устаревший класс
-editor_attribute("Deprecated" arg "Заменить на HatUshankaUp.")
-class(HatGrayOldUshanka) extends(HatUshankaUp2)
-	var(armaClass,"rds_Woodlander_cap1");
-endclass
-
 //Шапки
 class(WorkerCap) extends(HeadgearBase)
 	var(armaClass,"rds_worker_cap2");
@@ -192,13 +186,6 @@ class(CookerCap2) extends(CookerCap)
 	var(armaClass,"rds_Villager_cap2");
 	var(name,"Коричневый чепчик");
 	var(desc,"С пипкой на макушке! Сделан из мельтешиной шкурки!");
-endclass
-
-//Устаревший класс
-editor_attribute("Deprecated" arg "Заменить на WorkerCap2.")
-class(WorkerCoolCap) extends(WorkerCap)
-	var(armaClass,"rds_worker_cap4");
-	var(name,"Коричневая шапка");
 endclass
 
 //Капюшоны

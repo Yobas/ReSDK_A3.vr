@@ -95,7 +95,7 @@ class(RChiefSon) extends(GMTruba_SettelmentsRole)
 		private _cloth = ["BanditCommanderSaloonCloth",_mob,INV_CLOTH] call createItemInInventory;
 		setVar(_cloth,name,"Редкая кожаная куртка");
 		setVar(_cloth,desc,"Описание");
-		["WorkerCoolCap",_mob,INV_HEAD] call createItemInInventory;
+		["WorkerCap2",_mob,INV_HEAD] call createItemInInventory;
 		private _keyOwn = ["RChiefSonKey"];
 		regKeyInUniform(_cloth,_keyOwn,"Ключ от дома");
 	};
@@ -201,7 +201,7 @@ class(RCaveDoctor) extends(GMTruba_SettelmentsRole)
 		private _cloth = ["DoctorCloth",_mob,INV_CLOTH] call createItemInInventory;
 		setVar(_cloth,name,"Лекарские одеяния");
 		["Rag",_cloth] call createItemInContainer;
-		["HatGrayOldUshanka",_mob,INV_HEAD] call createItemInInventory;
+		["HatUshankaUp",_mob,INV_HEAD] call createItemInInventory;
 		private _keyOwn = ["RCaveDoctorKey"];
 		regKeyInUniform(_cloth,_keyOwn,"Лекарский ключ");
 	};
@@ -305,7 +305,7 @@ class(RCaveDoctorHelper) extends(GMTruba_SettelmentsRole)
 		["Rag",_cloth] call createItemInContainer;
 		["Crutch",_mob,INV_BACK] call createItemInInventory;
 		["Crutch",_mob,INV_BACKPACK] call createItemInInventory;
-		["HatGrayOldUshanka",_mob,INV_HEAD] call createItemInInventory;
+		["HatUshankaUp",_mob,INV_HEAD] call createItemInInventory;
 		private _keyOwn = ["RCaveDoctorKey"];
 		regKeyInUniform(_cloth,_keyOwn,"Ключ как у лекаря");
 	};
@@ -413,7 +413,7 @@ class(RScoutTruba) extends(GMTruba_SettelmentsRole)
 
 		if prob(60) then {
 			[
-			pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
+			pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCap2","HatUshankaUp"],
 			_mob,INV_HEAD
 			] call createItemInInventory;
 		};
@@ -498,7 +498,7 @@ class(RRoistererTruba) extends(GMTruba_ScarsRole)
 		objParams_1(_mob);
 		private _cloth = ["GreenWorkerCloth",_mob,INV_CLOTH] call createItemInInventory;
 		setVar(_cloth,name,"Обноски");
-		["WorkerCoolCap",_mob,INV_HEAD] call createItemInInventory;
+		["WorkerCap2",_mob,INV_HEAD] call createItemInInventory;
 		private _keyOwn = ["RLordTrubaKey"];
 		regKeyInUniform(_cloth,_keyOwn,"Ключ от калитки");
 	};
