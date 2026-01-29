@@ -8,18 +8,18 @@ class EditorData
 	toggles=42;
 	class ItemIDProvider
 	{
-		nextID=15336;
+		nextID=15341;
 	};
 	class LayerIndexProvider
 	{
-		nextID=3435;
+		nextID=3518;
 	};
 	class Camera
 	{
-		pos[]={4016.8611,37.614754,4035.0359};
-		dir[]={-0.022478491,-0.4018136,-0.91558468};
-		up[]={-0.0098595973,0.9156357,-0.40182358};
-		aside[]={-0.99980766,-1.6015183e-06,0.024538243};
+		pos[]={4008.9041,38.613419,4116.7231};
+		dir[]={0.108225,-0.38761252,-0.91558266};
+		up[]={0.045521233,0.92172056,-0.38506883};
+		aside[]={-0.99318844,-1.2999517e-06,-0.11740624};
 	};
 };
 binarizationWanted=0;
@@ -43040,7 +43040,7 @@ class Mission
 							flags=1;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\structures_f_enoch\walls\brick\brickwall_04_l_5m_d_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""OldBrickWallMediumDamaged2""]]}";
 							};
 							id=12913;
 							type="Land_BrickWall_04_l_5m_d_F";
@@ -43058,7 +43058,7 @@ class Mission
 							flags=1;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\structures_f_enoch\walls\brick\brickwall_04_l_5m_d_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""OldBrickWallMediumDamaged2""]]}";
 							};
 							id=12914;
 							type="Land_BrickWall_04_l_5m_d_F";
@@ -44049,7 +44049,7 @@ class Mission
 							flags=1;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\structures_f_enoch\walls\brick\brickwall_04_l_5m_d_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""OldBrickWallMediumDamaged2""]]}";
 							};
 							id=13002;
 							type="Land_BrickWall_04_l_5m_d_F";
@@ -74836,7 +74836,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ca\structures_e\housec\house_c_1_v2_ruins_ep1.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumBrownHouseRuins""]]}";
 							};
 							id=14517;
 							type="CUP_A2_house_c_1_v2_ruins_ep1";
@@ -85571,7 +85571,7 @@ class Mission
 							flags=1;
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""a3\structures_f_enoch\walls\brick\brickwall_04_l_5m_d_f.p3d""]]],[""class"",""IStruct""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""OldBrickWallMediumDamaged2""]]}";
 							};
 							id=6168;
 							type="Land_BrickWall_04_l_5m_d_F";
@@ -89386,7 +89386,7 @@ class Mission
 				};
 			};
 			id=5763;
-			atlOffset=6.9938145;
+			atlOffset=0.74227667;
 		};
 		class Item7
 		{
@@ -99396,7 +99396,7 @@ class Mission
 				};
 			};
 			id=7385;
-			atlOffset=8.5618162;
+			atlOffset=4.2555761;
 		};
 		class Item8
 		{

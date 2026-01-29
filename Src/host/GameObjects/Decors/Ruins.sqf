@@ -17,6 +17,11 @@ class(BigRuins) extends(BigConstructions)
 endclass
 
 editor_attribute("EditorGenerated")
+class(MediumBrownHouseRuins) extends(BigRuins)
+	var(model,"ca\structures_e\housec\house_c_1_v2_ruins_ep1.p3d");
+endclass
+
+editor_attribute("EditorGenerated")
 class(MediumSquareHouseRuins) extends(BigRuins)
 	var(model,"ca\structures_e\housec\house_c_4_ruins_ep1.p3d");
 endclass
