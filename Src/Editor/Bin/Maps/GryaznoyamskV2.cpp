@@ -8,18 +8,18 @@ class EditorData
 	toggles=42;
 	class ItemIDProvider
 	{
-		nextID=15307;
+		nextID=15336;
 	};
 	class LayerIndexProvider
 	{
-		nextID=3269;
+		nextID=3435;
 	};
 	class Camera
 	{
-		pos[]={4010.0105,38.519604,3987.3989};
-		dir[]={0.80213809,-0.44307047,0.40064639};
-		up[]={0.39648098,0.8963989,0.19803549};
-		aside[]={0.44689134,-1.3156096e-06,-0.89471394};
+		pos[]={4016.8611,37.614754,4035.0359};
+		dir[]={-0.022478491,-0.4018136,-0.91558468};
+		up[]={-0.0098595973,0.9156357,-0.40182358};
+		aside[]={-0.99980766,-1.6015183e-06,0.024538243};
 	};
 };
 binarizationWanted=0;
@@ -226,7 +226,9 @@ addons[]=
 	"WBK_EmpiresOfOld_Mechanics",
 	"fallout_object",
 	"A3_Data_F",
-	"A3_Structures_F_EPA_Items_Food"
+	"A3_Structures_F_EPA_Items_Food",
+	"A3_Structures_F_Exp_Cultural_AncientRelics",
+	"A3_Structures_F_Exp_Cultural_Totems"
 };
 class AddonsMetaData
 {
@@ -1067,7 +1069,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=57;
+		items=62;
 		class Item0
 		{
 			dataType="Group";
@@ -80519,7 +80521,7 @@ class Mission
 			name="IStructs";
 			class Entities
 			{
-				items=378;
+				items=379;
 				class Item0
 				{
 					dataType="Object";
@@ -86792,7 +86794,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4453.8745,5.875,3994.875};
+						position[]={4453.9985,5.875,3994.8601};
 						angles[]={0,3.1415994,0};
 					};
 					side="Empty";
@@ -89364,9 +89366,27 @@ class Mission
 					type="CUP_A2_gate_wood1";
 					atlOffset=1.6298771;
 				};
+				class Item378
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4332.9199,6.2978153,4027.9736};
+						angles[]={0,5.2359881,0};
+					};
+					side="Empty";
+					flags=1;
+					class Attributes
+					{
+						init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""model"",""ml_shabut\exodus\totemka2.p3d""]]],[""class"",""IStruct""]]}";
+					};
+					id=15329;
+					type="totemka2";
+					atlOffset=0.54426289;
+				};
 			};
 			id=5763;
-			atlOffset=0.94029045;
+			atlOffset=6.9938145;
 		};
 		class Item7
 		{
@@ -89374,7 +89394,7 @@ class Mission
 			name="Фоллаут";
 			class Entities
 			{
-				items=615;
+				items=616;
 				class Item0
 				{
 					dataType="Object";
@@ -99357,9 +99377,26 @@ class Mission
 					id=7247;
 					type="rugbig2_fam";
 				};
+				class Item615
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4331.2891,7.5041618,4027.989};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""sigmar_statue""]]}";
+					};
+					id=15330;
+					type="Sigmar_Statue";
+					atlOffset=0.16696787;
+				};
 			};
 			id=7385;
-			atlOffset=8.3441839;
+			atlOffset=8.5618162;
 		};
 		class Item8
 		{
@@ -102416,6 +102453,90 @@ class Mission
 			};
 			id=15075;
 			atlOffset=0.24340057;
+		};
+		class Item57
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4329.4473,6.979351,4027.7446};
+			};
+			side="Empty";
+			flags=1;
+			class Attributes
+			{
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""Statue9""]]}";
+			};
+			id=15331;
+			type="Land_Tombstone_17_F";
+			atlOffset=0.62718678;
+		};
+		class Item58
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4328.3887,7.1577988,4027.856};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""Statue7""]]}";
+			};
+			id=15332;
+			type="Land_AncientStatue_02_F";
+			atlOffset=0.14038324;
+		};
+		class Item59
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4326.9653,6.9758568,4027.6685};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""Statue6""]]}";
+			};
+			id=15333;
+			type="Land_AncientStatue_01_F";
+		};
+		class Item60
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4325.6675,6.1921921,4027.9133};
+			};
+			side="Empty";
+			flags=1;
+			class Attributes
+			{
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""Statue5""]]}";
+			};
+			id=15334;
+			type="Land_PalmTotem_02_F";
+			atlOffset=0.58719206;
+		};
+		class Item61
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4330.2432,6.7827377,4027.8533};
+			};
+			side="Empty";
+			flags=1;
+			class Attributes
+			{
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""Statue2""]]}";
+			};
+			id=15335;
+			type="Land_Statue_01_F";
+			atlOffset=0.5569129;
 		};
 	};
 };
