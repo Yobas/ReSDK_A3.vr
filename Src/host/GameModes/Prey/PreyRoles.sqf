@@ -19,7 +19,7 @@ class(RPreyNomadBase) extends(BasicRole)
 		objParams_1(_mob);
 		if prob(60) then {
 			[
-			pick["HatOldUshanka","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
+			pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
 			_mob,INV_HEAD
 			] call createItemInInventory;
 		};

@@ -762,7 +762,7 @@ class(GMStationIdeologyCavecity) extends(GMStationIdeology)
 				};
 				for "_x" from 1 to randInt(10,15) do {
 					[
-						pick ["HatOldUshanka","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
+						pick ["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
 					_cont] call createItemInContainer;
 				};
 				continue;

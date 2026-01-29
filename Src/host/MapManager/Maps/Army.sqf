@@ -4622,7 +4622,7 @@ if (!isNil'_3935_142823995_5549324_14354') then {
 	[_3935_142823995_5549324_14354,'Hat1',1,100] call (_3935_142823995_5549324_14354 getvariable 'proto' getvariable 'createItemInContainer');
 	[_3935_142823995_5549324_14354,'Hat2',1,100] call (_3935_142823995_5549324_14354 getvariable 'proto' getvariable 'createItemInContainer');
 	[_3935_142823995_5549324_14354,'CombatHat',1,100] call (_3935_142823995_5549324_14354 getvariable 'proto' getvariable 'createItemInContainer');
-	[_3935_142823995_5549324_14354,'HatOldUshanka',1,100] call (_3935_142823995_5549324_14354 getvariable 'proto' getvariable 'createItemInContainer');
+	[_3935_142823995_5549324_14354,'HatUshankaUp2',1,100] call (_3935_142823995_5549324_14354 getvariable 'proto' getvariable 'createItemInContainer');
 	[_3935_142823995_5549324_14354,'HatBeret',1,100] call (_3935_142823995_5549324_14354 getvariable 'proto' getvariable 'createItemInContainer');
 	[_3935_142823995_5549324_14354,'HatBandana',1,100] call (_3935_142823995_5549324_14354 getvariable 'proto' getvariable 'createItemInContainer');
 	[_3935_142823995_5549324_14354,'HatBandana1',1,100] call (_3935_142823995_5549324_14354 getvariable 'proto' getvariable 'createItemInContainer');

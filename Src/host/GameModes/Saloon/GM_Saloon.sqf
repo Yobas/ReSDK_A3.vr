@@ -199,7 +199,7 @@ class(GMSaloon) extends(GMBase)
 			for "_i" from 1 to randInt(0,5) do {["CombatHat",_yashsVerh] call createItemInContainer};
 			for "_i" from 1 to randInt(0,2) do {["ArmorMedium",_yashsVerh] call createItemInContainer};
 			for "_i" from 1 to randInt(1,4) do {["NomadCloth" + str randInt(1,15),_yashsVerh] call createItemInContainer};
-			for "_i" from 1 to randInt(1,6) do {[pick["HatOldUshanka","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],_yashsVerh] call createItemInContainer};
+			for "_i" from 1 to randInt(1,6) do {[pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],_yashsVerh] call createItemInContainer};
 		
 		private _yashNiz = ["SquareWoodenBox",[3423.1,3676.12,19.3898],1,false,true] call getGameObjectOnPosition;
 			for "_i" from 1 to randInt(1,2) do {["PaperHolder",_yashNiz] call createItemInContainer};
@@ -788,7 +788,7 @@ class(GMSaloonV2) extends(GMBase)
 			for "_i" from 1 to randInt(0,5) do {["CombatHat",_yashsVerh] call createItemInContainer};
 			for "_i" from 1 to randInt(0,2) do {["ArmorMedium",_yashsVerh] call createItemInContainer};
 			for "_i" from 1 to randInt(1,4) do {["NomadCloth" + str randInt(1,15),_yashsVerh] call createItemInContainer};
-			for "_i" from 1 to randInt(1,6) do {[pick["HatOldUshanka","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],_yashsVerh] call createItemInContainer};
+			for "_i" from 1 to randInt(1,6) do {[pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],_yashsVerh] call createItemInContainer};
 		
 		private _yashNiz = ["SquareWoodenBox",[3426.2,3716.2,27.6826],1,false,true] call getGameObjectOnPosition;
 		assert_str(!isNullReference(_yashNiz),"_yashNiz is null reference");

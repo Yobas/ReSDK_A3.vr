@@ -2534,7 +2534,7 @@ if (!isNil'_4201_390633942_3186042_96576') then {
 	[_4201_390633942_3186042_96576,'HatArmyCap',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'HatBandana',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'HatBeret',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
-	[_4201_390633942_3186042_96576,'HatOldUshanka',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
+	[_4201_390633942_3186042_96576,'HatUshankaUp2',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'HatGrayOldUshanka',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'Crown1',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4201_390633942_3186042_96576,'Crown2',1,100] call (_4201_390633942_3186042_96576 getvariable 'proto' getvariable 'createItemInContainer');
@@ -2646,7 +2646,7 @@ if (!isNil'_4196_870613937_1977543_87497') then {
 	[_4196_870613937_1977543_87497,'HatBandana2',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4196_870613937_1977543_87497,'HatBandana3',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4196_870613937_1977543_87497,'HatBeret',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
-	[_4196_870613937_1977543_87497,'HatOldUshanka',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
+	[_4196_870613937_1977543_87497,'HatUshankaUp2',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4196_870613937_1977543_87497,'HatGrayOldUshanka',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4196_870613937_1977543_87497,'HatShemag',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');
 	[_4196_870613937_1977543_87497,'HatUshanka',1,100] call (_4196_870613937_1977543_87497 getvariable 'proto' getvariable 'createItemInContainer');

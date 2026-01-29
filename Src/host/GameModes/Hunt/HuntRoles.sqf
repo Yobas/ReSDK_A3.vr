@@ -103,7 +103,7 @@ class(RHuntBum) extends(BasicRole)
 		private _cloth = ["Castoffs" + str randInt(1,3),_mob,INV_CLOTH] call createItemInInventory;
 		if prob(60) then {
 			[
-		 		pick["HatOldUshanka","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
+		 		pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
 		 		_mob,INV_HEAD
 		 	] call createItemInInventory;
 		};

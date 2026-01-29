@@ -154,14 +154,8 @@ class(HatUshankaUp3) extends(HatUshankaUp)
 endclass
 
 //Устаревший класс
-editor_attribute("Deprecated" arg "Заменить на HatUshankaUp2.")
-class(HatOldUshanka) extends(HeadgearBase)
-	var(armaClass,"rds_Woodlander_cap3");
-endclass
-
-//Устаревший класс
 editor_attribute("Deprecated" arg "Заменить на HatUshankaUp.")
-class(HatGrayOldUshanka) extends(HatOldUshanka)
+class(HatGrayOldUshanka) extends(HatUshankaUp2)
 	var(armaClass,"rds_Woodlander_cap1");
 endclass
 

@@ -180,7 +180,7 @@ class(RCitizenSaloon) extends(BasicRoleSaloon)
 		
 		if prob(70) then {
 			[
-			pick["HatOldUshanka","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
+			pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
 			_mob,INV_HEAD
 			] call createItemInInventory;
 		};
@@ -378,7 +378,7 @@ class(RTrampSaloon) extends(BasicRoleSaloon)
 		callFuncParams(_cloth,initMoney,randInt(2,8));
 		if prob(60) then {
 			[
-			pick["HatOldUshanka","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
+			pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
 			_mob,INV_HEAD
 			] call createItemInInventory;
 		};
@@ -586,7 +586,7 @@ class(RBanditMiniSaloon) extends(BasicRoleSaloon)
 		
 		if prob(40) then {
 			[
-			pick["HatOldUshanka","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
+			pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
 			_mob,INV_HEAD
 			] call createItemInInventory;
 		};

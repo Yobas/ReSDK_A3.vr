@@ -62,7 +62,7 @@ class(RChief) extends(GMTruba_SettelmentsRole)
 		private _cloth = ["GreatcoatBrown",_mob,INV_CLOTH] call createItemInInventory; // Создание одежды на слоте одежды
 		setVar(_cloth,name,"Одежда вождя");
 		// ["Bandage",_cloth] call createItemInContainer; // Создание 1 предмета в одежде
-		["HatOldUshanka",_mob,INV_HEAD] call createItemInInventory; // Шапка
+		["HatUshankaUp2",_mob,INV_HEAD] call createItemInInventory; // Шапка
 		["WoolCoat",_mob,INV_BACK] call createItemInInventory; // Накидка
 		private _shot = ["Shotgun",_mob,INV_BACKPACK] call createItemInInventory; // Оружие на слоте рюкзака
 		callFuncParams(_shot,createAmmoInMagazine,"AmmoShotgun"); // Вызов метода, создающий патроны в "магазине" дробовика
@@ -413,7 +413,7 @@ class(RScoutTruba) extends(GMTruba_SettelmentsRole)
 
 		if prob(60) then {
 			[
-			pick["HatOldUshanka","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
+			pick["HatUshankaUp2","HatUshanka","WorkerCap","WorkerCoolCap","HatGrayOldUshanka"],
 			_mob,INV_HEAD
 			] call createItemInInventory;
 		};
