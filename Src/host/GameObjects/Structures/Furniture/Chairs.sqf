@@ -119,16 +119,12 @@ class(LobbyChair) extends(IChair)
 	var(model,"ca\structures\furniture\chairs\lobby_chair\lobby_chair.p3d");
 endclass
 
-editor_attribute("Deprecated" arg "Заменить на BrownLeatherChair. Будет удален с редактором 1.20")
-class(BumArmChair) extends(IChair)
+class(BrownLeatherChair) extends(IChair)
 	getterconst_func(getChairOffsetPos,vec3(0,0.2,-0.5));
 	getterconst_func(restBias,vec3(0,0.8,0));
 	var(model,"smg_metro_building\drugoe\smg_bomjkreslo.p3d");
 	var(dr,1);
 endclass
-	class(BrownLeatherChair) extends(BumArmChair)
-		var(model,"smg_metro_building\drugoe\smg_bomjkreslo.p3d");
-	endclass
 
 class(GreenArmChair) extends(IChair)
 	getterconst_func(getChairOffsetPos,vec3(0,-0.25,-0.4));

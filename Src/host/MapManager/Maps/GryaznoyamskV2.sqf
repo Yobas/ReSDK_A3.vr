@@ -1269,7 +1269,7 @@ _4049_250003974_5000026_00000 = ['IStruct',[4049.25,3974.5,26],90,[0,0,1], {_thi
 ['footlocket01',[4036.61,3980.31,29.0613],270,[0,0,1]] call InitStruct; 
 ['MediumWoodenTable',[4035.12,3984.54,29.0757],0,[0,0,1]] call InitStruct; 
 ['SmallWoodenTable2',[4033.88,3983.79,31.0898,true],0,[0.00566271,-0.00693096,0.99996]] call InitStruct; 
-['BumArmChair',[4034.46,3986.35,26.1167],125,[0,0,1]] call InitStruct; 
+['BrownLeatherChair',[4034.46,3986.35,26.1167],125,[0,0,1]] call InitStruct; 
 ['SmallChair',[4034.27,3984.17,31.1183,true],0,[-0.0069996,-0.00103549,0.999975]] call InitItem; 
 ['SmallChair',[4034.4,3982.39,31.1252,true],175,[0.00688148,0.00164271,0.999975]] call InitItem; 
 ['SmallChair',[4035.1,3983.33,31.1301,true],90,[-0.0010378,0.00699679,0.999975]] call InitItem; 
@@ -2834,7 +2834,7 @@ _4014_147953963_6489325_79754 = ['ConcreteFenceWithBars',[4014.15,3963.65,25.797
 ['BedOld',[4066.02,4028.48,26.1634],90,[0,0,1]] call InitStruct; 
 ['BrownOldArmchair',[4044.63,4029.36,26.1246],90,[0,0,1]] call InitStruct; 
 ['GreenArmChair',[4051.6,4028.43,28.9404],90,[0,0,1]] call InitStruct; 
-['BumArmChair',[4063.9,4027.87,28.8669],0,[0,0,1]] call InitStruct; 
+['BrownLeatherChair',[4063.9,4027.87,28.8669],0,[0,0,1]] call InitStruct; 
 ['GreenArmChair',[4064.02,4027.9,26.1634],180,[0,0,1]] call InitStruct; 
 ['BedOld',[4053.71,4027.48,26.1223],270,[0,0,1]] call InitStruct; 
 ['BedOld2',[4053.5,4030.1,26.1223],180,[0,0,1]] call InitStruct; 

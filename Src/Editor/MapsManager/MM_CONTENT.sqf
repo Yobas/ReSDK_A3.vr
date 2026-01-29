@@ -3961,7 +3961,7 @@ _o = create3DENEntity ["Object", "SMG_BomjKreslo", [0,0,0]];
 	_o set3DENAttribute ['position',[3807.9,3766.21,27.5667]];
 	_o set3DENAttribute ['rotation',[0,0,266.918]];
 
-	_hash = [_o,'BumArmChair'] call mm_importOld_initHashData;
+	_hash = [_o,'BrownLeatherChair'] call mm_importOld_initHashData;
 	[_o] call mm_importOld_postCreated;
 
 _o = create3DENEntity ["Object", "medzanaves2", [0,0,0]];
@@ -7533,7 +7533,7 @@ _o = create3DENEntity ["Object", "SMG_BomjKreslo", [0,0,0]];
 	_o set3DENAttribute ['position',[3808.64,3714.15,25.5814]];
 	_o set3DENAttribute ['rotation',[0,0,262.253]];
 
-	_hash = [_o,'BumArmChair'] call mm_importOld_initHashData;
+	_hash = [_o,'BrownLeatherChair'] call mm_importOld_initHashData;
 	[_o] call mm_importOld_postCreated;
 
 _o = create3DENEntity ["Object", "Land_kr_stena_3x6_okn", [0,0,0]];
@@ -9283,7 +9283,7 @@ _o = create3DENEntity ["Object", "SMG_BomjKreslo", [0,0,0]];
 	_o set3DENAttribute ['position',[3810.42,3756.12,24.5604]];
 	_o set3DENAttribute ['rotation',[0,0,69.5128]];
 
-	_hash = [_o,'BumArmChair'] call mm_importOld_initHashData;
+	_hash = [_o,'BrownLeatherChair'] call mm_importOld_initHashData;
 	[_o] call mm_importOld_postCreated;
 
 _o = create3DENEntity ["Object", "Land_Misc_Cable_EP1", [0,0,0]];

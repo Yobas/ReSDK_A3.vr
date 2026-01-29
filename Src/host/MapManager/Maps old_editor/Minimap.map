@@ -475,7 +475,7 @@ _3799_639893774_0559124_45655 = ['Decor',[3799.64,3774.06,24.4565],88.0797,[0,0,
 _3801_716063762_6389228_00299 = ['IStruct',[3801.72,3762.64,28.003],179.905,[0,0,1], {_thisObj setvariable ['model','ca\structures_e\misc\misc_interier\bench_ep1.p3d'];}] call InitStruct; // !!! realocated model !!!
 _3798_513183761_2519527_96035 = ['IStruct',[3798.51,3761.25,27.9604],178.591,[0,0,1], {_thisObj setvariable ['model','ca\structures_e\misc\misc_interier\bench_ep1.p3d'];}] call InitStruct; // !!! realocated model !!!
 _3800_104253764_6823728_00299 = ['IStruct',[3800.1,3764.68,28.003],267.954,[0,0,1], {_thisObj setvariable ['model','ca\structures_e\misc\misc_interier\bench_ep1.p3d'];}] call InitStruct; // !!! realocated model !!!
-['BumArmChair',[3807.9,3766.21,27.5667],266.918,[0,0,1]] call InitStruct; 
+['BrownLeatherChair',[3807.9,3766.21,27.5667],266.918,[0,0,1]] call InitStruct; 
 ['HospitalBench',[3785.13,3754.46,24.4695],91.0657,[0,0,1]] call InitStruct; 
 ['HospitalBench',[3783.6,3755.02,24.5402],359.123,[0,0,1]] call InitStruct; 
 _3795_448243772_7224124_83121 = ['IStruct',[3795.45,3772.72,24.8312],0,[0,0,1], {_thisObj setvariable ['model','a3\structures_f_exp\walls\concrete\concretewall_01_l_4m_f.p3d'];}] call InitStruct; // !!! realocated model !!!
@@ -934,7 +934,7 @@ _swAdmin = ['Tumbler',[3829.92,3728.23,19.0466],180.854,[0,0,1]] call InitStruct
 _swSec = ['Tumbler',[3830.77,3728.21,18.3905],181.659,[0,0,1]] call InitStruct; 
 _swIndust = ['Tumbler',[3829.95,3728.25,17.7055],180.854,[0,0,1]] call InitStruct; 
 _swCityLiving = ['Tumbler',[3829.86,3728.25,18.1521],180.854,[0,0,1]] call InitStruct; 
-['BumArmChair',[3808.64,3714.15,25.5814],262.253,[0,0,1]] call InitStruct; 
+['BrownLeatherChair',[3808.64,3714.15,25.5814],262.253,[0,0,1]] call InitStruct; 
 _3825_001223735_2102117_50446 = ['Decor',[3825,3735.21,17.5045],90.7716,[0,0,1], {_thisObj setvariable ['model','a3\structures_f_exp\walls\concrete\concretewall_01_l_4m_f.p3d'];}] call InitDecor; // !!! realocated model !!!
 _3838_682133730_3208017_46835 = ['Decor',[3838.68,3730.32,17.4683],182.491,[0,0,1], {_thisObj setvariable ['model','a3\structures_f_exp\walls\concrete\concretewall_01_l_4m_f.p3d'];}] call InitDecor; // !!! realocated model !!!
 _3824_939703729_9106417_54079 = ['Decor',[3824.94,3729.91,17.5408],90.7716,[0,0,1], {_thisObj setvariable ['model','a3\structures_f_exp\walls\concrete\concretewall_01_l_4m_f.p3d'];}] call InitDecor; // !!! realocated model !!!
@@ -1106,7 +1106,7 @@ _3812_900633768_6633329_13093 = ['Decor',[3812.9,3768.66,29.1309],183.132,[0,0,1
 ['OlderWoodenCup',[3834.6,3770.81,23.3491],72.8138,[0,0,1]] call InitItem; 
 ['OlderWoodenCup',[3827.67,3770.07,23.371],186.512,[0,0,1]] call InitItem; 
 ['OlderWoodenCup',[3827.46,3770.8,23.371],335.383,[0,0,1]] call InitItem; 
-['BumArmChair',[3810.42,3756.12,24.5604],69.5128,[0,0,1]] call InitStruct; 
+['BrownLeatherChair',[3810.42,3756.12,24.5604],69.5128,[0,0,1]] call InitStruct; 
 _3812_180183750_2722227_62759 = ['Decor',[3812.18,3750.27,27.6276],0,[0,0,1], {_thisObj setvariable ['model','a3\structures_f_exp\walls\tin\tinwall_01_m_4m_v2_f.p3d'];}] call InitDecor; // !!! realocated model !!!
 _3816_151373757_4768127_54649 = ['Decor',[3816.15,3757.48,27.5465],269.66,[0,0,1], {_thisObj setvariable ['model','a3\structures_f_exp\walls\tin\tinwall_01_m_4m_v2_f.p3d'];}] call InitDecor; // !!! realocated model !!!
 _3812_408693755_1491727_50501 = ['WoodenDoor',[3812.41,3755.15,27.505],357.739,[0,0,1]] call InitStruct; 
