@@ -134,26 +134,6 @@ class(PipeCutOnSupportingStructure) extends(BasicPipe)
 endclass
 
 editor_attribute("EditorGenerated")
-editor_attribute("Deprecated" arg "Заменить на IndPipe45DegL.")
-class(SmallDestroyedCornerPipe) extends(BasicPipe)
-	var(model,"ca\buildings2\ind_pipeline\indpipe1\indpipe1_45degl.p3d");
-	var(name,"Разрушенная труба");
-endclass
-
-editor_attribute("EditorGenerated")
-editor_attribute("Deprecated" arg "Заменить на NewIndPipe90DegR.")
-class(SmallDestoyedCornerPipe1) extends(SmallDestroyedCornerPipe)
-	var(model,"a3\structures_f\ind\pipes\indpipe1_90degr_f.p3d");
-endclass
-
-editor_attribute("EditorGenerated")
-editor_attribute("Deprecated" arg "Заменить на IndPipeValve.")
-class(MediumRuinedPipe) extends(BasicPipe)
-	var(model,"ca\buildings2\ind_pipeline\indpipe1\indpipe1_valve.p3d");
-	var(name,"Разрушенная труба");
-endclass
-
-editor_attribute("EditorGenerated")
 class(LongDestroyedPipeWithSupportingStructure) extends(BasicPipe)
 	var(model,"a3\structures_f_exp\industrial\sugarcanefactory_01\scf_01_pipe_24m_f.p3d");
 	var(name,"Разрушенная труба");
@@ -177,20 +157,16 @@ class(SmallConcretePipe) extends(BasicPipe)
 endclass
 
 editor_attribute("EditorGenerated")
-editor_attribute("Deprecated" arg "Заменить на NewIndPipeUUP.")
-class(MediumSteelUpperPipe) extends(BasicPipe)
-	var(model,"a3\structures_f\ind\pipes\indpipe1_uup_f.p3d");
-endclass
-
-editor_attribute("EditorGenerated")
 editor_attribute("Deprecated" arg "Заменить на NewIndPipe20m.")
-class(LongSteelPipe) extends(BasicPipe)
+class(NewIndPipe20m) extends(BasicPipe)
 	var(model,"a3\structures_f\ind\pipes\indpipe1_20m_f.p3d");
 endclass
+
 editor_attribute("EditorGenerated")
 class(BigConcretePipe) extends(BasicPipe)
 	var(model,"ca\structures_e\misc\misc_construction\misc_concpipeline_ep1.p3d");
 endclass
+
 editor_attribute("EditorGenerated")
 class(BigConcretePipe2) extends(BigConcretePipe)
 	var(model,"a3\structures_f\civ\constructions\concretepipe_f.p3d");

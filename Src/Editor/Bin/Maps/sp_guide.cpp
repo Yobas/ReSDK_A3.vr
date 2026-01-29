@@ -2174,7 +2174,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""desc"",""Вены Сети, по которой течёт что-то интересное.""]]],[""class"",""MediumRuinedPipe""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""desc"",""Вены Сети, по которой течёт что-то интересное.""]]],[""class"",""IndPipeValve""]]}";
 			};
 			id=2314;
 			type="CUP_A2_indpipe1_valve";
@@ -2191,7 +2191,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""desc"",""Вена Сети, по которой течёт что-то интересное.""]]],[""class"",""LongSteelPipe""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[[""desc"",""Вена Сети, по которой течёт что-то интересное.""]]],[""class"",""NewIndPipe20m""]]}";
 			};
 			id=2315;
 			type="Land_IndPipe1_20m_F";
@@ -16648,7 +16648,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumSteelUpperPipe""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipeUUP""]]}";
 			};
 			id=3523;
 			type="Land_IndPipe1_Uup_F";
@@ -16665,7 +16665,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LongSteelPipe""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipe20m""]]}";
 			};
 			id=3524;
 			type="Land_IndPipe1_20m_F";
@@ -16683,7 +16683,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallDestoyedCornerPipe1""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipe90DegR""]]}";
 			};
 			id=3525;
 			type="Land_IndPipe1_90degR_F";
@@ -16700,7 +16700,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LongSteelPipe""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipe20m""]]}";
 			};
 			id=3526;
 			type="Land_IndPipe1_20m_F";
@@ -16717,7 +16717,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LongSteelPipe""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipe20m""]]}";
 			};
 			id=3527;
 			type="Land_IndPipe1_20m_F";
@@ -85252,7 +85252,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallDestoyedCornerPipe1""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipe90DegR""]]}";
 			};
 			id=8496;
 			type="Land_IndPipe1_90degR_F";
@@ -85566,7 +85566,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LongSteelPipe""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipe20m""]]}";
 			};
 			id=8515;
 			type="Land_IndPipe1_20m_F";
@@ -85583,7 +85583,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LongSteelPipe""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipe20m""]]}";
 			};
 			id=8516;
 			type="Land_IndPipe1_20m_F";
@@ -85601,7 +85601,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LongSteelPipe""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipe20m""]]}";
 			};
 			id=8517;
 			type="Land_IndPipe1_20m_F";
@@ -121776,7 +121776,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumRuinedPipe""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""IndPipeValve""]]}";
 			};
 			id=11483;
 			type="CUP_A2_indpipe1_valve";
@@ -121792,7 +121792,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumSteelUpperPipe""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipeUUP""]]}";
 			};
 			id=11484;
 			type="Land_IndPipe1_Uup_F";
@@ -121809,7 +121809,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumSteelUpperPipe""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipeUUP""]]}";
 			};
 			id=11485;
 			type="Land_IndPipe1_Uup_F";
@@ -121874,7 +121874,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumSteelUpperPipe""]]}";
+				init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipeUUP""]]}";
 			};
 			id=11489;
 			type="Land_IndPipe1_Uup_F";

@@ -175,10 +175,6 @@ class(LeatherBackpackBrown) extends(LeatherBackpack)
 	var(armaClass,"Backpack_brn");
 endclass
 
-editor_attribute("Deprecated" arg "Этот рюкзак будет удалён в будущем.")
-class(LeatherBackpackBrown) extends(LeatherBackpackBrown)
-endclass
-
 class(LeatherBackpackRed) extends(LeatherBackpack)
 	var(name,"Рюкзак из красной кожи");
 	var(armaClass,"Backpack_red");

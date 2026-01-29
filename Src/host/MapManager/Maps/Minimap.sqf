@@ -494,7 +494,7 @@ _3793_739993762_3300824_47850 = ['Decor',[3793.74,3762.33,24.4785],88.2896,[0,0,
 ['BigStoneWall',[3784.28,3746.17,24.1863],0,[0,0,1]] call InitDecor; 
 ['SmallWoodenTable',[3806.67,3766.08,27.5467],0,[0,0,1]] call InitStruct; 
 ['SmallSheetMetalHouse',[3792.18,3762.83,25.125],271.445,[0,0,1]] call InitStruct; 
-['MediumSteelUpperPipe',[3797.27,3764.15,23.1814],359.948,[0,0,1]] call InitStruct; 
+['NewIndPipeUUP',[3797.27,3764.15,23.1814],359.948,[0,0,1]] call InitStruct; 
 ['WoodenDoor',[3797.97,3763.79,27.9472],87.184,[0,0,1]] call InitStruct; 
 _3796_610113751_3000527_17740 = ['WoodenDoor',[3796.61,3751.3,27.1774],272.865,[0,0,1]] call InitStruct; 
 _3807_590093762_0300327_56480 = ['WoodenDoor',[3807.59,3762.03,27.5648],0.520406,[0,0,1]] call InitStruct; 
@@ -988,7 +988,7 @@ _3827_370123728_6101117_02410 = ['PowerGenerator',[3827.37,3728.61,17.0241],0,[0
 ['Screwdriver',[3825.37,3729.77,18.0187],296.562,[0,0,1]] call InitItem; 
 _3825_610113731_0200216_97950 = ['SquareWoodenBox',[3825.61,3731.02,16.9795],0,[0,0,1]] call InitStruct; 
 _3825_629883728_7399917_02410 = ['SquareWoodenBox',[3825.63,3728.74,17.0241],0,[0,0,1]] call InitStruct; 
-['MediumSteelUpperPipe',[3839.69,3729.88,15.2425],178.112,[0,0,1]] call InitStruct; 
+['NewIndPipeUUP',[3839.69,3729.88,15.2425],178.112,[0,0,1]] call InitStruct; 
 ['BigConcreteUnfinishedBuilding',[3819.61,3715.73,23.5847],269.952,[0,0,1]] call InitDecor; 
 ['BrickThinWallSmall',[3821.81,3717.04,27.7941],180.852,[0,0,1]] call InitStruct; 
 ['BrickThinWallDoorway',[3808.03,3730.4,22.2847],179.67,[0,0,1]] call InitStruct; 
@@ -1707,7 +1707,7 @@ _3843_530033773_2600123_65180 = ['Key',[3843.53,3773.26,23.6518],87.8934,[0,0,1]
 ['StreetLamp',[3863.29,3785.99,16.2173],202.423,[0,0,1], {go_editor_globalRefs set ["Imported StreetLamp854465",_thisObj];
 }] call InitStruct; 
 ['BrickThinWall',[3843.98,3778.63,22.7791],180.063,[0,0,1]] call InitStruct; 
-['MediumSteelUpperPipe',[3870.94,3788.51,21.2051],178.856,[0,0,1]] call InitStruct; 
+['NewIndPipeUUP',[3870.94,3788.51,21.2051],178.856,[0,0,1]] call InitStruct; 
 ['TorchHolderCharged',[3871.5,3784.66,28.2992,true],[-0.144582,-0.987899,-0.0561352],[-0.0147143,-0.0545785,0.998401]] call InitStruct; 
 ['SingleWhiteBed',[3841.76,3777.23,22.807],181.344,[0,0,1]] call InitStruct; 
 ['ThickConcreteFloorMedium',[3843.91,3781.42,22.302],182,[0,0,1]] call InitStruct; 
@@ -1719,7 +1719,7 @@ _3844_399903777_7399922_70640 = ['LargeClothCabinet',[3844.4,3777.74,22.7064],89
 _3842_679933778_0700722_78480 = ['CaseBedroomSmall',[3842.68,3778.07,22.7848],272.215,[0,0,1], {_thisObj setvariable ['preinit@__loottemplate',"Office_tier1"]; _thisObj call (_thisObj getvariable 'proto' getvariable '__handlePreInitVars__');}] call InitStruct; 
 ['BigSteelGrating',[3869.33,3782.16,22.6102],87.9997,[0,0,1]] call InitStruct; 
 ['ScaffoldingLadder',[3864.25,3780.87,15.4192],359.141,[0,0,1]] call InitStruct; 
-['LongSteelPipe',[3866.09,3777.45,21.085],265.71,[0,0,1]] call InitStruct; 
+['NewIndPipe20m',[3866.09,3777.45,21.085],265.71,[0,0,1]] call InitStruct; 
 ['SteelSmallDoubleLadder',[3866.94,3777.53,21.1561],358.34,[0,0,1]] call InitStruct; 
 ['ConcreteWall',[3868.02,3779.27,20.1734],88.2338,[0,0,1]] call InitStruct; 
 ['ConcreteWall',[3867.76,3787.24,20.1654],88.2338,[0,0,1]] call InitStruct; 
@@ -1848,7 +1848,7 @@ _3842_679933778_0700722_78480 = ['CaseBedroomSmall',[3842.68,3778.07,22.7848],27
 ['SmallStoneRoad',[3889.2,3745.3,19.608],180.7,[0,0,1]] call InitStruct; 
 ['BlockDirt',[3872.01,3792.85,31.7847],23.3838,[0,0,1]] call InitDecor; 
 ['BlockDirt',[3879.94,3783.86,31.67],0,[0,0,1]] call InitDecor; 
-['MediumSteelUpperPipe',[3875.7,3780.07,20.4646],272.417,[0,0,1]] call InitStruct; 
+['NewIndPipeUUP',[3875.7,3780.07,20.4646],272.417,[0,0,1]] call InitStruct; 
 ['WoodenToiletSmall',[3872.89,3782.47,22.5741],264.091,[0,0,1]] call InitStruct; 
 ['WoodenToiletSmall',[3872.75,3783.96,22.5421],264.091,[0,0,1]] call InitStruct; 
 ['WoodenToiletSmall',[3873.04,3781.07,22.5561],264.091,[0,0,1]] call InitStruct; 
@@ -1991,7 +1991,7 @@ _3799_543953824_6247623_76471 = ['Decor',[3799.54,3824.62,27.6598,true],0,[0.006
 ['TorchDisabled',[3815.98,3855.13,24.4139],206.548,[0,0,1]] call InitItem; 
 ['NormalClayWall',[3793.45,3849.5,29.8528,true],33.2238,[0.0102273,-0.0438082,0.998988]] call InitStruct; 
 ['TorchHolderCharged',[3795.92,3847.78,23.9432],103.849,[0,0,1]] call InitStruct; 
-['LongSteelPipe',[3795,3847.99,31.4326,true],305.734,[0.00679566,0.00104769,0.999976]] call InitStruct; 
+['NewIndPipe20m',[3795,3847.99,31.4326,true],305.734,[0.00679566,0.00104769,0.999976]] call InitStruct; 
 ['NormalClayWall',[3793.08,3849.07,29.8889,true],33.2238,[0.0102273,-0.0438082,0.998988]] call InitStruct; 
 ['MediumDirt',[3806.79,3858.37,20.7705],32.1379,[0,0,1]] call InitStruct; 
 ['SmallDirtGrey',[3800.66,3850.71,28.8604,true],[0.904456,0.426567,-2.6077e-08],[-0.0525679,0.111461,0.992378]] call InitStruct; 
@@ -2270,7 +2270,7 @@ _3567_491703588_2885719_38405 = ['IStruct',[3567.49,3588.29,25.34,true],90.3377,
 _3559_618903588_7202119_12288 = ['IStruct',[3559.62,3588.72,25.0789,true],90.3377,[-0.00165248,0.00658808,0.999977], {_thisObj setvariable ['model','a3\structures_f_exp\cultural\basaltruins\basaltwall_01_8m_f.p3d'];}] call InitStruct; // !!! realocated model !!!
 _3567_596923580_6106019_49015 = ['IStruct',[3567.6,3580.61,25.4461,true],90.3377,[-0.00165248,0.00658808,0.999977], {_thisObj setvariable ['model','a3\structures_f_exp\cultural\basaltruins\basaltwall_01_8m_f.p3d'];}] call InitStruct; // !!! realocated model !!!
 _3559_570313580_8911119_08479 = ['IStruct',[3559.57,3580.89,25.0408,true],90.3377,[-0.00165248,0.00658808,0.999977], {_thisObj setvariable ['model','a3\structures_f_exp\cultural\basaltruins\basaltwall_01_8m_f.p3d'];}] call InitStruct; // !!! realocated model !!!
-['LongSteelPipe',[3562.34,3581.72,24.3415,true],0,[-0.00657818,-0.00169113,0.999977]] call InitStruct; 
+['NewIndPipe20m',[3562.34,3581.72,24.3415,true],0,[-0.00657818,-0.00169113,0.999977]] call InitStruct; 
 _3559_527833573_8247119_23639 = ['IStruct',[3559.53,3573.82,25.1924,true],90.3377,[-0.00165248,0.00658808,0.999977], {_thisObj setvariable ['model','a3\structures_f_exp\cultural\basaltruins\basaltwall_01_8m_f.p3d'];}] call InitStruct; // !!! realocated model !!!
 ['BlockStone',[3567.08,3577.38,18.4947],359.349,[0,0,1]] call InitDecor; 
 ['LargeConcreteWallWithReinforcement',[3573.97,3590.23,25.893,true],359.957,[-0.0095401,0.0257327,0.999623]] call InitStruct; 
@@ -2281,7 +2281,7 @@ _3580_360843590_2954120_31876 = ['IStruct',[3580.36,3590.3,25.3674,true],359.952
 ['BlockDirt',[3587.96,3557.3,12.3407],0,[0,0,1]] call InitDecor; 
 ['MetalTank',[3578.21,3553.86,18.8308,true],0,[0.00566271,-0.00693096,0.99996]] call InitStruct; 
 ['MetalTank',[3578.23,3557.35,18.7026,true],178.919,[-0.00579217,0.00681934,0.99996]] call InitStruct; 
-['MediumRuinedPipe',[3573.15,3553.1,18.376,true],0,[0.00566271,-0.00693096,0.99996]] call InitStruct; 
+['IndPipeValve',[3573.15,3553.1,18.376,true],0,[0.00566271,-0.00693096,0.99996]] call InitStruct; 
 ['IndustrialPipes',[3584.39,3551.62,21.635,true],89.9879,[-0.00691178,-0.00565018,0.99996]] call InitStruct; 
 ['BigIndustrialPipesWithLadder',[3588.56,3565.38,21.4565,true],88.1593,[-0.00126008,0.00696267,0.999975]] call InitStruct; 
 ['MetalTruss',[3582.25,3559.45,20.3257,true],269.5,[0.00686575,0.00572153,0.99996]] call InitStruct; 
@@ -2306,14 +2306,14 @@ _3587_135253553_7292512_30573 = ['IStruct',[3587.14,3553.73,17.951,true],179.792
 ['ScaffoldingLadder',[3582.22,3569.72,12.3987],275.716,[0,0,1]] call InitStruct; 
 _3567_394043604_1303718_89455 = ['IStruct',[3567.39,3604.13,24.8505,true],90.3377,[-0.00165248,0.00658808,0.999977], {_thisObj setvariable ['model','a3\structures_f_exp\cultural\basaltruins\basaltwall_01_8m_f.p3d'];}] call InitStruct; // !!! realocated model !!!
 ['LargeConcreteWallWithReinforcement',[3571.89,3608.16,26.0646,true],359.957,[-0.0095401,0.0257327,0.999623]] call InitStruct; 
-['LongSteelPipe',[3580.07,3606.99,24.1378,true],269.59,[0.0068729,0.00570967,0.99996]] call InitStruct; 
+['NewIndPipe20m',[3580.07,3606.99,24.1378,true],269.59,[0.0068729,0.00570967,0.99996]] call InitStruct; 
 _3549_558843563_5693413_66797 = ['IStruct',[3549.56,3563.57,22.4975,true],0,[0.00566319,-0.00693144,0.99996], {_thisObj setvariable ['model','ca\buildings2\ind_pipeline\indpipe2\indpipe2_big_18ladder.p3d'];}] call InitStruct; // !!! realocated model !!!
 _3577_521973606_2045915_29659 = ['IStruct',[3577.52,3606.2,24.0845,true],269.286,[0.00747179,-0.027674,0.999589], {_thisObj setvariable ['model','ca\buildings2\ind_pipeline\indpipe2\indpipe2_big_18ladder.p3d'];}] call InitStruct; // !!! realocated model !!!
 ['BigIndustrialPipesWithLadder',[3568.42,3602.36,25.8457,true],88.1593,[-0.00126008,0.00696267,0.999975]] call InitStruct; 
 ['LargeConcreteWallWithReinforcement',[3580.84,3608.09,26.1153,true],359.957,[-0.0095401,0.0257327,0.999623]] call InitStruct; 
 ['LargeConcreteWallWithReinforcement',[3589.8,3608.1,26.1973,true],359.957,[-0.0095401,0.0257327,0.999623]] call InitStruct; 
 ['LargeConcreteWallWithReinforcement',[3598.71,3608.1,26.2299,true],359.957,[-0.0095401,0.0257327,0.999623]] call InitStruct; 
-['LongSteelPipe',[3599.79,3607.19,24.0155,true],269.382,[0.00684858,0.0057345,0.99996]] call InitStruct; 
+['NewIndPipe20m',[3599.79,3607.19,24.0155,true],269.382,[0.00684858,0.0057345,0.99996]] call InitStruct; 
 ['LargeConcreteWallWithReinforcement',[3607.71,3608.08,25.9553,true],359.957,[-0.0095401,0.0257327,0.999623]] call InitStruct; 
 ['LargeConcreteWallWithReinforcement',[3618.81,3608.27,25.8442,true],359.621,[-0.00969111,0.0256763,0.999623]] call InitStruct; 
 ['SteelArmoredDoor',[3612.96,3608.14,18.634],180.136,[0,0,1]] call InitStruct; 
@@ -2380,7 +2380,7 @@ _3636_032713592_8210418_70440 = ['BlockDirt',[3636.03,3592.82,24.0084,true],0,[0
 ['LargeConcreteWallWithReinforcement',[3651.38,3586.66,24.9905,true],271.541,[-0.0259863,-0.00882013,0.999623]] call InitStruct; 
 ['LargeConcreteWallWithReinforcement',[3646.54,3582.36,24.4091,true],180.547,[0.00925892,-0.0051561,0.999944]] call InitStruct; 
 _3646_334473587_1345218_29730 = ['IStruct',[3646.33,3587.13,23.5607,true],0.0034877,[-0.00325254,-0.218771,0.975771], {_thisObj setvariable ['model','ca\buildings2\ind_pipeline\indpipe1\indpipe1_ur.p3d'];}] call InitStruct; // !!! realocated model !!!
-['MediumRuinedPipe',[3650.56,3588.74,24.2667,true],89.7691,[-0.00697674,-0.00116757,0.999975]] call InitStruct; 
+['IndPipeValve',[3650.56,3588.74,24.2667,true],89.7691,[-0.00697674,-0.00116757,0.999975]] call InitStruct; 
 ['SteelGreenDoor',[3642.75,3591.34,18.355],182.71,[0,0,1]] call InitStruct; 
 ['SteelBrownDoor',[3631.72,3590.8,18.4583],180.104,[0,0,1]] call InitStruct; 
 ['BlockDirt',[3636.01,3592.89,32.2541,true],[-0.999879,-0.0149368,-0.00444897],[0,-0.28546,0.958391]] call InitDecor; 
@@ -2562,7 +2562,7 @@ _3770_429693782_2539124_21754 = ['SteelGreenDoor',[3770.43,3782.25,24.2175],88.0
 ['Bench2',[3740.37,3783.22,29.071,true],357.569,[0.00695253,0.00127783,0.999975]] call InitStruct; 
 ['CampfireBigDisabled',[3740.25,3784.74,23.8247],0,[0,0,1]] call InitStruct; 
 ['Bench2',[3739.92,3786.08,29.0241,true],357.569,[0.00695253,0.00127783,0.999975]] call InitStruct; 
-['SmallDestroyedCornerPipe',[3745.22,3783.56,29.2166,true],[0.120065,0.992766,-0.000105172],[-0.990017,0.119741,0.0743492]] call InitStruct; 
+['IndPipe45DegL',[3745.22,3783.56,29.2166,true],[0.120065,0.992766,-0.000105172],[-0.990017,0.119741,0.0743492]] call InitStruct; 
 ['WoodenGraveCross',[3738.96,3779.65,29.2787,true],0,[0.0970676,-0.00185023,0.995276]] call InitStruct; 
 ['Grave',[3738.66,3780.43,23.843],0,[0,0,1]] call InitStruct; 
 ['OldGraveFence4',[3739.02,3780.68,23.8729],182.068,[0,0,1]] call InitStruct; 

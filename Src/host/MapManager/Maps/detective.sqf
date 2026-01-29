@@ -103,7 +103,7 @@ _3636_570073672_9399413_39420 = ['IStruct',[3636.57,3672.94,13.3942],357.635,[0,
 ['BlockDirt',[3646.48,3686.4,13.7391,true],[0.0661452,-0.990469,-0.120816],[-0.142922,-0.129237,0.98126]] call InitDecor; 
 ['SmallSheetMetalHouse',[3623.36,3685.29,12.5904],133.992,[0,0,1]] call InitStruct; 
 ['SmallSheetMetalHouse',[3616.5,3681.57,16.5363],103.771,[0,0,1]] call InitStruct; 
-['MediumSteelUpperPipe',[3635.46,3688.13,19.3444,true],[0.65394,-0.480088,-0.584703],[0.480055,-0.334021,0.811158]] call InitStruct; 
+['NewIndPipeUUP',[3635.46,3688.13,19.3444,true],[0.65394,-0.480088,-0.584703],[0.480055,-0.334021,0.811158]] call InitStruct; 
 ['BigRuinedBrickBuilding',[3633.3,3706.19,22.5657,true],[0,0.983966,0.178356],[0.244596,-0.172938,0.954078]] call InitDecor; 
 _3632_719973685_4399413_30437 = ['Decor',[3632.72,3685.44,19.7169,true],121.524,[0.00363046,0.00592172,0.999976], {_thisObj setvariable ['model','ca\structures_e\wall\wall_l\wall_l3_5m_ep1.p3d'];}] call InitDecor; // !!! realocated model !!!
 _3637_010013688_1999513_18516 = ['Decor',[3637.01,3688.2,19.5977,true],169.484,[0.00682427,0.00127259,0.999976], {_thisObj setvariable ['model','ca\structures_e\wall\wall_l\wall_l3_5m_ep1.p3d'];}] call InitDecor; // !!! realocated model !!!
@@ -619,10 +619,10 @@ _3699_260013679_3100624_43487 = ['LargeConcreteWallWithReinforcement',[3699.26,3
 ['SquareWoodenBox',[3704.85,3658.34,12.2604],271.797,[0,0,1]] call InitStruct; 
 ['SquareWoodenBox',[3704.81,3657.07,12.2786],258.061,[0,0,1]] call InitStruct; 
 ['SquareWoodenBox',[3700.87,3659.54,13.3534],303.597,[0,0,1]] call InitStruct; 
-['MediumSteelUpperPipe',[3701.48,3661.25,10.648],265.693,[0,0,1]] call InitStruct; 
-['MediumSteelUpperPipe',[3697.82,3653.24,10.8119],178.112,[0,0,1]] call InitStruct; 
-['MediumSteelUpperPipe',[3699.36,3663.01,10.333],178.112,[0,0,1]] call InitStruct; 
-['MediumSteelUpperPipe',[3706.08,3661.39,9.82523],272.394,[0,0,1]] call InitStruct; 
+['NewIndPipeUUP',[3701.48,3661.25,10.648],265.693,[0,0,1]] call InitStruct; 
+['NewIndPipeUUP',[3697.82,3653.24,10.8119],178.112,[0,0,1]] call InitStruct; 
+['NewIndPipeUUP',[3699.36,3663.01,10.333],178.112,[0,0,1]] call InitStruct; 
+['NewIndPipeUUP',[3706.08,3661.39,9.82523],272.394,[0,0,1]] call InitStruct; 
 ['BigConcreteUnfinishedBuilding',[3699.1,3659.2,18.1324],269.952,[0,0,1]] call InitDecor; 
 ['BrickThinWallSmall',[3687.25,3667.88,23.559],92.1816,[0,0,1]] call InitStruct; 
 ['BrickThinWallSmall',[3693.04,3673.13,23.559],85.7521,[0,0,1]] call InitStruct; 

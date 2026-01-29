@@ -1227,7 +1227,7 @@ _3476_330083603_6008317_57690 = ['Decor',[3476.33,3603.6,17.5769],180.148,[0,0,1
 ['LargeConcreteWallWithReinforcement',[3469.36,3618.47,15.3667],90,[0,0,1]] call InitStruct; 
 ['BedOld',[3473.62,3619.68,12.653],358.484,[0,0,1]] call InitStruct; 
 _3472_654053620_2065412_81608 = ['Decor',[3472.65,3620.21,12.8161],268.654,[0,0,1], {_thisObj setvariable ['model','a3\structures_f_epa\civ\camping\woodentable_small_f.p3d'];}] call InitDecor; // !!! realocated model !!!
-['MediumRuinedPipe',[3470.77,3618.14,13.1651],0,[0,0,1]] call InitStruct; 
+['IndPipeValve',[3470.77,3618.14,13.1651],0,[0,0,1]] call InitStruct; 
 ['SmallPileOfConcreteFragments',[3469.57,3617.64,12.8111],350.121,[0,0,1]] call InitStruct; 
 ['ChairBigCasual',[3475.27,3615.19,18.5407,true],270.629,[3.36806e-005,0.00514391,0.999987]] call InitItem; 
 ['BrushCleaner',[3473.19,3619.86,13.6807],145.856,[0,0,1]] call InitItem; 
@@ -1393,7 +1393,7 @@ _3400_093993657_6064520_23419 = ['Decor',[3400.09,3657.61,20.2342],270,[0,0,1], 
 ['LargeConcreteWallWithReinforcement',[3466.6,3614.25,15.0982],1.36604e-005,[0,0,1]] call InitStruct; 
 ['MetalAndConcreteRuins',[3459.95,3578.78,31.8128,true],[-0.99201,-0.126161,1.07288e-006],[0.0630807,-0.495999,0.866029]] call InitStruct; 
 ['MetalAndConcreteRuins',[3456.7,3578.3,31.4716,true],[-1,4.23281e-007,2.44381e-007],[0,-0.499999,0.866026]] call InitStruct; 
-['LongSteelPipe',[3472.69,3579.17,41.0231,true],[0,1.44244e-006,1],[0,-1,1.44244e-006]] call InitStruct; 
+['NewIndPipe20m',[3472.69,3579.17,41.0231,true],[0,1.44244e-006,1],[0,-1,1.44244e-006]] call InitStruct; 
 ['SmallBrickHouseRuins',[3466.33,3581.05,32.4437,true],0,[0,-0.707107,0.707107]] call InitStruct; 
 ['SmallRuinedWoodenBuilding',[3470.62,3581.59,25.3089],269.668,[0,0,1]] call InitStruct; 
 ['OldBrickWallMedium1',[3465.72,3578.91,22.727],0.960963,[0,0,1]] call InitStruct; 
@@ -1490,7 +1490,7 @@ _3471_403083612_5422412_57822 = ['SteelGridDoor',[3471.4,3612.54,12.5782],87.850
 _3468_938483571_1997118_27539 = ['IStruct',[3468.94,3571.2,18.2754],240.763,[0,0,1], {_thisObj setvariable ['model','a3\structures_f_enoch\civilian\sheds\shed_14_ruins_f.p3d'];}] call InitStruct; // !!! realocated model !!!
 ['LargeConcreteWallWithReinforcement',[3450.81,3588.64,15.1765],270.251,[0,0,1]] call InitStruct; 
 ['DestroyedPipeWithValve',[3468.71,3613.6,13.1275],267.471,[0,0,1]] call InitStruct; 
-['LongSteelPipe',[3468.36,3605.93,20.5133,true],[-0.0106187,0.99979,-0.0175394],[0.999911,0.0107579,0.00785926]] call InitStruct; 
+['NewIndPipe20m',[3468.36,3605.93,20.5133,true],[-0.0106187,0.99979,-0.0175394],[0.999911,0.0107579,0.00785926]] call InitStruct; 
 ['SmallDirtGrey',[3466.53,3608.82,12.8911],177.398,[0,0,1]] call InitStruct; 
 ['LargeConcreteWallWithReinforcement',[3449.31,3590.18,15.4077],182.822,[0,0,1]] call InitStruct; 
 ['LargeConcreteWallWithReinforcement',[3453.5,3583.8,15.0303],272.686,[0,0,1]] call InitStruct; 
@@ -1509,7 +1509,7 @@ _3453_998543592_8413112_71210 = ['IStruct',[3454,3592.84,12.7121],2.93696,[0,0,1
 }] call InitStruct; 
 ['MediumBetonWall',[3467.63,3600.74,15.0183],242.397,[0,0,1]] call InitStruct; 
 ['ShortPipeBlueMetal',[3456.59,3591.91,14.3905],291.172,[0,0,1]] call InitStruct; 
-['MediumRuinedPipe',[3458.61,3589.15,20.1903,true],[-0.0274234,-0.998722,-0.0424573],[-0.609048,0.0503728,-0.791532]] call InitStruct; 
+['IndPipeValve',[3458.61,3589.15,20.1903,true],[-0.0274234,-0.998722,-0.0424573],[-0.609048,0.0503728,-0.791532]] call InitStruct; 
 ['LampCeiling',[3455.2,3589.11,14.8364],0,[0,0,1], {go_editor_globalRefs set ["Imported LampCeiling631376 (2)",_thisObj];
 }] call InitStruct; 
 ['SmallPileOfConcreteFragments',[3451.17,3592.61,12.8143],198.294,[0,0,1]] call InitStruct; 

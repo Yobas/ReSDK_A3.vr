@@ -34106,7 +34106,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallDestroyedCornerPipe""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""IndPipe45DegL""]]}";
 							};
 							id=11424;
 							type="CUP_A2_indpipe1_45degl";
@@ -34228,7 +34228,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallDestroyedCornerPipe""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""IndPipe45DegL""]]}";
 							};
 							id=11469;
 							type="CUP_A2_indpipe1_45degl";
@@ -34281,7 +34281,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallDestroyedCornerPipe""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""IndPipe45DegL""]]}";
 							};
 							id=11473;
 							type="CUP_A2_indpipe1_45degl";
@@ -40668,7 +40668,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumSteelUpperPipe""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipeUUP""]]}";
 							};
 							id=11997;
 							type="Land_IndPipe1_Uup_F";
@@ -40717,7 +40717,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""MediumSteelUpperPipe""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipeUUP""]]}";
 							};
 							id=12004;
 							type="Land_IndPipe1_Uup_F";
@@ -50782,7 +50782,7 @@ class Mission
 									flags=4;
 									class Attributes
 									{
-										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LongSteelPipe""]]}";
+										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""NewIndPipe20m""]]}";
 									};
 									id=12823;
 									type="Land_IndPipe1_20m_F";
