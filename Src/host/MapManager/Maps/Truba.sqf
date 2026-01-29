@@ -682,7 +682,7 @@ _4043_605223649_7739327_76392 = ['ContainerGreen',[4043.61,3649.77,27.7639],180,
 ['SofaBrown',[4042.43,3655.09,31.2408],180,[0,0,1]] call InitStruct; 
 ['SmallRoundWoodenTable',[4045.93,3653.2,31.0715],6.65943e-05,[0,0,1]] call InitStruct; 
 ['SmallWoodenTableHandmade',[4035.07,3654.55,31.2408],270,[0,0,1]] call InitStruct; 
-['SmallChair2',[4045.03,3653.21,36.1226,true],270,[-2.10083e-06,0.00455207,0.99999]] call InitItem; 
+['SmallRedseatChair',[4045.03,3653.21,36.1226,true],270,[-2.10083e-06,0.00455207,0.99999]] call InitItem; 
 ['ButterPiece',[4041.57,3663.02,28.8199],6.53137e-05,[0,0,1]] call InitItem; 
 ['BreadChopped',[4040.96,3663.01,28.7822],280,[0,0,1]] call InitItem; 
 ['WoodenSmallShelf1',[4072.28,3653.55,34.8839,true],90,[-0.00692887,-0.00565972,0.99996]] call InitStruct; 

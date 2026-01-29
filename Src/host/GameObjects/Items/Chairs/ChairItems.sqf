@@ -83,17 +83,6 @@ class(SmallChair4) extends(IChairAsItem)
 	getterconst_func(getChairOffsetPos,vec3(0,0.06,-0.48));
 endclass
 
-//THIS IS EQUAL SmallRedseatChair
-editor_attribute("Deprecated" arg "Заменить на SmallRedseatChair. Будет удален с редактором 1.20")
-class(SmallChair2) extends(IChairAsItem)
-	var(model,"ca\buildings\furniture\ch_mod_e.p3d");
-	var(icon,invicon(redchair));
-	getterconst_func(getChairOffsetPos,vec3(0,0,0));
-	getterconst_func(getChairOffsetDir,180);
-	var(size,ITEM_SIZE_LARGE);
-	var(weight,3.5);
-endclass
-
 class(SmallRedseatChair) extends(IChairAsItem)
 	var(model,"ca\buildings\furniture\ch_mod_e.p3d");
 	var(icon,invicon(redchair));

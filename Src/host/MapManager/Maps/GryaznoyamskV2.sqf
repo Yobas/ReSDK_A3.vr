@@ -897,7 +897,7 @@ _4000_818123934_2294922_10949 = ['IStruct',[4000.82,3934.23,28.4975,true],270,[-
 ['WoodenChair',[4082.9,3940.47,21.051],0,[0,0,1]] call InitItem; 
 ['SmallRedseatChair',[4082.07,3939.69,26.0556,true],280,[0.00780891,0.00437313,0.99996]] call InitItem; 
 ['SmallChair',[4084.93,3934.38,26.1132,true],0,[-0.0069996,-0.00103549,0.999975]] call InitItem; 
-['SmallChair2',[4084.96,3931.68,21.1132],185,[0,0,1]] call InitItem; 
+['SmallRedseatChair',[4084.96,3931.68,21.1132],185,[0,0,1]] call InitItem; 
 ['MediumWoodenTable',[4084.97,3933.06,26.5455,true],0,[-0.0069996,-0.00103549,0.999975]] call InitStruct; 
 ['LargeClothCabinet',[4082.64,3931.72,21.0923],180,[0,0,1]] call InitStruct; 
 ['OldWoodenBox',[4082.46,3934.84,21.1146],0,[0,0,1]] call InitStruct; 
@@ -1153,9 +1153,9 @@ _4049_250003974_5000026_00000 = ['IStruct',[4049.25,3974.5,26],90,[0,0,1], {_thi
 ['LobbyChair',[4029.27,3993.65,34.8759,true],90,[0.00565556,-0.00691523,0.99996]] call InitStruct; 
 ['ArmChair',[4022.11,3985.44,29.9439],130,[0,0,1]] call InitStruct; 
 ['SmallChair',[4023.66,3987.25,30.01],275,[0,0,1]] call InitItem; 
-['SmallChair2',[4024.28,3986.28,30.01],170,[0,0,1]] call InitItem; 
-['SmallChair2',[4024.25,3988.04,30.01],0.00041963,[0,0,1]] call InitItem; 
-['SmallChair2',[4024.92,3987.12,30.01],90.0004,[0,0,1]] call InitItem; 
+['SmallRedseatChair',[4024.28,3986.28,30.01],170,[0,0,1]] call InitItem; 
+['SmallRedseatChair',[4024.25,3988.04,30.01],0.00041963,[0,0,1]] call InitItem; 
+['SmallRedseatChair',[4024.92,3987.12,30.01],90.0004,[0,0,1]] call InitItem; 
 ['Hanger',[4024.71,3994.92,27.2692],0,[0,0,1]] call InitStruct; 
 ['LargeClothCabinet',[4026.11,3995.44,26.3536],0,[0,0,1]] call InitStruct; 
 ['Bookcase',[4023.41,3989.84,29.8697],180,[0,0,1]] call InitStruct; 
@@ -1688,7 +1688,7 @@ _4049_250003974_5000026_00000 = ['IStruct',[4049.25,3974.5,26],90,[0,0,1], {_thi
 ['SmallChair1',[4008.14,3926.03,27.0955,true],0,[-0.0069996,-0.00103549,0.999975]] call InitItem; 
 ['SmallChair1',[4007.14,3925.97,27.0955,true],0,[-0.0069996,-0.00103549,0.999975]] call InitItem; 
 ['SmallChair',[4006.28,3925.13,27.1069,true],265,[0.00164157,-0.00688243,0.999975]] call InitItem; 
-['SmallChair2',[4005.3,3920.38,22.1069],95,[0,0,1]] call InitItem; 
+['SmallRedseatChair',[4005.3,3920.38,22.1069],95,[0,0,1]] call InitItem; 
 ['SmallChair1',[4005.21,3919.53,27.1069,true],90,[-0.00161913,0.00659628,0.999977]] call InitItem; 
 ['SmallRedseatChair',[4004.46,3918.71,27.1039,true],180,[0.00659634,0.00161913,0.999977]] call InitItem; 
 ['WoodenChair',[4005.47,3913.19,27.1032,true],85,[-0.00641105,-0.00624527,0.99996]] call InitItem; 
@@ -1700,7 +1700,7 @@ _4049_250003974_5000026_00000 = ['IStruct',[4049.25,3974.5,26],90,[0,0,1], {_thi
 ['SmallChair',[4004.84,3920.52,24.8041],270,[0,0,1]] call InitItem; 
 ['MediumWoodenTable',[4004.3,3927.59,24.7475],180,[0,0,1]] call InitStruct; 
 ['SmallChair1',[4005.02,3928.09,24.7475],90,[0,0,1]] call InitItem; 
-['SmallChair2',[4005.1,3927.1,24.7475],90,[0,0,1]] call InitItem; 
+['SmallRedseatChair',[4005.1,3927.1,24.7475],90,[0,0,1]] call InitItem; 
 ['WoodenChair',[4004.38,3926.26,24.7475],180,[0,0,1]] call InitItem; 
 ['WoodenChair',[4015.65,3914.54,27.2915,true],90,[0.00119383,1.61248e-06,0.999999]] call InitItem; 
 ['WoodenChair',[4015.61,3915.46,27.2901,true],90,[0.00119383,1.61248e-06,0.999999]] call InitItem; 
@@ -1730,7 +1730,7 @@ _4049_250003974_5000026_00000 = ['IStruct',[4049.25,3974.5,26],90,[0,0,1], {_thi
 ['LargeClothCabinet',[4007.61,3892.89,22.1241],90,[0,0,1]] call InitStruct; 
 ['ConcreteWallLightDark',[3997.86,3890.54,28.1426,true],[1,1.62906e-07,-9.91254e-06],[-9.91254e-06,-1.51793e-06,-1]] call InitStruct; 
 ['BigClothCabinet',[3998.32,3889.6,22.116],270,[0,0,1]] call InitStruct; 
-['SmallChair2',[4010.35,3891.51,24.8248],275,[0,0,1]] call InitItem; 
+['SmallRedseatChair',[4010.35,3891.51,24.8248],275,[0,0,1]] call InitItem; 
 ['SmallChair1',[4011.32,3892.25,24.8161],0,[0,0,1]] call InitItem; 
 ['WoodenChair',[4002.69,3892.2,24.7864],90,[0,0,1]] call InitItem; 
 ['SmallChair1',[4002.7,3893.12,24.7864],90,[0,0,1]] call InitItem; 
@@ -3315,7 +3315,7 @@ _3982_870853979_0715332_05015 = ['ConcretePanel',[3982.87,3979.07,37.1689,true],
 ['BlackConcreteWall',[3979.71,3978.63,38.3559,true],[0.999832,-0.0183358,-1.62464e-05],[-2.84516e-06,0.000730904,-1]] call InitStruct; 
 ['WoodenOfficeTable',[3985.51,3978.28,33.6471,true],270.67,[0.00199396,-0.00147992,0.999997]] call InitStruct; 
 ['SmallChair1',[3986.54,3977.71,33.24,true],105,[-0.00156348,0.0019364,0.999997]] call InitItem; 
-['SmallChair2',[3986.52,3978.61,33.24,true],65,[-0.00244238,0.00047838,0.999997]] call InitItem; 
+['SmallRedseatChair',[3986.52,3978.61,33.24,true],65,[-0.00244238,0.00047838,0.999997]] call InitItem; 
 ['CaseBedroomMedium',[3984.85,3977.38,28.3216],0.000228384,[0,0,1]] call InitStruct; 
 ['ArmChairBrown',[3984.64,3978.32,33.2187,true],268.825,[0.000102345,-0.000967328,1]] call InitStruct; 
 ['OfficeCabinet',[3988.64,3979.57,34.171,true],90.0005,[-0.00200373,0.00146245,0.999997]] call InitStruct; 

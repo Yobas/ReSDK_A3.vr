@@ -2888,7 +2888,7 @@ _4151_966803834_4272518_81273 = ['SignMedical',[4151.97,3834.43,24.0873,true],18
 ['HospitalBedWheels',[4150.37,3834.14,17.0137],0,[0,0,1]] call InitStruct; 
 ['HospitalBedWheels',[4150.24,3837.86,17.0074],353.081,[0,0,1]] call InitStruct; 
 ['WoodenOfficeTable3',[4145.58,3832.53,17.0455],272.101,[0,0,1]] call InitStruct; 
-['SmallChair2',[4144.79,3833.01,17.0251],272.42,[0,0,1]] call InitItem; 
+['SmallRedseatChair',[4144.79,3833.01,17.0251],272.42,[0,0,1]] call InitItem; 
 ['BigFileCabinet',[4142.1,3833.64,17.1543],180.284,[0,0,1]] call InitStruct; 
 ['ThickConcreteFloorSmall',[4142.98,3832.62,16.5429],0,[0,0,1]] call InitStruct; 
 ['SmallConcreteWallRed',[4144.68,3830.89,17.0479],0,[0,0,1]] call InitStruct; 
@@ -2924,7 +2924,7 @@ _4146_186043838_1704116_60457 = ['SteelBrownDoor',[4146.19,3838.17,16.6046],271.
 }] call InitStruct; 
 ['StreetLampEnabled',[4157.04,3830.85,15.0749],298.856,[0,0,1], {go_editor_globalRefs set ["StreetLampEnabled G:shs4g5hQMIE",_thisObj];
 }] call InitStruct; 
-['SmallChair2',[4145.75,3833.99,17.0384],334.811,[0,0,1]] call InitItem; 
+['SmallRedseatChair',[4145.75,3833.99,17.0384],334.811,[0,0,1]] call InitItem; 
 ['LampCeiling',[4155.25,3847.47,19.6122],0,[0,0,1], {_thisObj setvariable ['light',"SLIGHT_LEGACY_LAMP_CEILING_OLD" call lightSys_getConfigIdByName]; go_editor_globalRefs set ["LampCeiling G:5AeXdcSko5o",_thisObj];
 }] call InitStruct; 
 ['LampWall',[4151.51,3841.44,18.1624],187.723,[0,0,1], {go_editor_globalRefs set ["LampWall G:uasJKHWvTdo",_thisObj];
