@@ -157,12 +157,6 @@ class(SmallConcretePipe) extends(BasicPipe)
 endclass
 
 editor_attribute("EditorGenerated")
-editor_attribute("Deprecated" arg "Заменить на NewIndPipe20m.")
-class(NewIndPipe20m) extends(BasicPipe)
-	var(model,"a3\structures_f\ind\pipes\indpipe1_20m_f.p3d");
-endclass
-
-editor_attribute("EditorGenerated")
 class(BigConcretePipe) extends(BasicPipe)
 	var(model,"ca\structures_e\misc\misc_construction\misc_concpipeline_ep1.p3d");
 endclass
