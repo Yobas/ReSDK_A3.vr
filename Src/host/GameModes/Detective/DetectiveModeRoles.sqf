@@ -803,7 +803,7 @@ class(RDetectiveThief) extends(RDetectiveModeRole)
 		["Crowbar",_mob] call createItemInInventory;
 		regKeyInUniform(_cloth,["ohr"],"Дубликат ключа сторожа");
 		["BalaclavaMask2",_mob,INV_FACE] call createItemInInventory;
-		_back = ["SmallBackpack",_mob,INV_BACKPACK] call createItemInInventory;
+		_back = ["LeatherBackpackBrown",_mob,INV_BACKPACK] call createItemInInventory;
 		["Screwdriver",_back] call createItemInContainer;
 		["Flashlight",_back] call createItemInContainer;
 		["SmallBattery",_back] call createItemInContainer;

@@ -1822,14 +1822,14 @@ if ((random 1) < 0.56) then {
 ['Bucket2',[3968.7,3998.97,22.3306],0,[0,0,1]] call InitItem; 
 ['Wrench',[3968.69,3998.24,22.3306],69.0031,[0,0,1]] call InitItem; 
 if ((random 1) < 0.81) then {
-	['SmallBackpack',[3958.35,3998.72,22.2425],0,[0,0,1]] call InitItem; 
+	['LeatherBackpackBrown',[3958.35,3998.72,22.2425],0,[0,0,1]] call InitItem; 
 };
-['SmallBackpack',[3958.78,3998.73,22.2425],48.8213,[0,0,1]] call InitItem; 
-['SmallBackpack',[3958.98,3998.91,22.2425],333.412,[0,0,1]] call InitItem; 
-['SmallBackpack',[3958.57,3998.76,22.2425],275.718,[0,0,1]] call InitItem; 
-['SmallBackpack',[3959.22,3998.94,22.2425],72.6946,[0,0,1]] call InitItem; 
+['LeatherBackpackBrown',[3958.78,3998.73,22.2425],48.8213,[0,0,1]] call InitItem; 
+['LeatherBackpackBrown',[3958.98,3998.91,22.2425],333.412,[0,0,1]] call InitItem; 
+['LeatherBackpackBrown',[3958.57,3998.76,22.2425],275.718,[0,0,1]] call InitItem; 
+['LeatherBackpackBrown',[3959.22,3998.94,22.2425],72.6946,[0,0,1]] call InitItem; 
 if ((random 1) < 0.71) then {
-	['SmallBackpack',[3959.56,3999.12,22.2425],305.914,[0,0,1]] call InitItem; 
+	['LeatherBackpackBrown',[3959.56,3999.12,22.2425],305.914,[0,0,1]] call InitItem; 
 };
 _3963_935064000_2712422_21622 = ['LongWeaponContainer',[3963.94,4000.27,22.2162],339.614,[0,0,1]] call InitStruct; 
 ['Crowbar',[3968.89,3998.42,22.3306],0,[0,0,1]] call InitItem; 

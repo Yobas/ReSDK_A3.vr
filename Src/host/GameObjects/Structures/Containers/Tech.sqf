@@ -1620,7 +1620,7 @@ class(MerchantConsoleOkopovo) extends(MerchantConsole)
 	regItemDef(MC_CAT_FOOD,"SpirtBottle",4,7,1,20)
 	regItemDef(MC_CAT_FOOD,"MilkBottle",15,20,1,15)
 
-	regItemDef(MC_CAT_CONTAINERS,"SmallBackpack",25,25,1,10)
+	regItemDef(MC_CAT_CONTAINERS,"LeatherBackpackBrown",25,25,1,10)
 	regItemDef(MC_CAT_CONTAINERS,"FabricBagBig1",15,15,1,10)
 	regItemDef(MC_CAT_CONTAINERS,"ShuttleBag",10,10,1,5)
 	regItemDef(MC_CAT_CONTAINERS,"MedicalBag",7,7,1,5)

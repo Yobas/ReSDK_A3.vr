@@ -239,7 +239,7 @@ class(RAssasinSaloon) extends(BasicRoleSaloon)
 		setVar(_l,name,"""Коронный""");
 		_l = ["ShortSword",_mob,INV_BACK] call createItemInInventory;
 		setVar(_l,name,"""Похоронный""");
-		private _b = ["SmallBackpack",_mob,INV_BACKPACK] call createItemInInventory;
+		private _b = ["LeatherBackpackBrown",_mob,INV_BACKPACK] call createItemInInventory;
 		for "_i" from 1 to 5 do {
 			["Lockpick",_arm] call createItemInContainer;
 		};

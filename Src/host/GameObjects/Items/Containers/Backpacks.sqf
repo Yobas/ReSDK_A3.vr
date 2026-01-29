@@ -176,7 +176,7 @@ class(LeatherBackpackBrown) extends(LeatherBackpack)
 endclass
 
 editor_attribute("Deprecated" arg "Этот рюкзак будет удалён в будущем.")
-class(SmallBackpack) extends(LeatherBackpackBrown)
+class(LeatherBackpackBrown) extends(LeatherBackpackBrown)
 endclass
 
 class(LeatherBackpackRed) extends(LeatherBackpack)

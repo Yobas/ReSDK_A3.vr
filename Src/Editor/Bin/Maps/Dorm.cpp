@@ -20170,7 +20170,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallBackpack""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LeatherBackpackBrown""]]}";
 							};
 							id=4052;
 							type="DeconKit_01_F";
@@ -20203,7 +20203,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallBackpack""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LeatherBackpackBrown""]]}";
 							};
 							id=4053;
 							type="DeconKit_01_F";
@@ -20220,7 +20220,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallBackpack""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LeatherBackpackBrown""]]}";
 							};
 							id=4054;
 							type="DeconKit_01_F";

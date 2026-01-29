@@ -1356,10 +1356,10 @@ _4066_913824067_1801832_43532 = ['SpirtBottle',[4066.91,4067.18,37.5723,true],0,
 ['CoinBag',[4061.97,4067.17,32.8868],0,[0,0,1]] call InitItem; 
 ['CoinBag',[4062.18,4067.15,32.8868],250,[0,0,1]] call InitItem; 
 ['ShuttleBag',[4061.64,4068.85,31.9066],0,[0,0,1]] call InitItem; 
-['SmallBackpack',[4061.49,4069.27,31.8139],105,[0,0,1]] call InitItem; 
+['LeatherBackpackBrown',[4061.49,4069.27,31.8139],105,[0,0,1]] call InitItem; 
 ['Butter',[4063.25,4071.37,32.1479],315,[0,0,1]] call InitItem; 
-['SmallBackpack',[4063.58,4071.36,32.1406],0,[0,0,1]] call InitItem; 
-['SmallBackpack',[4063.89,4071.36,32.1358],340,[0,0,1]] call InitItem; 
+['LeatherBackpackBrown',[4063.58,4071.36,32.1406],0,[0,0,1]] call InitItem; 
+['LeatherBackpackBrown',[4063.89,4071.36,32.1358],340,[0,0,1]] call InitItem; 
 ['BrushCleaner',[4063.58,4071.35,31.8513],40,[0,0,1]] call InitItem; 
 ['Suitcase',[4064.58,4071.39,31],350,[0,0,1], {go_editor_globalRefs set ["MoneyTorgCase",_thisObj];
 }] call InitItem; 

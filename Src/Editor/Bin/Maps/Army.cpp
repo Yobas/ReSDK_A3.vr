@@ -29727,7 +29727,7 @@ class Mission
 									side="Empty";
 									class Attributes
 									{
-										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""prob"",81],[""class"",""SmallBackpack""]]}";
+										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""prob"",81],[""class"",""LeatherBackpackBrown""]]}";
 									};
 									id=5400;
 									type="DeconKit_01_F";
@@ -29744,7 +29744,7 @@ class Mission
 									side="Empty";
 									class Attributes
 									{
-										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallBackpack""]]}";
+										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LeatherBackpackBrown""]]}";
 									};
 									id=5403;
 									type="DeconKit_01_F";
@@ -29761,7 +29761,7 @@ class Mission
 									side="Empty";
 									class Attributes
 									{
-										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallBackpack""]]}";
+										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LeatherBackpackBrown""]]}";
 									};
 									id=5404;
 									type="DeconKit_01_F";
@@ -29778,7 +29778,7 @@ class Mission
 									side="Empty";
 									class Attributes
 									{
-										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallBackpack""]]}";
+										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LeatherBackpackBrown""]]}";
 									};
 									id=5405;
 									type="DeconKit_01_F";
@@ -29795,7 +29795,7 @@ class Mission
 									side="Empty";
 									class Attributes
 									{
-										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallBackpack""]]}";
+										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LeatherBackpackBrown""]]}";
 									};
 									id=5406;
 									type="DeconKit_01_F";
@@ -29812,7 +29812,7 @@ class Mission
 									side="Empty";
 									class Attributes
 									{
-										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""prob"",71],[""class"",""SmallBackpack""]]}";
+										init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""prob"",71],[""class"",""LeatherBackpackBrown""]]}";
 									};
 									id=5407;
 									type="DeconKit_01_F";

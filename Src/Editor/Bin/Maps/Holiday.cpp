@@ -2092,7 +2092,7 @@ class Mission
 							side="Empty";
 							class Attributes
 							{
-								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""SmallBackpack""]]}";
+								init="{createHashMapFromArray[[""customProps"",createHashMapFromArray[]],[""class"",""LeatherBackpackBrown""]]}";
 							};
 							id=6280;
 							type="DeconKit_01_F";
