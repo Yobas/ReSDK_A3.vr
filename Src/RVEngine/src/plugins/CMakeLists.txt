@@ -11,6 +11,9 @@ if(BUILD_PYTHON_HOST)
     add_subdirectory(python_host)
 endif()
 
-# To add more plugins, just add more lines:
-# add_subdirectory(another_plugin)
-# add_subdirectory(third_plugin)
+# JavaScript Host plugin - embeds QuickJS-NG engine
+# Set BUILD_JS_HOST=ON to build this plugin
+option(BUILD_JS_HOST "Build JavaScript Host plugin" ON)
+if(BUILD_JS_HOST)
+    add_subdirectory(js_host)
+endif()
