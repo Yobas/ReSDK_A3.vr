@@ -1,0 +1,195 @@
+{
+	"name": "jshost-debugger",
+	"displayName": "JSHost Debugger",
+	"version": "1.0.0",
+	"publisher": "resdk",
+	"description": "upd Debug QuickJS-NG runtime embedded in Arma 3 (js_host plugin). Attach-only, no process launch.",
+	"author": {
+		"name": "ReSDK"
+	},
+	"license": "MIT",
+	"keywords": [
+		"multi-root ready"
+	],
+	"engines": {
+		"vscode": "^1.33.0",
+		"node": "^10.15.1"
+	},
+	"icon": "images/quickjs-debug-icon.png",
+	"categories": [
+		"Debuggers"
+	],
+	"private": true,
+	"scripts": {
+		"prepublish": "tsc -p ./src",
+		"compile": "tsc -p ./src",
+		"tslint": "tslint ./src/**/*.ts",
+		"watch": "tsc -w -p ./src",
+		"package": "vsce package --baseImagesUrl https://example.com --baseContentUrl https://example.com",
+		"publish": "vsce publish"
+	},
+	"dependencies": {
+		"await-notify": "1.0.1",
+		"source-map": "^0.7.3",
+		"stream-parser": "^0.3.1",
+		"vscode-debugadapter": "^1.41.1"
+	},
+	"devDependencies": {
+		"@types/node": "10.12.12",
+		"@types/mocha": "5.2.7",
+		"typescript": "3.5.3",
+		"mocha": "6.2.0",
+		"vscode": "1.1.36",
+		"vscode-debugadapter-testsupport": "1.37.0",
+		"tslint": "5.18.0",
+		"vsce": "1.66.0"
+	},
+	"main": "./out/extension",
+	"activationEvents": [
+		"onDebug"
+	],
+	"contributes": {
+		"breakpoints": [
+			{
+				"language": "javascript"
+			},
+			{
+				"language": "typescript"
+			}
+		],
+		"debuggers": [
+			{
+				"type": "jshost",
+				"label": "JSHost Debugger (Arma 3)",
+				"program": "./out/debugAdapter.js",
+				"runtime": "node",
+				"configurationAttributes": {
+					"launch": {
+						"properties": {
+							"mode": {
+								"type": "string",
+								"description": "Connection mode. 'connect' = VS Code connects to js_host (default). 'listen' = VS Code waits for js_host to connect.",
+								"enum": [
+									"connect",
+									"listen"
+								],
+								"default": "connect"
+							},
+							"address": {
+								"type": "string",
+								"description": "Address of the js_host debugger.",
+								"default": "localhost"
+							},
+							"port": {
+								"type": "number",
+								"description": "Port of the js_host debugger (must match debugger.cfg).",
+								"default": 9229
+							},
+							"localRoot": {
+								"type": "string",
+								"description": "Local source root for resolving script paths.",
+								"default": "${workspaceFolder}/"
+							},
+							"remoteRoot": {
+								"type": "string",
+								"description": "Remote root for file path mapping.",
+								"default": ""
+							},
+							"trace": {
+								"type": "boolean",
+								"description": "Enable logging of the Debug Adapter Protocol.",
+								"default": true
+							},
+							"sourceMaps": {
+								"type": "object",
+								"description": "Sourcemap file paths and their corresponding remoteRoots.",
+								"default": {}
+							}
+						}
+					},
+					"attach": {
+						"properties": {
+							"mode": {
+								"type": "string",
+								"description": "Connection mode. 'connect' = VS Code connects to js_host (default). 'listen' = VS Code waits for js_host to connect.",
+								"enum": [
+									"connect",
+									"listen"
+								],
+								"default": "connect"
+							},
+							"address": {
+								"type": "string",
+								"description": "Address of the js_host debugger.",
+								"default": "localhost"
+							},
+							"port": {
+								"type": "number",
+								"description": "Port of the js_host debugger (must match debugger.cfg).",
+								"default": 9229
+							},
+							"localRoot": {
+								"type": "string",
+								"description": "Local source root for resolving script paths.",
+								"default": "${workspaceFolder}/"
+							},
+							"remoteRoot": {
+								"type": "string",
+								"description": "Remote root for file path mapping.",
+								"default": ""
+							},
+							"trace": {
+								"type": "boolean",
+								"description": "Enable logging of the Debug Adapter Protocol.",
+								"default": true
+							},
+							"sourceMaps": {
+								"type": "object",
+								"description": "Sourcemap file paths and their corresponding remoteRoots.",
+								"default": {}
+							}
+						}
+					}
+				},
+				"initialConfigurations": [
+					{
+						"type": "jshost",
+						"request": "attach",
+						"name": "Attach to Arma 3 JSHost",
+						"mode": "connect",
+						"address": "localhost",
+						"port": 9229,
+						"localRoot": "${workspaceFolder}/"
+					}
+				],
+				"configurationSnippets": [
+					{
+						"label": "JSHost: Attach (connect to Arma 3)",
+						"description": "Connect to a running Arma 3 instance with js_host debugger enabled.",
+						"body": {
+							"type": "jshost",
+							"request": "attach",
+							"name": "Attach to Arma 3 JSHost",
+							"mode": "connect",
+							"address": "localhost",
+							"port": 9229,
+							"localRoot": "^\"\\${workspaceFolder}/\""
+						}
+					},
+					{
+						"label": "JSHost: Listen (wait for Arma 3)",
+						"description": "Wait for Arma 3 js_host to connect to VS Code.",
+						"body": {
+							"type": "jshost",
+							"request": "attach",
+							"name": "Wait for Arma 3 JSHost",
+							"mode": "listen",
+							"port": 9229,
+							"localRoot": "^\"\\${workspaceFolder}/\""
+						}
+					}
+				]
+			}
+		]
+	}
+}

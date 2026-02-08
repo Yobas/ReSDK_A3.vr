@@ -1,9 +1,11 @@
 #include "js_engine.hpp"
 #include "type_conversion.hpp"
 #include "sqf_bindings.hpp"
+#include "quickjs-debugger.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <algorithm>
 #include <Windows.h>
 
 namespace js_host {
@@ -111,6 +113,9 @@ bool JsEngine::initialize(const std::filesystem::path& scripts_path) {
     m_initialized = true;
     log_info("QuickJS-NG engine initialized successfully");
 
+    // Start debugger if enabled (before loading scripts so breakpoints work)
+    start_debugger();
+
     // Auto-load main.js if it exists
     auto main_path = m_scripts_path / "main.js";
     if (std::filesystem::exists(main_path)) {
@@ -172,7 +177,14 @@ bool JsEngine::exec_file(const std::filesystem::path& file_path) {
     std::string code = ss.str();
     file.close();
 
-    std::string filename = file_path.filename().string();
+    // Use the full absolute path as filename so the debugger can match breakpoints.
+    // The VS Code extension sends breakpoints with full paths.
+    std::string filename = file_path.string();
+    // Strip Windows extended-length path prefix (\\?\) if present
+    if (filename.size() >= 4 && filename.substr(0, 4) == "\\\\?\\")
+        filename = filename.substr(4);
+    // Normalize backslashes to forward slashes for consistency
+    std::replace(filename.begin(), filename.end(), '\\', '/');
 
     JSValue result = JS_Eval(m_ctx, code.c_str(), code.size(),
                              filename.c_str(), JS_EVAL_TYPE_GLOBAL);
@@ -296,6 +308,12 @@ bool JsEngine::call_js_function(JSValue func, const char* name) {
 
 void JsEngine::call_on_frame() {
     if (!m_initialized) return;
+
+    // Let debugger process pending messages (breakpoints, step, etc.)
+    if (m_debugger_enabled && m_ctx) {
+        js_debugger_cooperate(m_ctx);
+    }
+
     call_js_function(m_on_frame_func, "on_frame");
 }
 
@@ -312,6 +330,31 @@ void JsEngine::call_post_init() {
 void JsEngine::call_mission_ended() {
     if (!m_initialized) return;
     call_js_function(m_mission_ended_func, "mission_ended");
+}
+
+// ============================================================================
+// Debugger
+// ============================================================================
+
+void JsEngine::start_debugger() {
+    if (!m_debugger_enabled || !m_ctx) return;
+
+    std::string address = "0.0.0.0:" + std::to_string(m_debugger_port);
+
+    if (m_debugger_wait) {
+        log_info("Debugger: waiting for connection on port " + std::to_string(m_debugger_port) + "...");
+        js_debugger_wait_connection(m_ctx, address.c_str());
+        log_info("Debugger: connected!");
+    } else {
+        log_info("Debugger: connecting to localhost:" + std::to_string(m_debugger_port) + "...");
+        js_debugger_connect(m_ctx, address.c_str());
+        log_info("Debugger: connected!");
+    }
+}
+
+bool JsEngine::is_debugger_connected() const {
+    if (!m_rt) return false;
+    return js_debugger_is_transport_connected(m_rt) != 0;
 }
 
 } // namespace js_host

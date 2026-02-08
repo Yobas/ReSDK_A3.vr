@@ -37,8 +37,22 @@ target_sources(${PLUGIN_TARGET} PRIVATE
     sqf_bindings.cpp
 )
 
-# Include directories (quickjs headers are exposed via qjs target's public includes)
-target_link_libraries(${PLUGIN_TARGET} PRIVATE qjs)
+# ============================================================================
+# QuickJS Debugger sources (compiled as part of plugin, not as part of qjs lib)
+# ============================================================================
+target_sources(${PLUGIN_TARGET} PRIVATE
+    quickjs-master/quickjs-debugger.h
+    quickjs-master/quickjs-debugger.c
+    quickjs-master/quickjs-debugger-transport-win.c
+)
+
+# Include directories
+# qjs target exposes quickjs.h via its public includes.
+# Debugger .c files also need the quickjs-master directory for their includes.
+target_include_directories(${PLUGIN_TARGET} PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/quickjs-master
+)
+target_link_libraries(${PLUGIN_TARGET} PRIVATE qjs ws2_32)
 
 # Compile definitions
 target_compile_definitions(${PLUGIN_TARGET} PRIVATE

@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <filesystem>
 #include <string>
+#include <fstream>
 
 using namespace intercept;
 using namespace js_host;
@@ -20,7 +21,12 @@ static std::filesystem::path get_scripts_path() {
     if (hModule) {
         wchar_t path[MAX_PATH];
         GetModuleFileNameW(hModule, path, MAX_PATH);
-        std::filesystem::path dll_path(path);
+        // Strip Windows extended-length path prefix (\\?\) if present.
+        // Arma 3 may load DLLs with this prefix, and GetModuleFileNameW preserves it.
+        std::wstring pathStr(path);
+        if (pathStr.size() >= 4 && pathStr.substr(0, 4) == L"\\\\?\\")
+            pathStr = pathStr.substr(4);
+        std::filesystem::path dll_path(pathStr);
 
         // Scripts should be in: @Mod/srcjs/ (DLL is in @Mod/intercept/)
         auto mod_path = dll_path.parent_path().parent_path();
@@ -93,6 +99,48 @@ DLLEXPORT void CDECL on_interface_unload(r_string name_) {
 
 DLLEXPORT void CDECL register_interfaces() {
     g_scripts_path = get_scripts_path();
+
+    // Check for debugger config file: @Mod/srcjs/debugger.cfg
+    // Format: key=value per line. Supported keys:
+    //   port=9229       (debugger TCP port, default 9229)
+    //   wait=1          (block until debugger connects, default 1)
+    // If file exists, debugger is enabled. Engine listens on the port.
+    auto debugger_cfg = g_scripts_path / "debugger.cfg";
+    if (std::filesystem::exists(debugger_cfg)) {
+        int port = 9229;
+        bool wait = true;
+        std::ifstream cfg(debugger_cfg);
+        if (cfg.is_open()) {
+            std::string line;
+            while (std::getline(cfg, line)) {
+                // trim whitespace
+                while (!line.empty() && (line.back() == '\r' || line.back() == '\n' || line.back() == ' '))
+                    line.pop_back();
+                if (line.empty() || line[0] == '#') continue;
+
+                auto eq = line.find('=');
+                if (eq != std::string::npos) {
+                    std::string key = line.substr(0, eq);
+                    std::string val = line.substr(eq + 1);
+                    if (key == "port") {
+                        int parsed = std::atoi(val.c_str());
+                        if (parsed > 0 && parsed < 65536) port = parsed;
+                    } else if (key == "wait") {
+                        wait = (val == "1" || val == "true");
+                    }
+                } else {
+                    // Legacy format: first line is just port number
+                    int parsed = std::atoi(line.c_str());
+                    if (parsed > 0 && parsed < 65536) port = parsed;
+                }
+            }
+        }
+        JsEngine::instance().set_debugger_enabled(true);
+        JsEngine::instance().set_debugger_port(port);
+        JsEngine::instance().set_debugger_wait(wait);
+        JsEngine::log_info("Debugger enabled via debugger.cfg, port: " + std::to_string(port) + (wait ? " (waiting for connection)" : " (non-blocking)"));
+    }
+
     JsEngine::instance().initialize(g_scripts_path);
 }
 
@@ -103,6 +151,15 @@ DLLEXPORT void CDECL handle_unload() {
 DLLEXPORT bool CDECL is_signed() {
     return false;
 }
+
+DLLEXPORT void CDECL js_exec(game_value_parameter ctx)
+    {
+        std::cout << "Signal received: " << std::string(ctx) << std::endl;
+        std::cout << "Signal parameters: " << std::string(ctx) << std::endl;
+        auto& first = ctx.get_as<game_data_array>().getRef()->data[0];
+        std::string code = static_cast<std::string>(first);
+        JsEngine::instance().exec_string(code);
+    }
 
 } // extern "C"
 

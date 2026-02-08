@@ -27,6 +27,12 @@ public:
 
     const std::filesystem::path& get_scripts_path() const { return m_scripts_path; }
 
+    // Debugger
+    void set_debugger_enabled(bool enabled) { m_debugger_enabled = enabled; }
+    void set_debugger_port(int port) { m_debugger_port = port; }
+    void set_debugger_wait(bool wait) { m_debugger_wait = wait; }
+    bool is_debugger_connected() const;
+
     static void log_info(const std::string& msg);
     static void log_error(const std::string& msg);
 
@@ -45,11 +51,19 @@ private:
     // Free cached lifecycle JSValues
     void free_lifecycle_cache();
 
+    // Start debugger transport
+    void start_debugger();
+
     bool m_initialized = false;
     std::filesystem::path m_scripts_path;
 
     JSRuntime* m_rt = nullptr;
     JSContext* m_ctx = nullptr;
+
+    // Debugger settings
+    bool m_debugger_enabled = false;
+    int m_debugger_port = 9229;
+    bool m_debugger_wait = false;  // wait for debugger to attach before continuing
 
     // Cached lifecycle function references
     JSValue m_on_frame_func = JS_UNDEFINED;
