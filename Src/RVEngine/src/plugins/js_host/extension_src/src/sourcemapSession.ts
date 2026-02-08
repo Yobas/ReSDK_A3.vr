@@ -1,15 +1,27 @@
-import { BasicSourceMapConsumer, MappedPosition, SourceMapConsumer } from 'source-map';
+import { MappedPosition, SourceMapConsumer } from 'source-map';
 import { LoggingDebugSession } from 'vscode-debugadapter';
 import { SourcemapArguments } from "./sourcemapArguments";
 const path = require('path');
 const fs = require('fs');
 
+/** Normalize path for case-insensitive comparison on Windows:
+ *  - backslashes → forward slashes
+ *  - lowercase drive letter (e.g. P: → p:)
+ */
+function normalizePath(p: string): string {
+	let result = p.replace(/\\/g, '/');
+	if (result.length >= 2 && result[1] === ':')
+		result = result[0].toLowerCase() + result.substring(1);
+	return result;
+}
+
 export abstract class SourcemapSession extends LoggingDebugSession {
 	// a map of all absolute file sources found in the sourcemaps
-	private _fileToSourceMap = new Map<string, BasicSourceMapConsumer>();
+	// SourceMapConsumer v0.6 types lack .file/.sources — use any
+	private _fileToSourceMap = new Map<string, any>();
 	private _sourceMapsLoading: Promise<any>|undefined;
 	// keep track of the sourcemaps and the location of the file.map used to load it
-	private _sourceMaps = new Map<BasicSourceMapConsumer, string>();
+	private _sourceMaps = new Map<any, string>();
 
 	abstract async logTrace(message: string);
 	abstract async getArguments(): Promise<SourcemapArguments>;
@@ -24,17 +36,18 @@ export abstract class SourcemapSession extends LoggingDebugSession {
 		let promises = sourceMaps.map(sourcemap => (async () => {
 			try {
 				let json = JSON.parse(fs.readFileSync(sourcemap).toString());
-				let smc = await new SourceMapConsumer(json);
+				let smc: any = await new SourceMapConsumer(json);
 				this._sourceMaps.set(smc, sourcemap);
 				let sourceMapRoot = path.dirname(sourcemap);
 				let sources = smc.sources.map(source => path.join(sourceMapRoot, source) as string);
 				for (let source of sources) {
-					const other = this._fileToSourceMap.get(source);
+					const key = normalizePath(source);
+					const other = this._fileToSourceMap.get(key);
 					if (other) {
 						this.logTrace(`sourcemap for ${source} found in ${other.file}.map and ${sourcemap}`);
 					}
 					else {
-						this._fileToSourceMap.set(source, smc);
+						this._fileToSourceMap.set(key, smc);
 					}
 				}
 			}
@@ -50,7 +63,7 @@ export abstract class SourcemapSession extends LoggingDebugSession {
 	async translateFileToRemote(file: string): Promise<string> {
 		await this.loadSourceMaps();
 
-		const sm = this._fileToSourceMap.get(file);
+		const sm = this._fileToSourceMap.get(normalizePath(file));
 		if (!sm)
 			return file;
 		return sm.file;
@@ -101,7 +114,7 @@ export abstract class SourcemapSession extends LoggingDebugSession {
 		// (no remote root)test.js:10 -> test.js:10
 
 		try {
-			const sm = this._fileToSourceMap.get(sourceLocation.source);
+			const sm = this._fileToSourceMap.get(normalizePath(sourceLocation.source));
 			if (!sm)
 				throw new Error('no source map');
 			const sourcemap = this._sourceMaps.get(sm);
@@ -110,7 +123,7 @@ export abstract class SourcemapSession extends LoggingDebugSession {
 			const actualSourceLocation = Object.assign({}, sourceLocation);
 			this.logTrace(`translateFileLocationToRemote: ${JSON.stringify(sourceLocation)} to: ${JSON.stringify(actualSourceLocation)}`);
 			// convert the local absolute path into a sourcemap relative path.
-			actualSourceLocation.source = path.relative(path.dirname(sourcemap), sourceLocation.source);
+			actualSourceLocation.source = path.relative(path.dirname(sourcemap), sourceLocation.source).replace(/\\/g, '/');
 			delete actualSourceLocation.column;
 			// let unmappedPosition: NullablePosition = sm.generatedPositionFor(actualSourceLocation);
 			let unmappedPositions = sm.allGeneratedPositionsFor(actualSourceLocation);

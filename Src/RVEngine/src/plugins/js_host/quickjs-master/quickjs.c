@@ -60244,7 +60244,9 @@ done:
         return 0;
 
     {
-    int pc = (int)((cur_pc ? cur_pc : ctx->rt->current_stack_frame->cur_pc) - b->byte_code_buf - 1);
+    // Note: js_debugger_check(ctx, pc) is called BEFORE *pc++ in the SWITCH macro,
+    // so pc already points at the current opcode. No -1 adjustment needed.
+    int pc = (int)((cur_pc ? cur_pc : ctx->rt->current_stack_frame->cur_pc) - b->byte_code_buf);
     if (pc < 0 || pc > b->byte_code_len)
         return 0;
     return b->debugger.breakpoints[pc];

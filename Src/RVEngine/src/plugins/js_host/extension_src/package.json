@@ -3,7 +3,7 @@
 	"displayName": "JSHost Debugger",
 	"version": "1.0.0",
 	"publisher": "resdk",
-	"description": "upd Debug QuickJS-NG runtime embedded in Arma 3 (js_host plugin). Attach-only, no process launch.",
+	"description": "v3 Debug QuickJS-NG runtime embedded in Arma 3 (js_host plugin). Attach-only, no process launch.",
 	"author": {
 		"name": "ReSDK"
 	},
@@ -30,19 +30,19 @@
 	},
 	"dependencies": {
 		"await-notify": "1.0.1",
-		"source-map": "^0.7.3",
+		"source-map": "^0.6.1",
 		"stream-parser": "^0.3.1",
 		"vscode-debugadapter": "^1.41.1"
 	},
 	"devDependencies": {
-		"@types/node": "10.12.12",
 		"@types/mocha": "5.2.7",
-		"typescript": "3.5.3",
+		"@types/node": "10.12.12",
 		"mocha": "6.2.0",
-		"vscode": "1.1.36",
-		"vscode-debugadapter-testsupport": "1.37.0",
 		"tslint": "5.18.0",
-		"vsce": "1.66.0"
+		"typescript": "3.5.3",
+		"vsce": "1.66.0",
+		"vscode": "1.1.36",
+		"vscode-debugadapter-testsupport": "1.37.0"
 	},
 	"main": "./out/extension",
 	"activationEvents": [
