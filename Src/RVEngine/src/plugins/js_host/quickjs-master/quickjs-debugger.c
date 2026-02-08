@@ -4,16 +4,21 @@
 #include <assert.h>
 #include <stdio.h>
 
-/* Debug logging macro - writes to a file since Arma may not have stderr visible */
+/* Debug logging — disabled by default, enable with JSHOST_DEBUG_LOG env var or uncomment */
+/* #define JSHOST_DEBUGGER_VERBOSE */
+#ifdef JSHOST_DEBUGGER_VERBOSE
 static FILE* _dbg_get_log(void) {
     static FILE *f = NULL;
     if (!f) {
-        f = fopen("P:\\armatools\\steamapps\\common\\Arma 3\\jshost_debug.log", "w");
+        f = fopen("jshost_debug.log", "w");
         if (!f) f = stderr;
     }
     return f;
 }
 #define DBG_LOG(...) do { FILE *_f = _dbg_get_log(); fprintf(_f, "[DBG] "); fprintf(_f, __VA_ARGS__); fprintf(_f, "\n"); fflush(_f); } while(0)
+#else
+#define DBG_LOG(...) ((void)0)
+#endif
 
 typedef struct DebuggerSuspendedState {
     uint32_t variable_reference_count;
@@ -440,9 +445,6 @@ static int js_process_debugger_messages(JSDebuggerInfo *info, const uint8_t *cur
     char message_length_buf[10];
 
     do {
-        fflush(stdout);
-        fflush(stderr);
-
         if (!js_transport_read_fully(info, message_length_buf, 9))
             goto done;
 

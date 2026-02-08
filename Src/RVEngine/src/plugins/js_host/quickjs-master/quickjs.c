@@ -60040,7 +60040,9 @@ JSDebuggerLocation js_debugger_current_location(JSContext *ctx, const uint8_t *c
         return location;
 
     int col_num;
-    uint32_t pc_value = (uint32_t)((cur_pc ? cur_pc : sf->cur_pc) - b->byte_code_buf - 1);
+    // Note: in quickjs-ng, js_debugger_check(ctx, pc) is called BEFORE *pc++
+    // in the SWITCH macro, so cur_pc points at the current opcode. No -1 needed.
+    uint32_t pc_value = (uint32_t)((cur_pc ? cur_pc : sf->cur_pc) - b->byte_code_buf);
     location.line = find_line_num(ctx, b, pc_value, &col_num);
     location.filename = b->filename;
     location.column = col_num;
@@ -60090,11 +60092,21 @@ JSValue js_debugger_build_backtrace(JSContext *ctx, const uint8_t *cur_pc)
             b = p->u.func.function_bytecode;
             if (b->pc2line_buf) {
                 const uint8_t *pc = sf != ctx->rt->current_stack_frame || !cur_pc ? sf->cur_pc : cur_pc;
-                uint32_t pc_value = (uint32_t)(pc - b->byte_code_buf - 1);
+                // Note: in quickjs-ng, js_debugger_check(ctx, pc) is called BEFORE *pc++
+                // in the SWITCH macro, so cur_pc points at the current opcode. No -1 needed.
+                // For prev frames, sf->cur_pc points past the CALL opcode, so -1 is correct there,
+                // but for the current frame (where we stopped), cur_pc is exact.
+                uint32_t pc_value;
+                if (sf == ctx->rt->current_stack_frame && cur_pc)
+                    pc_value = (uint32_t)(pc - b->byte_code_buf);
+                else
+                    pc_value = (uint32_t)(pc - b->byte_code_buf - 1);
                 line_num1 = find_line_num(ctx, b, pc_value, &col_num1);
                 JS_SetPropertyStr(ctx, current_frame, "filename", JS_AtomToString(ctx, b->filename));
-                if (line_num1 != -1)
+                if (line_num1 != -1) {
                     JS_SetPropertyStr(ctx, current_frame, "line", JS_NewUint32(ctx, line_num1));
+                    JS_SetPropertyStr(ctx, current_frame, "column", JS_NewUint32(ctx, col_num1));
+                }
             }
         } else {
             JS_SetPropertyStr(ctx, current_frame, "name", JS_NewString(ctx, "(native)"));
@@ -60228,6 +60240,13 @@ int js_debugger_check_breakpoint(JSContext *ctx, uint32_t current_dirty, const u
             }
         }
 
+        /* Handle breakpoint on the last line of the function:
+           if we ran out of pc2line data while still on the breakpoint line,
+           mark from line_pc to end of bytecode. */
+        if (p >= p_end && last_line_num == (int)breakpoint_line && pc > line_pc) {
+            memset(b->debugger.breakpoints + line_pc, 1, pc - line_pc);
+        }
+
         if (p >= p_end)
             b->debugger.last_line_num = line_num;
     }
@@ -60249,6 +60268,15 @@ done:
     int pc = (int)((cur_pc ? cur_pc : ctx->rt->current_stack_frame->cur_pc) - b->byte_code_buf);
     if (pc < 0 || pc > b->byte_code_len)
         return 0;
+    if (b->debugger.breakpoints[pc]) {
+        int col_num_dbg;
+        int line_num_dbg = find_line_num(ctx, b, (uint32_t)pc, &col_num_dbg);
+        const char *fn = JS_AtomToCString(ctx, b->filename);
+        fprintf(stderr, "[DBG] BP HIT: file='%s' pc=%d line=%d col=%d (b->line_num=%d)\n",
+                fn ? fn : "(null)", pc, line_num_dbg, col_num_dbg, b->line_num);
+        fflush(stderr);
+        JS_FreeCString(ctx, fn);
+    }
     return b->debugger.breakpoints[pc];
     }
 }

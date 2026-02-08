@@ -396,6 +396,7 @@ export class QuickJSDebugSession extends SourcemapSession {
 				breakpoints: breakpoints.length ? breakpoints : undefined,
 			},
 		};
+		this.logTrace(`sendBreakpointMessage: sending to QuickJS: ${JSON.stringify(envelope)}`);
 		this.sendThreadMessage(envelope);
 	}
 
@@ -476,10 +477,14 @@ export class QuickJSDebugSession extends SourcemapSession {
 		const thread = args.threadId;
 		const body = await this.sendThreadRequest(args.threadId, response, args);
 
+		this.logTrace(`stackTraceRequest: raw body from QuickJS = ${JSON.stringify(body)}`);
+
 		const stackFrames: StackFrame[] = [];
 		for (const { id, name, filename, line, column } of body) {
 			let mappedId = id + thread;
 			this._stackFrames.set(mappedId, thread);
+
+			this.logTrace(`stackTraceRequest: frame id=${id} name="${name}" filename="${filename}" line=${line} column=${column}`);
 
 			try {
 				const mappedLocation = await this.translateRemoteLocationToLocal({

@@ -172,14 +172,17 @@ export abstract class SourcemapSession extends LoggingDebugSession {
 				let remoteRoot = commonArgs.sourceMaps && commonArgs.sourceMaps[smp!];
 				let relativeFile = await this.getRemoteRelativePath(sourceLocation.source, remoteRoot);
 
+				this.logTrace(`translateRemoteLocationToLocal: relativeFile="${relativeFile}" sm.file="${sm.file}"`);
 				if (relativeFile !== sm.file)
 					continue;
 
-				const original = sm.originalPositionFor({
+				const queryPos = {
 					column: sourceLocation.column,
 					line: sourceLocation.line,
-				});
-				this.logTrace(`translateRemoteLocationToLocal: ${JSON.stringify(sourceLocation)} to: ${JSON.stringify(original)}`);
+				};
+				this.logTrace(`translateRemoteLocationToLocal: querying originalPositionFor(${JSON.stringify(queryPos)})`);
+				const original = sm.originalPositionFor(queryPos);
+				this.logTrace(`translateRemoteLocationToLocal: result = ${JSON.stringify(original)}`);
 				if (original.line === null || original.column === null || original.source === null)
 					throw new Error("unable to map");
 
