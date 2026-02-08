@@ -52,6 +52,7 @@ export abstract class SourcemapSession extends LoggingDebugSession {
 				}
 			}
 			catch (e) {
+				this.logTrace(`loadSourceMaps error for ${sourcemap}: ${e}`);
 			}
 		})());
 
@@ -121,18 +122,23 @@ export abstract class SourcemapSession extends LoggingDebugSession {
 			if (!sourcemap)
 				throw new Error();
 			const actualSourceLocation = Object.assign({}, sourceLocation);
-			this.logTrace(`translateFileLocationToRemote: ${JSON.stringify(sourceLocation)} to: ${JSON.stringify(actualSourceLocation)}`);
 			// convert the local absolute path into a sourcemap relative path.
 			actualSourceLocation.source = path.relative(path.dirname(sourcemap), sourceLocation.source).replace(/\\/g, '/');
 			delete actualSourceLocation.column;
+			this.logTrace(`translateFileLocationToRemote: querying sourcemap for source="${actualSourceLocation.source}" line=${actualSourceLocation.line}, sm.sources=${JSON.stringify(sm.sources)}`);
 			// let unmappedPosition: NullablePosition = sm.generatedPositionFor(actualSourceLocation);
 			let unmappedPositions = sm.allGeneratedPositionsFor(actualSourceLocation);
+			this.logTrace(`translateFileLocationToRemote: allGeneratedPositionsFor returned ${JSON.stringify(unmappedPositions)}`);
 			if (!unmappedPositions || !unmappedPositions.length)
 				throw new Error('map failed');
 			// now given a source mapped relative path, translate that into a remote path.
 			const smp = this._sourceMaps.get(sm);
 			let remoteRoot = commonArgs.sourceMaps && commonArgs.sourceMaps[smp!];
-			let remoteFile = await this.getRemoteAbsolutePath(sm.file, remoteRoot);
+			// sm.file may be null if the source map lacks "file" field — derive from .map path
+			const generatedFile = sm.file || (smp ? path.basename(smp).replace(/\.map$/, '') : null);
+			if (!generatedFile)
+				throw new Error('cannot determine generated file from source map');
+			let remoteFile = await this.getRemoteAbsolutePath(generatedFile, remoteRoot);
 			return unmappedPositions.map(unmappedPosition => ({
 				source: remoteFile,
 				line: (unmappedPosition.line || 0),
@@ -146,6 +152,7 @@ export abstract class SourcemapSession extends LoggingDebugSession {
 			// };
 		}
 		catch (e) {
+			this.logTrace(`translateFileLocationToRemote FAILED for ${sourceLocation.source}:${sourceLocation.line} — ${e}`);
 			// local files need to be resolved to remote files.
 			let ret = Object.assign({}, sourceLocation);
 			ret.source = await this.getRemoteAbsolutePath(await this.getLocalRelativePath(sourceLocation.source));

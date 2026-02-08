@@ -3,7 +3,7 @@
 	"displayName": "JSHost Debugger",
 	"version": "1.0.0",
 	"publisher": "resdk",
-	"description": "v3 Debug QuickJS-NG runtime embedded in Arma 3 (js_host plugin). Attach-only, no process launch.",
+	"description": "v4 Debug QuickJS-NG runtime embedded in Arma 3 (js_host plugin). Attach-only, no process launch.",
 	"author": {
 		"name": "ReSDK"
 	},
