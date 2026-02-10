@@ -13,7 +13,14 @@ endif()
 
 # JavaScript Host plugin - embeds QuickJS-NG engine
 # Set BUILD_JS_HOST=ON to build this plugin
-option(BUILD_JS_HOST "Build JavaScript Host plugin" ON)
+option(BUILD_JS_HOST "Build JavaScript Host plugin" OFF)
 if(BUILD_JS_HOST)
     add_subdirectory(js_host)
+endif()
+
+# V8 JavaScript Host plugin - embeds V8 engine
+# Set BUILD_V8_HOST=ON to build this plugin
+option(BUILD_V8_HOST "Build V8 JavaScript Host plugin" ON)
+if(BUILD_V8_HOST)
+    add_subdirectory(v8_host)
 endif()
