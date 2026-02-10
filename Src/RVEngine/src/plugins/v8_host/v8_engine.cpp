@@ -295,6 +295,10 @@ void V8Engine::shutdown() {
         m_post_init_func.Reset();
         m_mission_ended_func.Reset();
 
+        // Free static V8 globals (must be done before isolate dispose,
+        // otherwise their atexit destructors crash on dead isolate)
+        s_game_value_template.Reset();
+
         // Destroy inspector before context
         if (m_inspector) {
             m_inspector->contextDestroyed();

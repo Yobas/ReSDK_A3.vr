@@ -126,8 +126,6 @@ V8InspectorClientImpl::V8InspectorClientImpl(
             Sleep(100);
             drainMessages();
         }
-        // Schedule break so debugger stops before first JS execution
-        scheduleBreakOnNextStatement("Break on start");
         V8Engine::log_info("Initial CDP handshake complete");
     }
 }
@@ -174,9 +172,6 @@ void V8InspectorClientImpl::pumpMessages() {
             for (int round = 0; round < 5; round++) {
                 Sleep(50);
                 drainMessages();
-            }
-            if (m_break_on_start) {
-                scheduleBreakOnNextStatement("Break on start");
             }
         }
         return;
@@ -441,7 +436,9 @@ void V8InspectorClientImpl::closeConnection() {
         m_client_socket = INVALID_SOCKET;
     }
     m_connected = false;
+    m_recv_buffer.clear();
     m_session.reset();
+    V8Engine::log_info("Inspector disconnected, ready for reconnect");
 }
 
 // ============================================================================
