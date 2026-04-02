@@ -13,7 +13,7 @@ Replaced value:
 ```sqf
 (if (getSelf(var__) val__ ) then {text__ + (str getSelf(var__)) + sbr} else {""})
 ```
-File: [host\GameModes\BasicDefines.sqf at line 194](../../../Src/host/GameModes/BasicDefines.sqf#L194)
+File: [host\GameModes\BasicDefines.sqf at line 195](../../../Src/host/GameModes/BasicDefines.sqf#L195)
 ## printInfoIf_Handled(val__,text__,var__,__hnd)
 
 Type: constant
@@ -28,7 +28,7 @@ Replaced value:
 ```sqf
 (if (getSelf(var__) val__ ) then {text__ + (__hnd) + sbr} else {""})
 ```
-File: [host\GameModes\BasicDefines.sqf at line 195](../../../Src/host/GameModes/BasicDefines.sqf#L195)
+File: [host\GameModes\BasicDefines.sqf at line 196](../../../Src/host/GameModes/BasicDefines.sqf#L196)
 # BasicTask.sqf
 
 ## editor_task_test
@@ -348,7 +348,7 @@ Initial value:
 ```sqf
 false
 ```
-File: [host\GameModes\Hunt\GM_Hunt.sqf at line 107](../../../Src/host/GameModes/Hunt/GM_Hunt.sqf#L107)
+File: [host\GameModes\Hunt\GM_Hunt.sqf at line 108](../../../Src/host/GameModes/Hunt/GM_Hunt.sqf#L108)
 # HuntRoles.sqf
 
 ## DP
@@ -434,7 +434,7 @@ Replaced value:
 	}; \
 	
 ```
-File: [host\GameModes\Prey\GM_Prey.sqf at line 375](../../../Src/host/GameModes/Prey/GM_Prey.sqf#L375)
+File: [host\GameModes\Prey\GM_Prey.sqf at line 376](../../../Src/host/GameModes/Prey/GM_Prey.sqf#L376)
 # SaloonRoles.sqf
 
 ## __isOldGM

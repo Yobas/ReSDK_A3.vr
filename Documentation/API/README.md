@@ -19,7 +19,7 @@ Count modules: 33
  - [LightEngine](client//LightEngine.md) - 76 files
  - [Lobby](client//Lobby.md) - 8 files
  - [LocalEffects](client//LocalEffects.md) - 2 files
- - [NetDisplays](client//NetDisplays.md) - 16 files
+ - [NetDisplays](client//NetDisplays.md) - 18 files
  - [NOEngineClient](client//NOEngineClient.md) - 15 files
  - [OneSync](client//OneSync.md) - 5 files
  - [PersonClient](client//PersonClient.md) - 1 files
