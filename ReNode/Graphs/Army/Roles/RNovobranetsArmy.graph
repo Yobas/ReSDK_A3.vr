@@ -652,7 +652,7 @@
       "port_deletion_allowed":false,
       "subgraph_session":{},
       "custom":{
-        "Тип предмета":"WorkerCoolCap",
+        "Тип предмета":"WorkerCap2",
         "Слот":"Голова"
       },
       "class_":"func.createItemInInventory"

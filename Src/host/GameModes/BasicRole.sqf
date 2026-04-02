@@ -354,8 +354,10 @@ class(BasicRole) extends(object) attribute(Role)
 	func(initWelcome)
 	{
 		objParams_1(_mob);
-		private _ft = format["<t size='1.4'>Вы - %1 по имени %4.%3Вам %5.%3%2</t>",getSelf(name),getSelf(desc),sbr,callFuncParams(_mob,getNameEx,"кто"),[getVar(_mob,age),["год","года","лет"],true] call toNumeralString];
-		callFuncParams(_mob,addFirstJoinMessage,_ft);
+		private _roleDesc = getSelf(desc);
+		if (!isNullVar(_roleDesc) && {_roleDesc != ""}) then {
+			callFuncParams(_mob,addFirstJoinMessage,_roleDesc);
+		};
 	};
 
 	//процедура спавна снаряжения

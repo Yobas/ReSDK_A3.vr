@@ -12,6 +12,7 @@ class(GMDetective) extends(GMBase)
 	var(desc,"Детективное приключение в роскошном поместье.");
 	var(descExtended,"В поместье близ Калеково этой ночью произошло убийство родственника помещика. На место прибыл дознаватель из Калеково для расследования. Выход из поместья перекрыт. Убийца не скроется...");
 
+	getterconst_func(getLocationDisplayName,"Поместье ''Хвостово''");
 	getterconst_func(getMapName,"Detective");
 	getterconst_func(getLobbySoundName,"lobby\Floor_6_Please.ogg");
 	getterconst_func(getLobbyBackground,PATH_PICTURE("lobby\lobbyrats.paa"));

@@ -11,6 +11,7 @@ class(GMTemplate) extends(GMBase)
 	var(name,"Тестовый режим");
 	var(desc,"Описание");
 	var(descExtended,"Описание в конце игры.");
+	getterconst_func(getLocationDisplayName,"Тест");
 
 	// Длительность режима. Обратите внимание, что логика конца режима по времени должна быть обработана вручную
 	var(duration,t_asMin(25)); //25 минут

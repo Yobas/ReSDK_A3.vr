@@ -37,8 +37,10 @@ class(RTVTRole) extends(BasicRole)
 	func(initWelcome)
 	{
 		objParams_1(_mob);
-		private _ft = format["<t size='1.4'>Вы - %1</t>%3%2",callFunc(gm_currentMode,getCurRoleName),callFunc(gm_currentMode,getCurRoleDesc),sbr];
-		callFuncParams(_mob,addFirstJoinMessage,_ft);
+		private _roleDesc = callFunc(gm_currentMode,getCurRoleDesc);
+		if (!isNullVar(_roleDesc) && {_roleDesc != ""}) then {
+			callFuncParams(_mob,addFirstJoinMessage,_roleDesc);
+		};
 	};
 	
 	func(onAssigned)

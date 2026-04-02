@@ -26,6 +26,7 @@ class(GMOkopovo) extends(GMBase)
 		//данные режима
 	//имя загружаемой карты
 	getterconst_func(getMapName,"Okopovo");
+	getterconst_func(getLocationDisplayName,"Где-то на линии фронта");
 	//имя лобби звука и картинка
 	getterconst_func(getLobbySoundName,"lobby\Conflict.ogg");
 	getterconst_func(getLobbyBackground,PATH_PICTURE("lobby\tvtlobby.paa"));

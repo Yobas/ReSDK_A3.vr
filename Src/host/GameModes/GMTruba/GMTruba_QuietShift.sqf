@@ -15,6 +15,7 @@ class(GMTruba_QuietShift) extends(GMBase) //GMBase - базовый режим, 
     // Текстовые данные режима GMTruba_QuietShift
 	var(name,"Тихая смена в Трубе");
 	var(desc,"Город Труба");
+	getterconst_func(getLocationDisplayName,"Поселение Труба");
 	var(descExtended,"Всё закончилось.");
 
 	var(deadThreshold,10);//порог смертности для завершения раунда

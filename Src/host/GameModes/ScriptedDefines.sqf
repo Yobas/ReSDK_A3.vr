@@ -234,6 +234,16 @@ class(ScriptedGamemode) extends(GMBase)
 	getterconst_func(getMapName,"Minimap");
 
 	"
+		name:Название локации на русском
+		namelib:Получить название локации для отображения
+		desc:Отвечает за название локации, отображаемое в начале раунда. Если это пустая строка, то название локации будет Сеть.
+		type:const
+		return:string:Название локации
+		defval:Сеть
+	" node_met
+	getterconst_func(getLocationDisplayName,"Сеть");
+
+	"
 		name:Лобби-тема
 		namelib:Получить путь до музыки в лобби
 		desc:Отвечает за музыку, которая играет в лобби у всех игроков. Если это пустая строка, то лобби-тема не будет загружена.

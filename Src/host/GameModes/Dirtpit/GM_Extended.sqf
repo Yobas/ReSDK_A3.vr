@@ -11,6 +11,7 @@ class(GMExtended) extends(GMStationBase)
 	var(name,"Тихий день");
 	var(desc,"Свободный режим. Развлекайтесь");
 	var(descExtended,"Ещё один относительно спокойный день.");
+	getterconst_func(getLocationDisplayName,"Грязноямск");
 	
 	var(deadThreshold,20);//порог смертности для завершения раунда
 	

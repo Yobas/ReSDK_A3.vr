@@ -444,7 +444,7 @@ region(Self net display and message box)
 	func(ShowMessageBox)
 	{
 		objParams_5(_name,_data,_eventHandler,_probTarget,_eventOnClose);
-		if (_name != "Text" && isNullVar(_eventHandler)) exitWith {
+		if (!(_name in ["Text","RoundStartScreen","UnsleepInfoScreen"]) && isNullVar(_eventHandler)) exitWith {
 			errorformat("Error on show message box: Event handler cannot be empty on mode %1; Data was: %2",_name arg _data);
 			false
 		};

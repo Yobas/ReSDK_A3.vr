@@ -34,6 +34,7 @@ class(GMPrey) extends(GMBase)
 
 	getterconst_func(getReqPlayersMin,3);
 	getterconst_func(getReqPlayersMax,20);
+	getterconst_func(getLocationDisplayName,"Где-то в пещерах");
 	var(duration,60 * 60); //1 hr
 	getter_func(isVoteSystemEnabled,false);
 	getterconst_func(getMapName,""); //dymaic creation

@@ -15,6 +15,7 @@ class(GMTVTGame) extends(GMStationBase)
 	var(desc,"Противостояние бойцов двух сторон."); //Описание краткое для голосований например
 	var(descExtended,"Новая Армия воюет с забытым поселением.");
 	
+	getterconst_func(getLocationDisplayName,"Где-то в пещерах");
 	getterconst_func(getLobbySoundName,"lobby\Faces_of_War.ogg");
 	getterconst_func(getLobbyBackground,PATH_PICTURE("lobby\tvtlobby.paa"));
 	getterconst_func(getReqPlayersMin,2);

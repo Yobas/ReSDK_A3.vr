@@ -74,11 +74,69 @@ region(Memories)
 		if isNullVar(__FLAG_UNSLEEP_INIT__) then {
 			callSelfParams(ShowMessageBox,"Text" arg _txt);
 		} else {
+			// --- Экран начала раунда ---
+			private _roleName = getVar(getSelf(role),name);
+			private _charName = callSelfParams(getNameEx,"кто");
+			private _age = getSelf(age);
+			private _locationName = callFunc(gm_currentMode,getLocationDisplayName);
+
+			// Верхняя строка: "Смена N. Локация."
+			private _headerLine = "";
+			if (_locationName != "") then {
+				_headerLine = format["Шестое колено. Смена %1. %2.",gm_currentModeId,_locationName];
+			} else {
+				_headerLine = format["Шестое колено. Смена %1.",gm_currentModeId];
+			};
+
+			// Строка персонажа: "Моё имя X. Я Y. Мне Z циклов."
+			private _charInfoLine = format["Моё имя %1. Я %2.%3Мне %4 %5.",
+				_charName,
+				_roleName,
+				sbr,
+				_age,
+				[_age,["цикл","цикла","циклов"]] call toNumeralString
+			];
+
+			// Описание: задачи + описание роли + воспоминания
+			private _descParts = [];
+			
+			// Описание роли (из initWelcome)
+			{
+				_descParts pushBack _x;
+			} foreach getSelf(__firstLoginMesPool);
+			
+			// Описание моба
+			if (!isNullVar(_mobDesc) && {_mobDesc!=""}) then {
+				_descParts pushBack _mobDesc;
+			};
+
+			// Задачи
+			if (count getSelf(tasks) > 0) then {
+				private _tasksText = "";
+				{
+					private _tpref = "";
+					if getVar(_x,customTaskInfo) then {
+						private _tdescEx = callFuncParams(_x,getTaskDescription,this);
+						if (_tdescEx != "") then {
+							modvar(_tasksText) + sbr + _tdescEx;
+						};
+					} else {
+						modvar(_tasksText) + sbr + format["%1: %2",getVar(_x,name),callFuncParams(_x,getTaskDescription,this)];
+					};
+				} foreach getSelf(tasks);
+				if (_tasksText != "") then {
+					_descParts pushBack _tasksText;
+				};
+			};
+
+			private _descriptionText = _descParts joinString sbr;
+
 			private _evcls = {
 				setSelf(__isFirstUnsleep,false);
 				callSelfParams(setSleep,false);
 			};
-			callSelfParams(ShowMessageBox,"Text" arg _txt arg null arg null arg _evcls);
+			private _roundStartData = [_headerLine,_charInfoLine,_descriptionText];
+			callSelfParams(ShowMessageBox,"RoundStartScreen" arg _roundStartData arg null arg null arg _evcls);
 		};
 		
 	};
@@ -261,8 +319,7 @@ region(gameinfo)
 				callSelfParams(setSleep,false);
 			};
 		};
-		_t = "<t size='1.4' color='#3479E0'>"+_t+"</t>";
-		callSelfParams(ShowMessageBox,"Text" arg _t arg null arg null arg _evcls);
+		callSelfParams(ShowMessageBox,"UnsleepInfoScreen" arg _t arg null arg null arg _evcls);
 	};
 
 	//рантайм добавление подсказок

@@ -73,6 +73,7 @@ class(GMSaloon) extends(GMBase)
 	
 	var(duration,60 * 60); //1 час
 	getterconst_func(getMapName,"Saloon");
+	getterconst_func(getLocationDisplayName,"Злачник");
 	
 	var(task,nullPtr);
 	var(taskList,["Saloon_Task_Portfel" arg "Saloon_Task_Docs" arg "Saloon_Task_Kill"]);
@@ -697,6 +698,7 @@ class(GMSaloonV2) extends(GMBase)
 	
 	var(duration,t_asMin(90)); //1.5 часа
 	getterconst_func(getMapName,"SaloonV2");
+	getterconst_func(getLocationDisplayName,"Злачник");
 	
 	var(task,nullPtr);
 	//var(taskList,["Saloon_Task_PortfelV2"]);

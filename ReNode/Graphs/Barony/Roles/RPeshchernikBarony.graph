@@ -723,7 +723,7 @@
       "port_deletion_allowed":false,
       "subgraph_session":{},
       "custom":{
-        "Тип предмета":"SmallBackpack",
+        "Тип предмета":"LeatherBackpackBrown",
         "Слот":"Спина"
       },
       "class_":"func.createItemInInventory"
