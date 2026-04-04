@@ -145,7 +145,9 @@ menu_structureLayout = [
 			],
 			"text:Создать объектную библиотеку (ReNode);act:call vs_generateLib",
 			"text:Запустить импорт старой карты;act:call mm_doImportOldMap",
-			"text:Генерировать подписи библиотек клиента;act: call systools_generateLibInfo"
+			"text:Генерировать подписи библиотек клиента;act: call systools_generateLibInfo",
+			"text:Создать библиотеку объектов v2;act: call systools_generateV2Prototypes",
+			"text:Экспорт текущей карты под v2;act: call systools_exportCurrentMap"
 		],
 		["text:Валидаторы",
 			["text:Обновление объектов",

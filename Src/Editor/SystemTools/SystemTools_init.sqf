@@ -19,3 +19,4 @@
 #include "LigthSimulation.sqf"
 #include "LootChecker.sqf"
 #include "ZoneVisualizer.sqf"
+#include "v2exporter.sqf"
