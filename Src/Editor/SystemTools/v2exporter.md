@@ -1,6 +1,6 @@
 # v2exporter JSON schema
 
-Документ описывает формат файла, который генерирует `systools_generateV2Prototypes` из [v2exporter.sqf](/C:/Users/Илья/Documents/Arma%203%20-%20Other%20Profiles/User/missions/resdk_fork.vr/Src/Editor/SystemTools/v2exporter.sqf).
+Документ описывает формат файла, который генерирует `systools_generateV2Prototypes` из [v2exporter.sqf](Src/Editor/SystemTools/v2exporter.sqf).
 
 ## Назначение
 
@@ -352,3 +352,77 @@ Exporter пропускает только runtime-relevant классы и вы
 - `door.animateDataSource` хранится как raw source getter-а, без AST-разбора
 - `animateData` считается safe только по простой эвристике, а не по полноценному анализу const-expression
 
+## Export current map
+
+`systools_exportCurrentMap` генерирует второй JSON, не с библиотекой классов, а с объектами текущей сцены.
+
+Текущий выходной файл:
+
+```text
+src\editor\bin\v1_map_export.json
+```
+
+Формат:
+
+```json
+{
+  "meta": { ... },
+  "objects": [ ... ]
+}
+```
+
+### `meta`
+
+Поля:
+
+- `exporter: string`
+  Сейчас: `v1_v2mapexporter`
+- `generatedAt: array`
+- `editorVersion: string`
+- `mapName: string`
+- `mapVersion: number`
+- `source: string`
+- `objectCountExported: number`
+- `objectCountSkipped: number`
+- `outputFile: string`
+
+### `objects`
+
+Массив world-объектов сцены, у которых есть hashdata.
+
+Exporter берёт только реальные editor scene objects:
+
+- объект должен иметь hashdata
+- `golib_com_object` исключается
+
+Минимальная схема объекта:
+
+```json
+{
+  "type": "ChairLibrary",
+  "pos": [123.4, 456.7, 8.9],
+  "vdir": [0, 1, 0],
+  "vup": [0, 0, 1],
+  "customProps": {}
+}
+```
+
+Поля:
+
+- `type: string`
+  Значение `class` из hashdata.
+- `pos: number[3]`
+  `getPosWorld`
+- `vdir: number[3]`
+  `vectorDirVisual`
+- `vup: number[3]`
+  `vectorUpVisual`
+- `customProps: object`
+  `customProps` из hashdata. Если их нет, exporter пишет пустой HashMap/object.
+
+Текущий map-export намеренно плоский:
+
+- без полной копии hashdata
+- без raw init-кода
+- без системных runtime полей
+- только то, что нужно porter-у для расстановки объектов и переноса custom properties

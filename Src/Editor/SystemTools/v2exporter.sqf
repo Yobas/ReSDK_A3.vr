@@ -20,9 +20,6 @@ function(systools_generateV2Prototypes) {
 	] call createMessageBox;
 }
 
-function(systools_exportCurrentMap) {
-	["Экспорт карты в v2 porter пока не реализован. Сначала используется class registry exporter."] call showInfo;
-}
 
 function(systools_internal_generateV2Prototypes)
 {
@@ -407,4 +404,100 @@ function(systools_v2exp_buildClassRecord)
 	};
 
 	_record
+}
+
+function(systools_v2exp_buildMapObjectRecord)
+{
+	params ["_obj"];
+	private _hash = [_obj,false] call golib_getHashData;
+	if (count _hash == 0) exitWith {nil};
+
+	private _type = _hash getOrDefault ["class",""];
+	if (_type == "") exitWith {nil};
+
+	createHashMapFromArray [
+		["type",_type],
+		["pos",getPosWorldVisual _obj],
+		["vdir",vectorDirVisual _obj],
+		["vup",vectorUpVisual _obj],
+		["customProps",_hash getOrDefault ["customProps",createHashMap]]
+	]
+}
+
+function(systools_internal_exportCurrentMap)
+{
+	private _outputDir = "src\editor\bin";
+	private _outputFile = _outputDir + "\v1_map_export.json";
+	private _mapName = "unknown";
+	private _mapVersion = -1;
+
+	if !([_outputDir] call systools_v2exp_ensureOutputDir) exitWith {
+		["Export directory does not exist: " + _outputDir] call showError;
+	};
+
+	if (["missionName"] call golib_hasCommonStorageParam) then {
+		_mapName = "missionName" call golib_getCommonStorageParam;
+	};
+	if (["version"] call golib_hasCommonStorageParam) then {
+		_mapVersion = "version" call golib_getCommonStorageParam;
+	};
+
+	private _objects = [];
+	private _skipped = 0;
+	private _startedAt = tickTime;
+
+	{
+		if (_x call golib_hasHashData) then {
+			if not_equals(_x,golib_com_object) then {
+				private _record = [_x] call systools_v2exp_buildMapObjectRecord;
+				if !isNullVar(_record) then {
+					_objects pushBack _record;
+				} else {
+					INC(_skipped);
+				};
+			};
+		};
+	} foreach (all3DENEntities select 0);
+
+	private _meta = createHashMapFromArray [
+		["exporter","v1_v2mapexporter"],
+		["generatedAt",systemTime],
+		["editorVersion",ifcheck(isNullVar(Core_version_name),"unknown",Core_version_name)],
+		["mapName",_mapName],
+		["mapVersion",_mapVersion],
+		["source","resdk_fork.vr"],
+		["objectCountExported",count _objects],
+		["objectCountSkipped",_skipped],
+		["outputFile",_outputFile]
+	];
+
+	private _payload = createHashMapFromArray [
+		["meta",_meta],
+		["objects",_objects]
+	];
+
+	private _json = toJson(_payload);
+	if !([_outputFile,_json] call file_write) exitWith {
+		["Cannot save JSON file: " + _outputFile] call showError;
+	};
+
+	["V2 map exporter done in %1 sec. Exported %2 objects; skipped %3",tickTime - _startedAt,count _objects,_skipped] call printLog;
+	[format["Map export completed. Saved %1 objects to %2",count _objects,_outputFile]] call showInfo;
+}
+
+function(systools_exportCurrentMap) {
+	[
+		"Build JSON export of the current map for the v2 porter: world transforms, className and customProps. Continue?",
+		"Export v2 map",
+		[
+			"Run",
+			{ call systools_internal_exportCurrentMap }
+		],
+		[
+			"No",
+			{}
+		],
+		"\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa",
+		findDisplay 313
+	] call createMessageBox;
 }
