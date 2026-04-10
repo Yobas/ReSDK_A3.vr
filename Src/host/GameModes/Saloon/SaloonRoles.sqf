@@ -455,7 +455,7 @@ class(RBanditMainSaloon) extends(BasicRoleSaloon)
 	{
 		objParams_2(_mob,_usr);
 		super();
-		private _mes = format["<t size='1.4' color='#FF7400' font='RobotoCondensed'>%1</t>",callFunc(getVar(gm_currentMode,task),getDesc)];
+		private _mes = format["<t size='1.4' color='#FF7400' font='Ringbear'>%1</t>",callFunc(getVar(gm_currentMode,task),getDesc)];
 		callFuncParams(_mob,addFirstJoinMessage,_mes);
 		modVar(gm_currentMode,countAliveBandits, + 1);
 		
@@ -685,7 +685,7 @@ class(RSBSComannderSaloon) extends(BasicRoleSaloon)
 	{
 		objParams_2(_mob,_usr);
 		super();
-		private _mes = "<t size='1.4' color='#F60018' font='RobotoCondensed'>Поступил вызов - бар Дыра. Собрать бойцов, снарядить их и выдвинуться на место.</t>";
+		private _mes = "<t size='1.4' color='#F60018' font='Ringbear'>Поступил вызов - бар Дыра. Собрать бойцов, снарядить их и выдвинуться на место.</t>";
 		callFuncParams(_mob,addFirstJoinMessage,_mes);
 		setVar(gm_currentMode,isSBSCommandirSpawned,true);
 		

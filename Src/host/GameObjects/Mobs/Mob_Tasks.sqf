@@ -99,8 +99,7 @@ region(Memories)
 
 			// Описание: задачи + описание роли + воспоминания
 			private _descParts = [];
-			
-			// Описание роли (из initWelcome)
+
 			{
 				_descParts pushBack _x;
 			} foreach getSelf(__firstLoginMesPool);
@@ -110,9 +109,17 @@ region(Memories)
 				_descParts pushBack _mobDesc;
 			};
 
+			private _mpool = [];
+			{
+				_mpool pushBack _x;
+			} foreach getVar(_mem,messages);
+			if (count _mpool > 0) then {
+				_descParts pushBack ("<t color='#5A71A3' font='Ringbear'>" + (_mpool joinString (sbr + sbr)) + "</t>");
+			};
+
 			// Задачи
 			if (count getSelf(tasks) > 0) then {
-				private _tasksText = "";
+				private _tasksText = "Мои задачи:";
 				{
 					private _tpref = "";
 					if getVar(_x,customTaskInfo) then {
@@ -124,12 +131,12 @@ region(Memories)
 						modvar(_tasksText) + sbr + format["%1: %2",getVar(_x,name),callFuncParams(_x,getTaskDescription,this)];
 					};
 				} foreach getSelf(tasks);
-				if (_tasksText != "") then {
+				if (_tasksText != "Мои задачи:") then {
 					_descParts pushBack _tasksText;
 				};
 			};
 
-			private _descriptionText = _descParts joinString sbr;
+			private _descriptionText = _descParts joinString (sbr + sbr);
 
 			private _evcls = {
 				setSelf(__isFirstUnsleep,false);
