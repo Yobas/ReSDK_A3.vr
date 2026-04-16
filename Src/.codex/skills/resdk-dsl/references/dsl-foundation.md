@@ -56,6 +56,34 @@ Prefer project wrappers where they exist, especially for:
 
 Avoid falling back to raw operators when the codebase already uses a canonical DSL helper unless local file style clearly requires otherwise and the change remains safe.
 
+## Project-First Semantics
+
+Do not make decisions against ReSDK code by asking "what would plain SQF do here?" first.
+
+Ask in this order instead:
+
+1. does the project already define a DSL helper, macro, wrapper, or documented convention for this concern
+2. if yes, use the project contract
+3. if no obvious contract exists, verify that by reading the relevant headers or docs
+4. only then consider raw SQF/Arma semantics as an explicit exception
+
+This applies to:
+
+- nil/null and existence checks
+- comparisons and type handling
+- control flow helpers
+- delayed execution helpers
+- RPC/network wrappers
+- native command return-value interpretation
+
+Bad default:
+
+- choosing between raw SQF primitives by habit and only later checking whether ReSDK wraps them
+
+Good default:
+
+- treating raw SQF/Arma as the fallback path, not the primary mental model
+
 ## Stringify-Sensitive OOP Macros
 
 These macros depend on stringification of the field or method argument after preprocessing:
@@ -93,6 +121,12 @@ Choose checks accordingly:
 - `isNullReference` for platform references and deleted references
 - `valid` for project validity semantics, especially OOP-centric checks
 
+Default rule:
+
+- choose the ReSDK helper that matches the value category first
+- do not casually drop to raw native checks just because they are familiar from plain SQF
+- if you think a raw native check is required, verify why the project helper is not appropriate before using it
+
 Do not spray null checks everywhere. Add them where values can really arrive from unsafe/public/external boundaries.
 
 ## OOP vs Struct Semantics
@@ -127,4 +161,6 @@ For new code:
 - follow standards and docs first
 - do not introduce `lang.hpp`
 - prefer project helpers over raw SQF idioms
+- do not guess the structure of native engine return values such as HashMaps, arrays, or option dictionaries
+- when a native command returns keyed data, use documented keys and documented optional-field behavior rather than fallback guessing
 - do not assume editor or legacy shortcuts are acceptable in normal runtime code

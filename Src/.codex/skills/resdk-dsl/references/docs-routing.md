@@ -18,6 +18,23 @@ Open these project docs when you are uncertain. Prefer reading the narrowest fil
 - `../../../../Documentation/Project/QUICK_REFERENCE.md`
   Use for quick lookup of macro names, helper names, and short examples.
 
+## Native Engine Command Docs
+
+- Official Bohemia command docs:
+  `https://community.bohemia.net/wiki/$OPERATOR$`
+  Replace `$OPERATOR$` with the exact engine command or operator name, for example `getVideoOptions`.
+
+- Legacy redirects may still point at `community.bistudio.com`, but prefer the `community.bohemia.net` URL first.
+
+Use official Bohemia docs when you need:
+
+- return types and exact data shape for native commands
+- documented HashMap keys or array layouts
+- which fields are optional or version-gated
+- command locality and version-introduced behavior
+
+Do not guess engine-returned key names when the command is documented.
+
 ## Architecture And Module Boundaries
 
 - `../../../../Documentation/Project/02_PROJECT_STRUCTURE.md`
