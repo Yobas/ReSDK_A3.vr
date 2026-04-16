@@ -53,6 +53,7 @@ Prefer project wrappers where they exist, especially for:
 - null and validity: `isNullVar`, `isNullReference`, `valid`
 - arrays: `array_copy`, `array_remove`, related helpers from `engine.hpp`
 - control flow: `FHEADER`, `RETURN`, `IF_RET`, `exitWith`
+- expression-level ternary selection: `ifcheck`
 
 Avoid falling back to raw operators when the codebase already uses a canonical DSL helper unless local file style clearly requires otherwise and the change remains safe.
 
@@ -72,6 +73,7 @@ This applies to:
 - nil/null and existence checks
 - comparisons and type handling
 - control flow helpers
+- expression idioms such as ternary-style selection
 - delayed execution helpers
 - RPC/network wrappers
 - native command return-value interpretation
@@ -83,6 +85,23 @@ Bad default:
 Good default:
 
 - treating raw SQF/Arma as the fallback path, not the primary mental model
+
+## Canonical Idiom Review
+
+During review, the question is not only whether code is legal SQF or whether it will run.
+
+The question is also whether it matches the canonical ReSDK DSL idiom for the operation.
+
+Implications:
+
+- "valid SQF" is not enough to call code standards-compliant
+- if the project has a named helper for a common idiom, bypassing it is at least a smell unless there is a local, documented reason
+- review findings should call out canonical-idiom drift even when the code is functionally correct
+
+Example:
+
+- for expression-level ternary selection, prefer `ifcheck(condition,a,b)`
+- inline `if (condition) then {a} else {b}` used as an expression may still run, but it should be reviewed against `ifcheck` first, not against plain SQF permissiveness
 
 ## Stringify-Sensitive OOP Macros
 
