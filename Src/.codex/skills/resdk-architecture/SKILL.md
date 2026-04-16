@@ -1,4 +1,4 @@
-﻿---
+---
 name: resdk-architecture
 description: Route new code and content to the correct ReSDK subsystem and enforce architectural invariants. Use when deciding whether work belongs in `host`, `client`, `Editor`, or `CommonComponents`; when creating or extending modules; when choosing between OOP classes, structs, function modules, and data configs; or when checking whether a change is architecturally complete.
 ---
@@ -60,4 +60,3 @@ If a task touches these areas, preserve existing structure and only make the min
 - Prefer extending an obvious existing system over inventing a parallel one.
 - If the owning system is unclear, ask instead of improvising a new module.
 - Treat "works in simulation" as insufficient when a layer boundary is violated.
-

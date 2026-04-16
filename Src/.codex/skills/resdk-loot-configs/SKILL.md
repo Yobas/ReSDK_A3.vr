@@ -1,4 +1,4 @@
-﻿---
+---
 name: resdk-loot-configs
 description: Create and edit LootSystem YAML templates and editor-facing loot setup. Use when adding loot collections, defining tags, map or gamemode restrictions, probability, count, health or quality rules, or when checking how a loot template should be assigned and tested through ReEditor.
 ---

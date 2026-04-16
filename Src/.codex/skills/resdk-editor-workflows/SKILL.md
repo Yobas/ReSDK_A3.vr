@@ -1,4 +1,4 @@
-﻿---
+---
 name: resdk-editor-workflows
 description: Work with ReEditor-only workflows: editor components in `Editor/`, map workspace and build flow, GameObjectsLibrary rebuilds, ReNode and VisualScripting integration, SystemTools validators and generators, and simulation or editor-side debugging. Use when editing editor modules, guiding ReEditor actions, rebuilding editor-owned artifacts, or troubleshooting editor behavior.
 ---

@@ -1,0 +1,3 @@
+interface:
+  display_name: "ReSDK DSL"
+  short_description: "Guide ReSDK DSL semantics and macro rules"

@@ -1,4 +1,4 @@
-﻿---
+---
 name: resdk-tests-validation
 description: Choose the right validation path for ReSDK changes: simulation, editor validators, map and generated-asset rebuilds, and the legacy `host/UnitTests` harness. Use when asked what to test after a change, how to validate a subsystem or content edit, whether a rebuild or regeneration is required, or how much confidence a change currently has.
 ---

@@ -1,4 +1,4 @@
-﻿---
+---
 name: resdk-gameobject-authoring
 description: Author new game object classes and related content in `host/GameObjects` and adjacent systems. Use when creating or extending items, structures, decor, mobs, containers, weapons, clothing, lights, doors, and similar content, or when deciding where such classes belong and which downstream systems need follow-up updates.
 ---

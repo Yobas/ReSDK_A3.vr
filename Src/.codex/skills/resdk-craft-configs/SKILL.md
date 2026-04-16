@@ -1,4 +1,4 @@
-﻿---
+---
 name: resdk-craft-configs
 description: Create and edit CraftSystem recipe YAML files and related craft integration. Use when adding or changing craft recipes, recipe types (`default`, `building`, `system`, `interact`), ingredient or result schemas, skill gates, failure handlers, craft durations, or when checking whether a craft change also needs server or client menu updates.
 ---
