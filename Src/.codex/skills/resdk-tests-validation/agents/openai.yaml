@@ -1,0 +1,3 @@
+﻿interface:
+  display_name: "ReSDK Tests Validation"
+  short_description: "Help choose ReSDK validation steps"

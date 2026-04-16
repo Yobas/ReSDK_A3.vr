@@ -1,0 +1,104 @@
+# DSL Foundation
+
+## Core View
+
+ReSDK is not plain SQF. It is a project DSL built from:
+
+- `engine.hpp` for core helpers, null/type utilities, control-flow helpers, logging wrappers, load/import helpers
+- `oop.hpp` for class/object macros
+- `text.hpp` for text and formatted-string helper macros
+- `struct.hpp` for struct-style data and methods
+
+Read these headers first on any serious task.
+
+## Preprocessor Reality
+
+- RV preprocessor behavior is a hard constraint, not an implementation detail.
+- Treat preprocessing as fragile textual substitution.
+- Macro behavior is not context-aware.
+- Keep macro usage syntactically strict.
+- Do not improvise with formatting around sensitive macro arguments.
+
+## Macro and Helper Priorities
+
+Prefer project wrappers where they exist, especially for:
+
+- comparisons: `equals`, `not_equals`, `equalTypes`, `not_equalTypes`
+- null and validity: `isNullVar`, `isNullReference`, `valid`
+- arrays: `array_copy`, `array_remove`, related helpers from `engine.hpp`
+- control flow: `FHEADER`, `RETURN`, `IF_RET`, `exitWith`
+
+Avoid falling back to raw operators when the codebase already uses a canonical DSL helper unless local file style clearly requires otherwise and the change remains safe.
+
+## Stringify-Sensitive OOP Macros
+
+These macros depend on stringification of the field or method argument after preprocessing:
+
+- `getSelf`
+- `setSelf`
+- `getVar`
+- `setVar`
+- `callFunc`
+- `callFuncParams`
+- `callSelf`
+- `callSelfParams`
+
+Rule:
+
+- if spaces get into the member-name argument, they become part of the resulting string key
+- this can silently turn `value` into `" value"` or `"value "`
+- that breaks field or method lookup
+
+Do not normalize these calls casually. Preserve tight argument formatting.
+
+## Type Model
+
+Always reason about which kind of value you have:
+
+- plain scalar/string/array/hashmap-like value
+- nil-like variable state
+- platform reference such as object/control/display/location
+- ReSDK OOP object
+- ReSDK struct
+
+Choose checks accordingly:
+
+- `isNullVar` for nil-like variable state
+- `isNullReference` for platform references and deleted references
+- `valid` for project validity semantics, especially OOP-centric checks
+
+Do not spray null checks everywhere. Add them where values can really arrive from unsafe/public/external boundaries.
+
+## OOP vs Struct Semantics
+
+- OOP macros and object access use the project object system from `oop.hpp`
+- struct access uses the struct system from `struct.hpp`
+- do not assume they behave identically
+- keep exact casing for struct members and methods
+- do not project OOP conventions onto structs without verification
+
+## Control Flow
+
+Understand scope before rewriting logic:
+
+- `exitWith` exits the current scope
+- `FHEADER` declares a named outer scope
+- `RETURN(value)` exits that named scope with a value
+
+Use `RETURN` when returning from nested scopes in functions that intentionally use `FHEADER`.
+Use plain `exitWith` for local early exits when a named return scope is not required.
+
+## Local Variables and Prefixes
+
+- local variables should stay `private`
+- local variables should use `_name`
+- module globals and module functions should keep module prefixes
+
+## New Code Default
+
+For new code:
+
+- follow standards and docs first
+- do not introduce `lang.hpp`
+- prefer project helpers over raw SQF idioms
+- do not assume editor or legacy shortcuts are acceptable in normal runtime code
