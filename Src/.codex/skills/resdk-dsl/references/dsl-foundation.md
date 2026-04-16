@@ -19,6 +19,32 @@ Read these headers first on any serious task.
 - Keep macro usage syntactically strict.
 - Do not improvise with formatting around sensitive macro arguments.
 
+## Code-Accepting Macro Wrappers
+
+Some helpers that read like ordinary function calls are actually `#define` wrappers around engine calls.
+
+Examples to verify before use:
+
+- `invokeAfterDelay`
+- `invokeAfterDelayParams`
+- `nextFrameParams`
+- networking helpers and similar wrappers from `engine.hpp` or subsystem headers
+
+Rules:
+
+- if the helper is a macro, treat each argument as raw text that will be substituted before compilation
+- do not pass non-trivial anonymous code blocks directly into these wrappers
+- do not pass comma-heavy expressions into macro arguments unless you have checked the final expansion is safe
+- if the code block contains `params`, `foreach`, `format`, `vec*`, `arg`, `getOrDefault [...]`, nested macro calls, or other comma-rich DSL constructs, assume inline use is unsafe
+- prefer:
+  `private _code = { ... };`
+  `invokeAfterDelayParams(_code,delay,_params);`
+- only inline a code block into a macro wrapper when the block is trivial and you have explicitly checked the `#define`
+
+Review habit:
+
+- before writing or approving a call site that passes `code` into a helper, open the helper definition and reason about the exact textual expansion
+
 ## Macro and Helper Priorities
 
 Prefer project wrappers where they exist, especially for:

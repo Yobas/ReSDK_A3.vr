@@ -27,6 +27,8 @@ This skill is the project-specific onboarding guide for ReSDK code. Treat the co
 
 - Prefer project helpers and macros over raw native operators when the project already defines a canonical wrapper.
 - Respect RV preprocessor limits. It is text-based, brittle, and not context-aware.
+- Any helper that looks like a function call may still be a macro wrapper from `engine.hpp`, `oop.hpp`, or `text.hpp`. Verify `#define` bodies before passing complex expressions or inline code blocks.
+- Do not pass non-trivial anonymous code blocks directly into macro wrappers such as delayed-call, next-frame, networking, or helper macros that accept `code`-like arguments. Prefer `private _code = { ... };` and pass the symbol instead.
 - In stringify-dependent OOP macros such as `getSelf`, `getVar`, `setVar`, `callFunc`, `callSelf`, and similar forms, any spaces that survive preprocessing inside the member-name argument become part of the final string and break lookup.
 - Choose `isNullVar`, `isNullReference`, `valid`, `equals`, `not_equals`, `array_copy`, `FHEADER`, `RETURN`, and `exitWith` based on type and scope semantics, not by habit.
 - For new code, standards and docs win.
@@ -51,4 +53,5 @@ This skill is the project-specific onboarding guide for ReSDK code. Treat the co
 
 - When explaining code, say which subsystem you are in before interpreting conventions.
 - When proposing edits, check whether the file is hand-written or generated/system-owned.
+- If a change uses a helper with a `code` argument, inspect the helper definition before writing the call site.
 - When uncertain, read more project docs instead of guessing from general SQF knowledge.
