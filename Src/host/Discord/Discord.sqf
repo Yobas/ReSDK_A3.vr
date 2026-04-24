@@ -5,6 +5,7 @@
 
 #include <..\engine.hpp>
 #include <..\oop.hpp>
+#include <..\struct.hpp>
 #include <..\ServerRpc\serverRpc.hpp>
 
 #include <ServerManager.sqf>

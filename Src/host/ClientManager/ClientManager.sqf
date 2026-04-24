@@ -127,8 +127,7 @@ _onClientReady = {
 	//Убираем из cm_preAwaitClientData нашего клиента (через _doNothing)
 	private _pwData = cm_preAwaitClientData get _owner;
 	if !isNullVar(_pwData) then {
-		_pwData = cm_preAwaitClientData deleteAt _owner;
-		_pwData setv(cancelToken,true); //просто сброс
+		private _awaitAccessCheck = false;
 
 		//add or update tokens info
 		[
@@ -150,13 +149,19 @@ _onClientReady = {
 				if ([_discordId] call db_port_oldAccountRegistered) exitWith {
 					newParams(ServerClient,[_owner arg _discordId]);
 				};
-				//rpc create conn
-				rpcSendToClient(_owner,"authproc",null);
+				//rpc create conn after access check
+				_awaitAccessCheck = true;
+				_pwData callv(startRoleAccessCheck);
 			};
 
 		};
 
 		//Тут в зависимости от режима можно уже скинуть моба...
+
+		if (!_awaitAccessCheck) then {
+			_pwData = cm_preAwaitClientData deleteAt _owner;
+			_pwData setv(cancelToken,true); //просто сброс
+		};
 
 	} else {
 		errorformat("cm::onClientReady<RPC>() - index is -1. Client number %1 kicked! list %2",_owner arg cm_preAwaitClientData);
@@ -186,6 +191,7 @@ _onRegClient = {
 	
 	private _newClient = newParams(ServerClient,[_owner arg _disId]);
 	callFuncParams(_newClient,addDiscordRole,"Dweller");
+	callFuncParams(_newClient,removeDiscordRole,"Approved");
 
 }; rpcAdd("onRegClient",_onRegClient);
 

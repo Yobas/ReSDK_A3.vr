@@ -11,3 +11,6 @@
 
 //время на инициализацию (доп 30 секунд на предзагрузку и накладные расходы выполнения)
 #define TIME_TO_INIT_CLIENT 60*3 + 30
+
+//time for access validation of clients without account
+#define TIME_TO_VALIDATE_CLIENT 15
