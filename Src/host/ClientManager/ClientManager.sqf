@@ -150,8 +150,12 @@ _onClientReady = {
 					newParams(ServerClient,[_owner arg _discordId]);
 				};
 				//rpc create conn after access check
+				#ifdef ENABLE_APPROVED_ACCESS_CHECK
 				_awaitAccessCheck = true;
 				_pwData callv(startRoleAccessCheck);
+				#else
+				rpcSendToClient(_owner,"authproc",null);
+				#endif
 			};
 
 		};
@@ -191,7 +195,9 @@ _onRegClient = {
 	
 	private _newClient = newParams(ServerClient,[_owner arg _disId]);
 	callFuncParams(_newClient,addDiscordRole,"Dweller");
+	#ifdef ENABLE_APPROVED_ACCESS_CHECK
 	callFuncParams(_newClient,removeDiscordRole,"Approved");
+	#endif
 
 }; rpcAdd("onRegClient",_onRegClient);
 

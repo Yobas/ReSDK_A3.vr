@@ -77,6 +77,9 @@
 
 //флаг указывает что доступ на сервер только у тех кто в вайтлисте
 //#define TEST_WHITELISTED
+
+//Require Discord role Approved for users without registered game account.
+#define ENABLE_APPROVED_ACCESS_CHECK
 //============================================================================
 
 

@@ -172,6 +172,7 @@ dsm_callbackHandle = {
 			_list = _data call dsm_deserializeStringList;
 			_list params ["_nick","_rolesStr"];
 			_roleList = _rolesStr splitString ";";
+			#ifdef ENABLE_APPROVED_ACCESS_CHECK
 			private _pwData = null;
 			// Linear lookup is acceptable here: pre-auth role checks are rare and stored in a small pending list.
 			{
@@ -182,6 +183,7 @@ dsm_callbackHandle = {
 			if !isNullVar(_pwData) exitwith {
 				_pwData callp(handleRoleAccessCheckResult,_roleList);
 			};
+			#endif
 			private _cli = [_nick,true] call cm_findClientByName;
 			if isNullReference(_cli) exitwith {};
 			callFuncParams(_cli,updateDiscordRoles,_roleList);
