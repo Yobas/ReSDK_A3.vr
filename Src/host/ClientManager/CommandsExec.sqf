@@ -56,13 +56,15 @@ cm_processClientCommand = {
 		errorformat("cm::processClientCommand() - Command %1 is undefined (called on %2)",_command arg _owner);
 	};
 
+	private _cmdArgsOrig = _arguments; //copy args for correct log (if args overrides inside command code)
+
 	//now call command!
 	call (_scom select 2);
 
 	logformat("cm::processClientCommand() - Command %1 called!",_command);
 	
-	[format["cm::processClientCommand() - %1 called cmd '%2' with args: %3",getVar(_client,name),_command,_arguments]] call adminLog;
-	[format["cm::processClientCommand() - %1 called cmd '%2' with args: %3",getVar(_client,name),_command,_arguments]] call disc_adminlog_provider;
+	[format["cm::processClientCommand() - %1 called cmd '%2' with args: %3",getVar(_client,name),_command,_cmdArgsOrig]] call adminLog;
+	[format["cm::processClientCommand() - %1 called cmd '%2' with args: %3",getVar(_client,name),_command,_cmdArgsOrig]] call disc_adminlog_provider;
 };
 
 cm_commands_map = createHashMap;
